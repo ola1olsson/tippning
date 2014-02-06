@@ -74,19 +74,19 @@ CREATE TABLE `emwinner` (
 -- 
 
 INSERT INTO `emwinner` VALUES (1, '1960', 'Sovjetunionen', 'USSR', 'ussr.gif', 'Frankrike');
-INSERT INTO `emwinner` VALUES (2, '1964', 'Spanien', 'Spain', 'esp.gif', 'Spanien');
-INSERT INTO `emwinner` VALUES (3, '1968', 'Italien', 'Italy', 'ita.gif', 'Italien');
-INSERT INTO `emwinner` VALUES (4, '1972', 'Västtyskland', 'West-Germany', 'west_ger.gif', 'Belgien');
-INSERT INTO `emwinner` VALUES (5, '1976', 'Tjeckoslovakien', 'Czechoslovakia', 'cze_svk.gif', 'Jugoslavien');
-INSERT INTO `emwinner` VALUES (6, '1980', 'Västtyskland', 'West-Germany', 'west_ger.gif', 'Italien');
-INSERT INTO `emwinner` VALUES (7, '1984', 'Frankrike', 'France', 'fra.gif', 'Frankrike');
-INSERT INTO `emwinner` VALUES (8, '1988', 'Nederländerna', 'Netherlands', 'ned.gif', 'Västtyskland');
-INSERT INTO `emwinner` VALUES (9, '1992', 'Danmark', 'Denmark', 'den.gif', 'Sverige');
-INSERT INTO `emwinner` VALUES (10, '1996', 'Tyskland', 'Germany', 'ger.gif', 'England');
-INSERT INTO `emwinner` VALUES (11, '2000', 'Frankrike', 'France', 'fra.gif', 'Belgien & Nederländerna');
-INSERT INTO `emwinner` VALUES (12, '2004', 'Grekland', 'Greece', 'gre.gif', 'Portugal');
-INSERT INTO `emwinner` VALUES (13, '2008', 'Spanien', 'Spain', 'esp.gif', 'Schweiz & Österrike');
-INSERT INTO `emwinner` VALUES (14, '2012', 'Spanien', 'Spain', 'esp.gif', 'Polen & Ukraina');
+INSERT INTO `emwinner` VALUES (2, '1964', 'Spanien', 'Spain', 'esp.png', 'Spanien');
+INSERT INTO `emwinner` VALUES (3, '1968', 'Italien', 'Italy', 'ita.png', 'Italien');
+INSERT INTO `emwinner` VALUES (4, '1972', 'Västtyskland', 'West-Germany', 'west_ger.png', 'Belgien');
+INSERT INTO `emwinner` VALUES (5, '1976', 'Tjeckoslovakien', 'Czechoslovakia', 'cze_svk.png', 'Jugoslavien');
+INSERT INTO `emwinner` VALUES (6, '1980', 'Västtyskland', 'West-Germany', 'west_ger.png', 'Italien');
+INSERT INTO `emwinner` VALUES (7, '1984', 'Frankrike', 'France', 'fra.png', 'Frankrike');
+INSERT INTO `emwinner` VALUES (8, '1988', 'Nederländerna', 'Netherlands', 'net.png', 'Västtyskland');
+INSERT INTO `emwinner` VALUES (9, '1992', 'Danmark', 'Denmark', 'den.png', 'Sverige');
+INSERT INTO `emwinner` VALUES (10, '1996', 'Tyskland', 'Germany', 'ger.png', 'England');
+INSERT INTO `emwinner` VALUES (11, '2000', 'Frankrike', 'France', 'fra.png', 'Belgien & Nederländerna');
+INSERT INTO `emwinner` VALUES (12, '2004', 'Grekland', 'Greece', 'gre.png', 'Portugal');
+INSERT INTO `emwinner` VALUES (13, '2008', 'Spanien', 'Spain', 'esp.png', 'Schweiz & Österrike');
+INSERT INTO `emwinner` VALUES (14, '2012', 'Spanien', 'Spain', 'esp.png', 'Polen & Ukraina');
 
 -- --------------------------------------------------------
 
@@ -176,38 +176,38 @@ CREATE TABLE `lag` (
 -- Dumping data for table `lag`
 -- 
 
-INSERT INTO `lag` VALUES (1, 'A1', 'Brasilien', 'Brazil', 'BRA', 'bra.gif');
-INSERT INTO `lag` VALUES (2, 'A2', 'Kroatien', 'Croatia', 'CRO', 'cro.gif');
-INSERT INTO `lag` VALUES (3, 'A3', 'Mexico', 'Mexico', 'MEX', 'mex.gif');
-INSERT INTO `lag` VALUES (4, 'A4', 'Kamerun', 'Camerun', 'CAM', 'cam.gif');
-INSERT INTO `lag` VALUES (5, 'B1', 'Spanien', 'Spain', 'SPA', 'spa.gif');
-INSERT INTO `lag` VALUES (6, 'B2', 'Nederländerna', 'Netherlands', 'NET', 'net.gif');
-INSERT INTO `lag` VALUES (7, 'B3', 'Chile', 'Chile', 'CHI', 'chi.gif');
-INSERT INTO `lag` VALUES (8, 'B4', 'Australien', 'Australia', 'AUS', 'aus.gif');
-INSERT INTO `lag` VALUES (9, 'C1', 'Columbia', 'Columbia', 'COL', 'col.gif');
-INSERT INTO `lag` VALUES (10, 'C2', 'Grekland', 'Greece', 'GRE', 'gre.gif');
-INSERT INTO `lag` VALUES (11, 'C3', 'Elfenbenskusten', 'Côte d\\''Ivoire', 'CIV', 'civ.gif');
-INSERT INTO `lag` VALUES (12, 'C4', 'Japan', 'Japan', 'JAP', 'jap.gif');
-INSERT INTO `lag` VALUES (13, 'D1', 'Uruguay', 'Uruguay', 'URU', 'uru.gif');
-INSERT INTO `lag` VALUES (14, 'D2', 'Costa Rica', 'Costa Rica', 'COS', 'cos.gif');
-INSERT INTO `lag` VALUES (15, 'D3', 'England', 'England', 'ENG', 'eng.gif');
-INSERT INTO `lag` VALUES (16, 'D4', 'Italien', 'Italien', 'ITA', 'ita.gif');
-INSERT INTO `lag` VALUES (17, 'E1', 'Schweiz', 'Schweiz', 'SCH', 'sch.gif');
-INSERT INTO `lag` VALUES (18, 'E2', 'Equador', 'Equador', 'EQU', 'equ.gif');
-INSERT INTO `lag` VALUES (19, 'E3', 'Frankrike', 'France', 'FRA', 'fra.gif');
-INSERT INTO `lag` VALUES (20, 'E4', 'Honduras', 'Honduras', 'HON', 'hon.gif');
-INSERT INTO `lag` VALUES (21, 'F1', 'Argentina', 'Argentina', 'ARG', 'arg.gif');
-INSERT INTO `lag` VALUES (22, 'F2', 'Bosnien Herc.', 'Bosnia Herc.', 'BOS', 'bos.gif');
-INSERT INTO `lag` VALUES (23, 'F3', 'Iran', 'Iran', 'IRA', 'ira.gif');
-INSERT INTO `lag` VALUES (24, 'F4', 'Nigeria', 'Nigeria', 'NIG', 'nig.gif');
-INSERT INTO `lag` VALUES (25, 'G1', 'Tyskland', 'Germany', 'GER', 'ger.gif');
-INSERT INTO `lag` VALUES (26, 'G2', 'Portugal', 'Portugal', 'POR', 'pot.gif');
-INSERT INTO `lag` VALUES (27, 'G3', 'Ghana', 'Ghana', 'GHA', 'gha.gif');
-INSERT INTO `lag` VALUES (28, 'G4', 'USA', 'USA', 'USA', 'usa.gif');
-INSERT INTO `lag` VALUES (29, 'H1', 'Belgien', 'Belgium', 'BEL', 'bel.gif');
-INSERT INTO `lag` VALUES (30, 'H2', 'Algeriet', 'Algeria', 'ALG', 'alg.gif');
-INSERT INTO `lag` VALUES (31, 'H3', 'Ryssland', 'Russia', 'RUS', 'rus.gif');
-INSERT INTO `lag` VALUES (32, 'H4', 'Sydkorea', 'South Korea', 'SOU', 'sou.gif');
+INSERT INTO `lag` VALUES (1, 'A1', 'Brasilien', 'Brazil', 'BRA', 'bra.png');
+INSERT INTO `lag` VALUES (2, 'A2', 'Kroatien', 'Croatia', 'CRO', 'cro.png');
+INSERT INTO `lag` VALUES (3, 'A3', 'Mexico', 'Mexico', 'MEX', 'mex.png');
+INSERT INTO `lag` VALUES (4, 'A4', 'Kamerun', 'Camerun', 'CAM', 'cam.png');
+INSERT INTO `lag` VALUES (5, 'B1', 'Spanien', 'Spain', 'SPA', 'spa.png');
+INSERT INTO `lag` VALUES (6, 'B2', 'Nederländerna', 'Netherlands', 'NET', 'net.png');
+INSERT INTO `lag` VALUES (7, 'B3', 'Chile', 'Chile', 'CHI', 'chi.png');
+INSERT INTO `lag` VALUES (8, 'B4', 'Australien', 'Australia', 'AUS', 'aus.png');
+INSERT INTO `lag` VALUES (9, 'C1', 'Columbia', 'Columbia', 'COL', 'col.png');
+INSERT INTO `lag` VALUES (10, 'C2', 'Grekland', 'Greece', 'GRE', 'gre.png');
+INSERT INTO `lag` VALUES (11, 'C3', 'Elfenbenskusten', 'Côte d\\''Ivoire', 'CIV', 'civ.png');
+INSERT INTO `lag` VALUES (12, 'C4', 'Japan', 'Japan', 'JAP', 'jap.png');
+INSERT INTO `lag` VALUES (13, 'D1', 'Uruguay', 'Uruguay', 'URU', 'uru.png');
+INSERT INTO `lag` VALUES (14, 'D2', 'Costa Rica', 'Costa Rica', 'COS', 'cos.png');
+INSERT INTO `lag` VALUES (15, 'D3', 'England', 'England', 'ENG', 'eng.png');
+INSERT INTO `lag` VALUES (16, 'D4', 'Italien', 'Italien', 'ITA', 'ita.png');
+INSERT INTO `lag` VALUES (17, 'E1', 'Schweiz', 'Schweiz', 'SCH', 'sch.png');
+INSERT INTO `lag` VALUES (18, 'E2', 'Equador', 'Equador', 'EQU', 'equ.png');
+INSERT INTO `lag` VALUES (19, 'E3', 'Frankrike', 'France', 'FRA', 'fra.png');
+INSERT INTO `lag` VALUES (20, 'E4', 'Honduras', 'Honduras', 'HON', 'hon.png');
+INSERT INTO `lag` VALUES (21, 'F1', 'Argentina', 'Argentina', 'ARG', 'arg.png');
+INSERT INTO `lag` VALUES (22, 'F2', 'Bosnien Herc.', 'Bosnia Herc.', 'BOS', 'bos.png');
+INSERT INTO `lag` VALUES (23, 'F3', 'Iran', 'Iran', 'IRA', 'ira.png');
+INSERT INTO `lag` VALUES (24, 'F4', 'Nigeria', 'Nigeria', 'NIG', 'nig.png');
+INSERT INTO `lag` VALUES (25, 'G1', 'Tyskland', 'Germany', 'GER', 'ger.png');
+INSERT INTO `lag` VALUES (26, 'G2', 'Portugal', 'Portugal', 'POR', 'por.png');
+INSERT INTO `lag` VALUES (27, 'G3', 'Ghana', 'Ghana', 'GHA', 'gha.png');
+INSERT INTO `lag` VALUES (28, 'G4', 'USA', 'USA', 'USA', 'usa.png');
+INSERT INTO `lag` VALUES (29, 'H1', 'Belgien', 'Belgium', 'BEL', 'bel.png');
+INSERT INTO `lag` VALUES (30, 'H2', 'Algeriet', 'Algeria', 'ALG', 'alg.png');
+INSERT INTO `lag` VALUES (31, 'H3', 'Ryssland', 'Russia', 'RUS', 'rus.png');
+INSERT INTO `lag` VALUES (32, 'H4', 'Sydkorea', 'South Korea', 'SOU', 'sou.png');
 
 -- --------------------------------------------------------
 
@@ -599,24 +599,24 @@ CREATE TABLE `vmwinner` (
 -- Dumping data for table `vmwinner`
 -- 
 
-INSERT INTO `vmwinner` VALUES (1, '1930', 'Uruguay', 'Uruguay', 'uru.gif', 'Uruguay');
-INSERT INTO `vmwinner` VALUES (2, '1934', 'Italien', 'Italy', 'ita.gif', 'Italien');
-INSERT INTO `vmwinner` VALUES (3, '1938', 'Italien', 'Italy', 'ita.gif', 'Frankrike');
+INSERT INTO `vmwinner` VALUES (1, '1930', 'Uruguay', 'Uruguay', 'uru.png', 'Uruguay');
+INSERT INTO `vmwinner` VALUES (2, '1934', 'Italien', 'Italy', 'ita.png', 'Italien');
+INSERT INTO `vmwinner` VALUES (3, '1938', 'Italien', 'Italy', 'ita.png', 'Frankrike');
 INSERT INTO `vmwinner` VALUES (4, '1942', '-', '-', '-', 'Andra världskriget VM spelades inte');
-INSERT INTO `vmwinner` VALUES (5, '1950', 'Uruguay', 'Uruguay', 'uru.gif', 'Brasilien');
-INSERT INTO `vmwinner` VALUES (6, '1954', 'Västtyskland', 'West-Germany', 'west_ger.gif', 'Schweiz');
-INSERT INTO `vmwinner` VALUES (7, '1958', 'Brasilien', 'Brazil', 'bra.gif', 'Sverige');
-INSERT INTO `vmwinner` VALUES (8, '1962', 'Brasilien', 'Brazil', 'bra.gif', 'Chile');
-INSERT INTO `vmwinner` VALUES (9, '1966', 'England', 'England', 'eng.gif', 'England');
-INSERT INTO `vmwinner` VALUES (10, '1970', 'Brasilien', 'Brazil', 'bra.gif', 'Mexiko');
-INSERT INTO `vmwinner` VALUES (11, '1974', 'Västtyskland', 'West-Germany', 'west_ger.gif', 'Västtyskland');
-INSERT INTO `vmwinner` VALUES (12, '1978', 'Argentina', 'Argentina', 'arg.gif', 'Argentina');
-INSERT INTO `vmwinner` VALUES (13, '1982', 'Italien', 'Italy', 'ita.gif', 'Spanien');
-INSERT INTO `vmwinner` VALUES (14, '1986', 'Argentina', 'Argentina', 'arg.gif', 'Mexiko');
-INSERT INTO `vmwinner` VALUES (15, '1990', 'Västtyskland', 'West-Germany', 'west_ger.gif', 'Italien');
-INSERT INTO `vmwinner` VALUES (16, '1994', 'Brasilien', 'Brazil', 'bra.gif', 'USA');
-INSERT INTO `vmwinner` VALUES (17, '1998', 'Frankrike', 'France', 'fra.gif', 'Frankrike');
-INSERT INTO `vmwinner` VALUES (18, '2002', 'Brasilien', 'Brazil', 'bra.gif', 'Sydkorea & Japan');
-INSERT INTO `vmwinner` VALUES (19, '2006', 'Italien', 'Italy', 'ita.gif', 'Tyskland');
-INSERT INTO `vmwinner` VALUES (20, '2010', 'Spanien', 'Spain', 'spa.gif', 'Sydafrika');
+INSERT INTO `vmwinner` VALUES (5, '1950', 'Uruguay', 'Uruguay', 'uru.png', 'Brasilien');
+INSERT INTO `vmwinner` VALUES (6, '1954', 'Västtyskland', 'West-Germany', 'west_ger.png', 'Schweiz');
+INSERT INTO `vmwinner` VALUES (7, '1958', 'Brasilien', 'Brazil', 'bra.png', 'Sverige');
+INSERT INTO `vmwinner` VALUES (8, '1962', 'Brasilien', 'Brazil', 'bra.png', 'Chile');
+INSERT INTO `vmwinner` VALUES (9, '1966', 'England', 'England', 'eng.png', 'England');
+INSERT INTO `vmwinner` VALUES (10, '1970', 'Brasilien', 'Brazil', 'bra.png', 'Mexiko');
+INSERT INTO `vmwinner` VALUES (11, '1974', 'Västtyskland', 'West-Germany', 'west_ger.png', 'Västtyskland');
+INSERT INTO `vmwinner` VALUES (12, '1978', 'Argentina', 'Argentina', 'arg.png', 'Argentina');
+INSERT INTO `vmwinner` VALUES (13, '1982', 'Italien', 'Italy', 'ita.png', 'Spanien');
+INSERT INTO `vmwinner` VALUES (14, '1986', 'Argentina', 'Argentina', 'arg.png', 'Mexiko');
+INSERT INTO `vmwinner` VALUES (15, '1990', 'Västtyskland', 'West-Germany', 'west_ger.png', 'Italien');
+INSERT INTO `vmwinner` VALUES (16, '1994', 'Brasilien', 'Brazil', 'bra.png', 'USA');
+INSERT INTO `vmwinner` VALUES (17, '1998', 'Frankrike', 'France', 'fra.png', 'Frankrike');
+INSERT INTO `vmwinner` VALUES (18, '2002', 'Brasilien', 'Brazil', 'bra.png', 'Sydkorea & Japan');
+INSERT INTO `vmwinner` VALUES (19, '2006', 'Italien', 'Italy', 'ita.png', 'Tyskland');
+INSERT INTO `vmwinner` VALUES (20, '2010', 'Spanien', 'Spain', 'spa.png', 'Sydafrika');
 INSERT INTO `vmwinner` VALUES (21, '2014', '-', '', '', 'Brasilien');
