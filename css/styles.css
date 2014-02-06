@@ -1,0 +1,181 @@
+
+html {
+	overflow: scroll;	
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+body, tr, td, div, span, a, pre, input, select, textarea {
+	font-family: Arial, sans-serif;
+	font-size: 11px;
+}
+
+hr {
+	width: 100%;
+	height: 1px;
+	background-color: black;
+	border: 0px;
+}
+
+.vertical {	
+	writing-mode: tb-rl;
+	filter: flipv fliph;
+}
+input.btn	{}
+input.alert	{}
+			
+a {
+	color: #000000;
+	text-decoration: underline;
+}
+a:hover {
+	color: #555555;
+}
+      		
+a.mainmenu {
+	font-family: Georgia, tahoma, verdana, sans-serif;
+	color: #FFFFFF;
+	font-size: 13px;
+	font-weight: bold;
+	text-decoration: none;
+}
+a.mainmenu:hover {
+	color: #005500;
+	text-decoration: none;
+}
+
+#mainContainer {
+	width: 800px;
+	height: 600px;
+	border: 1px solid black;
+}
+
+/** TOP CONTAINER */
+#topContainer {
+	height: 120px;
+	background-color: #d95e1a;
+}
+#topContainer #topInnerContainer {
+	width: 100%;
+	height: 100%;	
+	position: relative;
+}
+#topContainer #topInnerContainer #logo {
+	position: absolute;
+	top: 5;
+	left: 5;
+	width: 100px;
+	height: 104px;
+	background: transparent url('http://img.fifa.com/imgml/worldcup/head/wc2010logo.png') no-repeat;
+}
+#topContainer #topInnerContainer #topBanner {
+	position: absolute;
+	right: 10px;
+	top: 20px;
+	width: 653px;
+	height: 58px;
+	background: transparent url('http://img.fifa.com/img/worldcup/head/wc2010_big_title.png') no-repeat;
+}
+#topContainer #menu {
+	position: absolute;
+	left: 140px;
+	bottom: 0;
+}
+#topContainer #menu ul {
+	padding: 0.5em 0.5em;
+	margin: 0;
+}
+#topContainer #menu ul li	{
+	margin-right: 0.2em; 
+	display: inline; 
+	list-style: none;
+			}
+#topContainer #menu a	{
+	text-decoration: none; 
+	padding: 0.5em 1.5em;
+	font-weight: bold;
+	border: 1px solid transparent;
+	border-width: 1px 1px 0px 1px;
+}
+#topContainer #menu a:hover	{ 
+	background-color: #db8b5e;
+	border-color: #c74700;
+}
+#topContainer #menu a#current {
+	background-color: white;
+	border-color: black;
+}
+
+#westContainer {
+	width: 140px;
+	text-align: center;
+	background-color: #fbddcc;
+}
+#westContainer .westPanel {
+	margin: 10px;
+}
+#westContainer .westPanel .profilePicture {
+	width: 100px;
+}
+
+#bodyContainer .container {
+	margin: 20px;
+	text-align: center;
+}
+
+.header	{
+	line-height: 28pt;
+	font-size: 14pt;
+	font-weight: bold;
+}			
+.header2 {
+	line-height: 24pt;
+	font-size: 12pt;
+	font-style: bold;
+}		
+.header3 {
+	font-size: 11pt;
+	font-weight: italic;
+}
+.header4 {
+	font-size: 11pt;
+}
+
+.megaHeader {
+	font-size: 50px;
+}
+
+.userContainer {
+	width: 500px;
+	border: 1px solid #0a3399;
+	background-color: #b8c8f0;
+	margin: 10px;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.userContainer .photoContainer {
+	width: 100px;
+	padding: 5px;
+}
+.userContainer .photo { 
+	width: 50px;
+}
+.userContainer .details {
+	padding: 5px;
+}
+.userContainer .details .header2 {
+	line-height: 18pt;
+}
+.userContainer-full {
+	cursor: default;	
+}
+.userContainer-full .photoContainer {
+	width: width: 150px;
+}
+.userContainer-full .photo { 
+	width: 100px;
+}
