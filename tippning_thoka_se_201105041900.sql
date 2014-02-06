@@ -86,7 +86,7 @@ INSERT INTO `emwinner` VALUES (10, '1996', 'Tyskland', 'Germany', 'ger.gif', 'En
 INSERT INTO `emwinner` VALUES (11, '2000', 'Frankrike', 'France', 'fra.gif', 'Belgien & Nederländerna');
 INSERT INTO `emwinner` VALUES (12, '2004', 'Grekland', 'Greece', 'gre.gif', 'Portugal');
 INSERT INTO `emwinner` VALUES (13, '2008', 'Spanien', 'Spain', 'esp.gif', 'Schweiz & Österrike');
-INSERT INTO `emwinner` VALUES (14, '2012', '-', '', '', 'Polen & Ukraina');
+INSERT INTO `emwinner` VALUES (14, '2012', 'Spanien', 'Spain', 'esp.gif', 'Polen & Ukraina');
 
 -- --------------------------------------------------------
 
@@ -176,38 +176,38 @@ CREATE TABLE `lag` (
 -- Dumping data for table `lag`
 -- 
 
-INSERT INTO `lag` VALUES (1, 'A1', 'Sydafrika', 'South Africa', 'RSA', 'rsa.gif');
-INSERT INTO `lag` VALUES (2, 'A2', 'Mexiko', 'Mexico', 'MEX', 'mex.gif');
-INSERT INTO `lag` VALUES (3, 'A3', 'Uruguay', 'Uruguay', 'URU', 'uru.gif');
-INSERT INTO `lag` VALUES (4, 'A4', 'Frankrike', 'France', 'FRA', 'fra.gif');
-INSERT INTO `lag` VALUES (5, 'B1', 'Argentina', 'Argentina', 'ARG', 'arg.gif');
-INSERT INTO `lag` VALUES (6, 'B2', 'Nigeria', 'Nigeria', 'NGA', 'nga.gif');
-INSERT INTO `lag` VALUES (7, 'B3', 'Sydkorea', 'Korea Republic', 'KOR', 'kor.gif');
-INSERT INTO `lag` VALUES (8, 'B4', 'Grekland', 'Greece', 'GRE', 'gre.gif');
-INSERT INTO `lag` VALUES (9, 'C1', 'England', 'England', 'ENG', 'eng.gif');
-INSERT INTO `lag` VALUES (10, 'C2', 'USA', 'USA', 'USA', 'usa.gif');
-INSERT INTO `lag` VALUES (11, 'C3', 'Algeriet', 'Algeria', 'ALG', 'alg.gif');
-INSERT INTO `lag` VALUES (12, 'C4', 'Slovenien', 'Slovenia', 'SVN', 'svn.gif');
-INSERT INTO `lag` VALUES (13, 'D1', 'Tyskland', 'Germany', 'GER', 'ger.gif');
-INSERT INTO `lag` VALUES (14, 'D2', 'Australien', 'Australia', 'AUS', 'aus.gif');
-INSERT INTO `lag` VALUES (15, 'D3', 'Serbien', 'Serbia', 'SRB', 'srb.gif');
-INSERT INTO `lag` VALUES (16, 'D4', 'Ghana', 'Ghana', 'GHA', 'gha.gif');
-INSERT INTO `lag` VALUES (17, 'E1', 'Nederländerna', 'Netherlands', 'NED', 'ned.gif');
-INSERT INTO `lag` VALUES (18, 'E2', 'Danmark', 'Denmark', 'DEN', 'den.gif');
-INSERT INTO `lag` VALUES (19, 'E3', 'Japan', 'Japan', 'JPN', 'jpn.gif');
-INSERT INTO `lag` VALUES (20, 'E4', 'Kamerun', 'Cameroon', 'CMR', 'cmr.gif');
-INSERT INTO `lag` VALUES (21, 'F1', 'Italien', 'Italy', 'ITA', 'ita.gif');
-INSERT INTO `lag` VALUES (22, 'F2', 'Paraguay', 'Paraguay', 'PAR', 'par.gif');
-INSERT INTO `lag` VALUES (23, 'F3', 'Nya Zeeland', 'New Zealand', 'NZL', 'nzl.gif');
-INSERT INTO `lag` VALUES (24, 'F4', 'Slovakien', 'Slovakia', 'SVK', 'svk.gif');
-INSERT INTO `lag` VALUES (25, 'G1', 'Brasilien', 'Brazil', 'BRA', 'bra.gif');
-INSERT INTO `lag` VALUES (26, 'G2', 'Nordkorea', 'Korea DPR', 'PRK', 'prk.gif');
-INSERT INTO `lag` VALUES (27, 'G3', 'Elfenbenskusten', 'Côte d\\''Ivoire', 'CIV', 'civ.gif');
-INSERT INTO `lag` VALUES (28, 'G4', 'Portugal', 'Portugal', 'POR', 'por.gif');
-INSERT INTO `lag` VALUES (29, 'H1', 'Spanien', 'Spain', 'SPA', 'spa.gif');
-INSERT INTO `lag` VALUES (30, 'H2', 'Schweiz', 'Switzerland', 'SCH', 'sch.gif');
-INSERT INTO `lag` VALUES (31, 'H3', 'Honduras', 'Honduras', 'HON', 'hon.gif');
-INSERT INTO `lag` VALUES (32, 'H4', 'Chile', 'Chile', 'CHI', 'chi.gif');
+INSERT INTO `lag` VALUES (1, 'A1', 'Brasilien', 'Brazil', 'BRA', 'bra.gif');
+INSERT INTO `lag` VALUES (2, 'A2', 'Kroatien', 'Croatia', 'CRO', 'cro.gif');
+INSERT INTO `lag` VALUES (3, 'A3', 'Mexico', 'Mexico', 'MEX', 'mex.gif');
+INSERT INTO `lag` VALUES (4, 'A4', 'Kamerun', 'Camerun', 'CAM', 'cam.gif');
+INSERT INTO `lag` VALUES (5, 'B1', 'Spanien', 'Spain', 'SPA', 'spa.gif');
+INSERT INTO `lag` VALUES (6, 'B2', 'Nederländerna', 'Netherlands', 'NET', 'net.gif');
+INSERT INTO `lag` VALUES (7, 'B3', 'Chile', 'Chile', 'CHI', 'chi.gif');
+INSERT INTO `lag` VALUES (8, 'B4', 'Australien', 'Australia', 'AUS', 'aus.gif');
+INSERT INTO `lag` VALUES (9, 'C1', 'Columbia', 'Columbia', 'COL', 'col.gif');
+INSERT INTO `lag` VALUES (10, 'C2', 'Grekland', 'Greece', 'GRE', 'gre.gif');
+INSERT INTO `lag` VALUES (11, 'C3', 'Elfenbenskusten', 'Côte d\\''Ivoire', 'CIV', 'civ.gif');
+INSERT INTO `lag` VALUES (12, 'C4', 'Japan', 'Japan', 'JAP', 'jap.gif');
+INSERT INTO `lag` VALUES (13, 'D1', 'Uruguay', 'Uruguay', 'URU', 'uru.gif');
+INSERT INTO `lag` VALUES (14, 'D2', 'Costa Rica', 'Costa Rica', 'COS', 'cos.gif');
+INSERT INTO `lag` VALUES (15, 'D3', 'England', 'England', 'ENG', 'eng.gif');
+INSERT INTO `lag` VALUES (16, 'D4', 'Italien', 'Italien', 'ITA', 'ita.gif');
+INSERT INTO `lag` VALUES (17, 'E1', 'Schweiz', 'Schweiz', 'SCH', 'sch.gif');
+INSERT INTO `lag` VALUES (18, 'E2', 'Equador', 'Equador', 'EQU', 'equ.gif');
+INSERT INTO `lag` VALUES (19, 'E3', 'Frankrike', 'France', 'FRA', 'fra.gif');
+INSERT INTO `lag` VALUES (20, 'E4', 'Honduras', 'Honduras', 'HON', 'hon.gif');
+INSERT INTO `lag` VALUES (21, 'F1', 'Argentina', 'Argentina', 'ARG', 'arg.gif');
+INSERT INTO `lag` VALUES (22, 'F2', 'Bosnien Herc.', 'Bosnia Herc.', 'BOS', 'bos.gif');
+INSERT INTO `lag` VALUES (23, 'F3', 'Iran', 'Iran', 'IRA', 'ira.gif');
+INSERT INTO `lag` VALUES (24, 'F4', 'Nigeria', 'Nigeria', 'NIG', 'nig.gif');
+INSERT INTO `lag` VALUES (25, 'G1', 'Tyskland', 'Germany', 'GER', 'ger.gif');
+INSERT INTO `lag` VALUES (26, 'G2', 'Portugal', 'Portugal', 'POR', 'pot.gif');
+INSERT INTO `lag` VALUES (27, 'G3', 'Ghana', 'Ghana', 'GHA', 'gha.gif');
+INSERT INTO `lag` VALUES (28, 'G4', 'USA', 'USA', 'USA', 'usa.gif');
+INSERT INTO `lag` VALUES (29, 'H1', 'Belgien', 'Belgium', 'BEL', 'bel.gif');
+INSERT INTO `lag` VALUES (30, 'H2', 'Algeriet', 'Algeria', 'ALG', 'alg.gif');
+INSERT INTO `lag` VALUES (31, 'H3', 'Ryssland', 'Russia', 'RUS', 'rus.gif');
+INSERT INTO `lag` VALUES (32, 'H4', 'Sydkorea', 'South Korea', 'SOU', 'sou.gif');
 
 -- --------------------------------------------------------
 
@@ -230,70 +230,78 @@ CREATE TABLE `matcher` (
 -- Dumping data for table `matcher`
 -- 
 
-INSERT INTO `matcher` VALUES (1, 'A1', 'A2', '2010-06-11', '16:00', 1);
-INSERT INTO `matcher` VALUES (2, 'A3', 'A4', '2010-06-11', '20:30', 2);
-INSERT INTO `matcher` VALUES (17, 'A1', 'A3', '2010-06-16', '20:30', 5);
-INSERT INTO `matcher` VALUES (18, 'A4', 'A2', '2010-06-17', '20:30', 9);
-INSERT INTO `matcher` VALUES (33, 'A2', 'A3', '2010-06-22', '16:00', 10);
-INSERT INTO `matcher` VALUES (34, 'A4', 'A1', '2010-06-22', '16:00', 7);
-INSERT INTO `matcher` VALUES (3, 'B1', 'B2', '2010-06-12', '16:00', 4);
-INSERT INTO `matcher` VALUES (4, 'B3', 'B4', '2010-06-12', '13:30', 6);
-INSERT INTO `matcher` VALUES (19, 'B4', 'B2', '2010-06-17', '16:00', 7);
-INSERT INTO `matcher` VALUES (20, 'B1', 'B3', '2010-06-17', '13:30', 1);
-INSERT INTO `matcher` VALUES (35, 'B2', 'B3', '2010-06-22', '20:30', 3);
-INSERT INTO `matcher` VALUES (36, 'B4', 'B1', '2010-06-22', '20:30', 9);
-INSERT INTO `matcher` VALUES (5, 'C1', 'C2', '2010-06-12', '20:30', 10);
-INSERT INTO `matcher` VALUES (6, 'C3', 'C4', '2010-06-13', '13:30', 9);
-INSERT INTO `matcher` VALUES (22, 'C4', 'C2', '2010-06-18', '16:00', 4);
-INSERT INTO `matcher` VALUES (23, 'C1', 'C3', '2010-06-18', '20:30', 2);
-INSERT INTO `matcher` VALUES (37, 'C4', 'C1', '2010-06-23', '16:00', 6);
-INSERT INTO `matcher` VALUES (38, 'C2', 'C3', '2010-06-23', '16:00', 5);
-INSERT INTO `matcher` VALUES (7, 'D1', 'D2', '2010-06-13', '20:30', 3);
-INSERT INTO `matcher` VALUES (8, 'D3', 'D4', '2010-06-13', '16:00', 5);
-INSERT INTO `matcher` VALUES (21, 'D1', 'D3', '2010-06-18', '13:30', 6);
-INSERT INTO `matcher` VALUES (24, 'D4', 'D2', '2010-06-19', '16:00', 10);
-INSERT INTO `matcher` VALUES (39, 'D4', 'D1', '2010-06-23', '20:30', 1);
-INSERT INTO `matcher` VALUES (40, 'D2', 'D3', '2010-06-23', '20:30', 8);
-INSERT INTO `matcher` VALUES (9, 'E1', 'E2', '2010-06-14', '13:30', 1);
-INSERT INTO `matcher` VALUES (10, 'E3', 'E4', '2010-06-14', '16:00', 7);
-INSERT INTO `matcher` VALUES (25, 'E1', 'E3', '2010-06-19', '13:30', 3);
-INSERT INTO `matcher` VALUES (26, 'E4', 'E2', '2010-06-19', '20:30', 5);
-INSERT INTO `matcher` VALUES (43, 'E2', 'E3', '2010-06-24', '20:30', 10);
-INSERT INTO `matcher` VALUES (44, 'E4', 'E1', '2010-06-24', '20:30', 2);
-INSERT INTO `matcher` VALUES (11, 'F1', 'F2', '2010-06-14', '20:30', 2);
-INSERT INTO `matcher` VALUES (12, 'F3', 'F4', '2010-06-15', '13:30', 10);
-INSERT INTO `matcher` VALUES (27, 'F4', 'F2', '2010-06-20', '13:30', 7);
-INSERT INTO `matcher` VALUES (28, 'F1', 'F3', '2010-06-20', '16:00', 8);
-INSERT INTO `matcher` VALUES (41, 'F4', 'F1', '2010-06-24', '16:00', 4);
-INSERT INTO `matcher` VALUES (42, 'F2', 'F3', '2010-06-24', '16:00', 9);
-INSERT INTO `matcher` VALUES (13, 'G3', 'G4', '2010-06-15', '16:00', 6);
-INSERT INTO `matcher` VALUES (14, 'G1', 'G2', '2010-06-15', '20:30', 4);
-INSERT INTO `matcher` VALUES (29, 'G1', 'G3', '2010-06-20', '20:30', 1);
-INSERT INTO `matcher` VALUES (30, 'G4', 'G2', '2010-06-21', '13:30', 2);
-INSERT INTO `matcher` VALUES (45, 'G4', 'G1', '2010-06-25', '16:00', 3);
-INSERT INTO `matcher` VALUES (46, 'G2', 'G3', '2010-06-25', '16:00', 8);
-INSERT INTO `matcher` VALUES (15, 'H3', 'H4', '2010-06-16', '13:30', 8);
-INSERT INTO `matcher` VALUES (16, 'H1', 'H2', '2010-06-16', '16:00', 3);
-INSERT INTO `matcher` VALUES (31, 'H4', 'H2', '2010-06-21', '16:00', 6);
-INSERT INTO `matcher` VALUES (32, 'H1', 'H3', '2010-06-21', '20:30', 4);
-INSERT INTO `matcher` VALUES (47, 'H4', 'H1', '2010-06-25', '20:30', 5);
-INSERT INTO `matcher` VALUES (48, 'H2', 'H3', '2010-06-25', '20:30', 7);
-INSERT INTO `matcher` VALUES (49, 'A3', 'B3', '2010-06-26', '16:00', 6);
-INSERT INTO `matcher` VALUES (50, 'C2', 'D4', '2010-06-26', '20:30', 10);
-INSERT INTO `matcher` VALUES (51, 'E1', 'F4', '2010-06-27', '16:00', 7);
-INSERT INTO `matcher` VALUES (52, 'G1', 'H4', '2010-06-27', '20:30', 1);
-INSERT INTO `matcher` VALUES (53, 'B1', 'A2', '2010-06-28', '16:00', 3);
-INSERT INTO `matcher` VALUES (54, 'D1', 'C1', '2010-06-28', '20:30', 1);
-INSERT INTO `matcher` VALUES (55, 'F2', 'E3', '2010-06-29', '16:00', 5);
-INSERT INTO `matcher` VALUES (56, 'H1', 'G4', '2010-06-29', '20:30', 2);
-INSERT INTO `matcher` VALUES (57, 'A3', 'D4', '2011-07-02', '16:00', 6);
-INSERT INTO `matcher` VALUES (58, 'E1', 'G1', '2011-07-02', '20:30', 1);
-INSERT INTO `matcher` VALUES (59, 'B1', 'D1', '2011-07-03', '16:00', 2);
-INSERT INTO `matcher` VALUES (60, 'F2', 'H1', '2011-07-03', '20:30', 1);
-INSERT INTO `matcher` VALUES (61, 'A3', 'E1', '2011-07-06', '20:30', 2);
-INSERT INTO `matcher` VALUES (62, 'D1', 'H1', '2011-07-07', '20:30', 3);
-INSERT INTO `matcher` VALUES (63, 'A3', 'D1', '2011-07-10', '20:30', 6);
-INSERT INTO `matcher` VALUES (64, 'E1', 'H1', '2011-06-11', '20:30', 1);
+INSERT INTO `matcher` VALUES (1, 'A1', 'A2', '2014-06-12', '17:00', 1);
+INSERT INTO `matcher` VALUES (2, 'A3', 'A4', '2014-06-13', '13:00', 2);
+INSERT INTO `matcher` VALUES (17, 'A1', 'A3', '2014-06-17', '16:00', 5);
+INSERT INTO `matcher` VALUES (18, 'A4', 'A2', '2014-06-18', '16:00', 9);
+INSERT INTO `matcher` VALUES (33, 'A4', 'A1', '2014-06-23', '17:00', 7);
+INSERT INTO `matcher` VALUES (34, 'A2', 'A3', '2014-06-23', '17:00', 10);
+
+INSERT INTO `matcher` VALUES (3, 'B1', 'B2', '2014-06-13', '16:00', 4);
+INSERT INTO `matcher` VALUES (4, 'B3', 'B4', '2014-06-13', '19:00', 6);
+INSERT INTO `matcher` VALUES (19, 'B1', 'B3', '2014-06-18', '19:00', 7);
+INSERT INTO `matcher` VALUES (20, 'B4', 'B2', '2014-06-18', '13:00', 1);
+INSERT INTO `matcher` VALUES (35, 'B4', 'B1', '2014-06-23', '13:00', 3);
+INSERT INTO `matcher` VALUES (36, 'B2', 'B3', '2014-06-23', '13:00', 9);
+
+INSERT INTO `matcher` VALUES (5, 'C1', 'C2', '2014-06-14', '13:00', 10);
+INSERT INTO `matcher` VALUES (6, 'C3', 'C4', '2014-06-14', '19:00', 9);
+INSERT INTO `matcher` VALUES (21, 'C1', 'C3', '2014-06-19', '13:00', 4);
+INSERT INTO `matcher` VALUES (22, 'C4', 'C2', '2014-06-19', '19:00', 2);
+INSERT INTO `matcher` VALUES (37, 'C4', 'C1', '2014-06-24', '17:00', 6);
+INSERT INTO `matcher` VALUES (38, 'C2', 'C3', '2014-06-24', '17:00', 5);
+
+INSERT INTO `matcher` VALUES (7, 'D1', 'D2', '2014-06-14', '16:00', 3);
+INSERT INTO `matcher` VALUES (8, 'D3', 'D4', '2014-06-14', '22:00', 5);
+INSERT INTO `matcher` VALUES (23, 'D1', 'D3', '2014-06-19', '16:00', 6);
+INSERT INTO `matcher` VALUES (24, 'D4', 'D2', '2014-06-20', '13:00', 10);
+INSERT INTO `matcher` VALUES (39, 'D4', 'D1', '2014-06-24', '13:00', 1);
+INSERT INTO `matcher` VALUES (40, 'D2', 'D3', '2014-06-24', '13:00', 8);
+
+INSERT INTO `matcher` VALUES (9, 'E1', 'E2', '2014-06-15', '13:00', 1);
+INSERT INTO `matcher` VALUES (10, 'E3', 'E4', '2014-06-15', '16:00', 7);
+INSERT INTO `matcher` VALUES (25, 'E1', 'E3', '2014-06-20', '16:00', 3);
+INSERT INTO `matcher` VALUES (26, 'E4', 'E2', '2014-06-20', '19:00', 5);
+INSERT INTO `matcher` VALUES (41, 'E4', 'E1', '2014-06-25', '17:00', 10);
+INSERT INTO `matcher` VALUES (42, 'E2', 'E3', '2014-06-25', '17:00', 2);
+
+INSERT INTO `matcher` VALUES (11, 'F1', 'F2', '2014-06-15', '19:00', 2);
+INSERT INTO `matcher` VALUES (12, 'F3', 'F4', '2014-06-16', '16:00', 10);
+INSERT INTO `matcher` VALUES (27, 'F1', 'F3', '2014-06-21', '13:00', 7);
+INSERT INTO `matcher` VALUES (28, 'F4', 'F2', '2014-06-21', '19:00', 8);
+INSERT INTO `matcher` VALUES (43, 'F4', 'F1', '2014-06-25', '13:00', 4);
+INSERT INTO `matcher` VALUES (44, 'F2', 'F3', '2014-06-25', '13:00', 9);
+
+INSERT INTO `matcher` VALUES (13, 'G1', 'G2', '2014-06-16', '13:00', 6);
+INSERT INTO `matcher` VALUES (14, 'G3', 'G4', '2014-06-16', '19:00', 4);
+INSERT INTO `matcher` VALUES (29, 'G1', 'G3', '2014-06-21', '16:00', 1);
+INSERT INTO `matcher` VALUES (30, 'G4', 'G2', '2014-06-22', '16:00', 2);
+INSERT INTO `matcher` VALUES (45, 'G4', 'G1', '2014-06-26', '13:00', 3);
+INSERT INTO `matcher` VALUES (46, 'G2', 'G3', '2014-06-26', '13:00', 8);
+
+INSERT INTO `matcher` VALUES (15, 'H1', 'H2', '2014-06-17', '13:00', 8);
+INSERT INTO `matcher` VALUES (16, 'H3', 'H4', '2014-06-17', '19:00', 3);
+INSERT INTO `matcher` VALUES (31, 'H1', 'H3', '2014-06-22', '19:00', 6);
+INSERT INTO `matcher` VALUES (32, 'H4', 'H2', '2014-06-22', '13:00', 4);
+INSERT INTO `matcher` VALUES (47, 'H4', 'H1', '2014-06-26', '17:00', 5);
+INSERT INTO `matcher` VALUES (48, 'H2', 'H3', '2014-06-26', '17:00', 7);
+
+INSERT INTO `matcher` VALUES (49, 'A3', 'B3', '2014-06-28', '13:00', 6);
+INSERT INTO `matcher` VALUES (50, 'C2', 'D4', '2014-06-28', '17:00', 10);
+INSERT INTO `matcher` VALUES (51, 'E1', 'F4', '2014-06-20', '13:00', 7);
+INSERT INTO `matcher` VALUES (52, 'G1', 'H4', '2014-06-29', '17:00', 1);
+INSERT INTO `matcher` VALUES (53, 'B1', 'A2', '2014-06-30', '13:00', 3);
+INSERT INTO `matcher` VALUES (54, 'D1', 'C1', '2014-07-30', '17:00', 1);
+INSERT INTO `matcher` VALUES (55, 'F2', 'E3', '2014-07-01', '13:00', 5);
+INSERT INTO `matcher` VALUES (56, 'H1', 'G4', '2014-07-01', '17:00', 2);
+INSERT INTO `matcher` VALUES (57, 'A3', 'D4', '2014-07-02', '17:00', 6);
+INSERT INTO `matcher` VALUES (58, 'E1', 'G1', '2014-07-02', '13:00', 1);
+INSERT INTO `matcher` VALUES (59, 'B1', 'D1', '2014-07-03', '17:00', 2);
+INSERT INTO `matcher` VALUES (60, 'F2', 'H1', '2014-07-03', '13:00', 1);
+INSERT INTO `matcher` VALUES (61, 'A3', 'E1', '2014-07-06', '17:00', 2);
+INSERT INTO `matcher` VALUES (62, 'D1', 'H1', '2014-07-07', '17:00', 3);
+INSERT INTO `matcher` VALUES (63, 'A3', 'D1', '2014-07-10', '17:00', 6);
+INSERT INTO `matcher` VALUES (64, 'E1', 'H1', '2014-06-11', '16:00', 1);
 
 -- --------------------------------------------------------
 
@@ -460,10 +468,9 @@ CREATE TABLE `tippwinner` (
 -- Dumping data for table `tippwinner`
 -- 
 
-INSERT INTO `tippwinner` VALUES (1, '2004', 'Lennart', 'Karlsson', '600', 'lennartk.jpg');
-INSERT INTO `tippwinner` VALUES (2, '2006', 'Karin', 'Waldemarsson', '800', 'karinw.jpg');
-INSERT INTO `tippwinner` VALUES (3, '2008', 'Mattias', 'Hansson', '2650', 'mattiash.jpg');
-INSERT INTO `tippwinner` VALUES (4, '2010', '', '', '0', '');
+INSERT INTO `tippwinner` VALUES (1, '2010', 'Martin', 'Sundström', '10', '');
+INSERT INTO `tippwinner` VALUES (2, '2012', 'Martin', 'Sundström', '10', '');
+INSERT INTO `tippwinner` VALUES (3, '2014', '', '', '0', '');
 
 -- --------------------------------------------------------
 
@@ -611,5 +618,5 @@ INSERT INTO `vmwinner` VALUES (16, '1994', 'Brasilien', 'Brazil', 'bra.gif', 'US
 INSERT INTO `vmwinner` VALUES (17, '1998', 'Frankrike', 'France', 'fra.gif', 'Frankrike');
 INSERT INTO `vmwinner` VALUES (18, '2002', 'Brasilien', 'Brazil', 'bra.gif', 'Sydkorea & Japan');
 INSERT INTO `vmwinner` VALUES (19, '2006', 'Italien', 'Italy', 'ita.gif', 'Tyskland');
-INSERT INTO `vmwinner` VALUES (20, '2010', '-', '', '', 'Sydafrika');
+INSERT INTO `vmwinner` VALUES (20, '2010', 'Spanien', 'Spain', 'spa.gif', 'Sydafrika');
 INSERT INTO `vmwinner` VALUES (21, '2014', '-', '', '', 'Brasilien');
