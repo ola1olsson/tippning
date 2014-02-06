@@ -1,32 +1,32 @@
 <?php
 // Database host URL
-$dbhost = "thoka.se.mysql";
+$dbhost = "localhost";
 // Database username
-$dbuser = "thoka_se";
+$dbuser = "root";
 // Database password
-$dbpass = "thoka10513578";
+$dbpass = "ziptac135";
 // Database name
 $dbname = "thoka_se";
 
 // Date of first game
-$firstGameStartY = 2010;
+$firstGameStartY = 2014;
 $firstGameStartM = 6;
-$firstGameStartD = 11;
-$firstGameDate = "2010-06-11";
+$firstGameStartD = 12;
+$firstGameDate = "2014-06-12";
 // Last day to place bet
-$last_bet_day = "2010-06-11";
+$last_bet_day = "2014-06-12";
 // Last day to pay
-$last_pay_day = "2010-06-14";
+$last_pay_day = "2014-06-13";
 // Price in SEK
-$price = 50;
+$price = 100;
 // Boolean - Has cup started?
 $cupStarted = date('Y-m-d') >= $firstGameDate;
 
-$contactName = "Thobias Karlsson";
-$contactBankAccount = "7478-1709.672";
+$contactName = "Tobias Lundgren";
+$contactBankAccount = "111222333";
 $contactBankName = "Swedbank";
-$contactPhone = "0761-45 29 60";
-$contactEmail = "thobias.karlsson@gmail.com";
+$contactPhone = "07066666666";
+$contactEmail = "ola1olsson@gmail.com";
 
 $grundspel_max = 48; // 1-48
 $eights_max = $grundspel_max + 8; // 49 - 56
@@ -41,7 +41,7 @@ $grundspel = Array('A','B','C','D','E','F','G','H');
 function daysLeft() {
 	$now = mktime();
 //	$cupStart = mktime(0, 0, 0, $firstGameStartM, $firstGameStartD, $firstGameStartY);
-	$cupStart = mktime(0, 0, 0, 06, 11, 2010);
+	$cupStart = mktime(0, 0, 0, 06, 12, 2014);
 	return floor(($cupStart - $now) / (60 * 60 * 24)) + 1;	
 }
 ?>
