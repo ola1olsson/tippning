@@ -15,7 +15,7 @@ if(!$cupStarted) {
 
 <div class="container">
 	<p>
-		<span class="header">Det är nu <span class="megaHeader"><?= daysLeft() ?></span> dagar kvar tills VM 2010 börjar!<br/></span>
+		<span class="header">Det är nu <span class="megaHeader"><?= daysLeft() ?></span> dagar kvar tills VM 2014 börjar!<br/></span>
 		Sista datum för tippning är <?= $last_bet_day ?>, sedan stänger vi slussen - inga konstigheter! :)<br/> 
 	</p>
 </div>
@@ -122,19 +122,19 @@ $arena = mysql_fetch_array(mysql_query("SELECT vm2010arena.* FROM vm2010arena,ma
 	<center>
 		<table>
 			<tr class="header">
-				<td>Kupp</td>
+				<td>Cup</td>
 				<td>Vinnare</td>
 				<td>Vinstsumma</td>
 			</tr>
 			<tr>
-				<td>VM 2006</td>
-				<td>Karin Waldemarsson</td>
-				<td>1800:-</td>
+				<td>VM 2010</td>
+				<td>Martin Sundstrom</td>
+				<td>X:-</td>
 			</tr>
 			<tr>
-				<td>EM 2004</td>
-				<td>Lennart Karlsson</td>
-				<td>650:-</td>
+				<td>EM 2012</td>
+				<td>Martin Sundstrom</td>
+				<td>X:-</td>
 			</tr>
 		</table>
 	</center>

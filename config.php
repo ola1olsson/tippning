@@ -6,7 +6,7 @@ $dbuser = "root";
 // Database password
 $dbpass = "ziptac135";
 // Database name
-$dbname = "thoka_se";
+$dbname = "tippning";
 
 // Date of first game
 $firstGameStartY = 2014;
@@ -14,9 +14,9 @@ $firstGameStartM = 6;
 $firstGameStartD = 12;
 $firstGameDate = "2014-06-12";
 // Last day to place bet
-$last_bet_day = "2014-06-12";
+$last_bet_day = "2014-06-10";
 // Last day to pay
-$last_pay_day = "2014-06-13";
+$last_pay_day = "2014-06-10";
 // Price in SEK
 $price = 100;
 // Boolean - Has cup started?
