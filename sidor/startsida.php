@@ -65,7 +65,7 @@ while($tmp = mysql_fetch_array($odsRes, MYSQL_ASSOC)) {
 	}
 }
 
-$arena = mysql_fetch_array(mysql_query("SELECT vm2010arena.* FROM vm2010arena,matcher WHERE matcher.plats = vm2010arena.id && matcher.plats = '".$game['plats']."';"), MYSQL_ASSOC);
+$arena = mysql_fetch_array(mysql_query("SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$game['plats']."';"), MYSQL_ASSOC);
 ?>
 <div class="container">
 	<span class="header2">NÄSTA MATCH<br/></span>

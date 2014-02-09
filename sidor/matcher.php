@@ -78,7 +78,7 @@ foreach($grundspel AS $grupp) {
 	while($match = mysql_fetch_array($matcher)) {
 		$hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQL_ASSOC);
 		$borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQL_ASSOC);
-		$arena = mysql_fetch_array(mysql_query("SELECT vm2010arena.* FROM vm2010arena,matcher WHERE matcher.plats = vm2010arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
+		$arena = mysql_fetch_array(mysql_query("SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
 		printGame($match, $hemma, $borta, $arena);	
 	}
 	printDivider();
@@ -90,7 +90,7 @@ printHeaders();
 while($match = mysql_fetch_array($eights, MYSQL_ASSOC)) {
 	$hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQL_ASSOC);
 	$borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQL_ASSOC);
-	$arena = mysql_fetch_array(mysql_query("SELECT vm2010arena.* FROM vm2010arena,matcher WHERE matcher.plats = vm2010arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
+	$arena = mysql_fetch_array(mysql_query("SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
 	printGame($match, $hemma, $borta, $arena);
 }
 printDivider();
@@ -101,7 +101,7 @@ printHeaders();
 while($match = mysql_fetch_array($kvarts, MYSQL_ASSOC)) {
 	$hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQL_ASSOC);
 	$borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQL_ASSOC);
-	$arena = mysql_fetch_array(mysql_query("SELECT vm2010arena.* FROM vm2010arena,matcher WHERE matcher.plats = vm2010arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
+	$arena = mysql_fetch_array(mysql_query("SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
 	printGame($match, $hemma, $borta, $arena);
 }
 printDivider();
@@ -112,7 +112,7 @@ printHeaders();
 while($match = mysql_fetch_array($semis, MYSQL_ASSOC)) {
 	$hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQL_ASSOC);
 	$borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQL_ASSOC);
-	$arena = mysql_fetch_array(mysql_query("SELECT vm2010arena.* FROM vm2010arena,matcher WHERE matcher.plats = vm2010arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
+	$arena = mysql_fetch_array(mysql_query("SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
 	printGame($match, $hemma, $borta, $arena);
 }
 printDivider();
@@ -123,7 +123,7 @@ printHeaders();
 $match = $thirdPlaceFinal;
 $hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQL_ASSOC);
 $borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQL_ASSOC);
-$arena = mysql_fetch_array(mysql_query("SELECT vm2010arena.* FROM vm2010arena,matcher WHERE matcher.plats = vm2010arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
+$arena = mysql_fetch_array(mysql_query("SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
 printGame($match, $hemma, $borta, $arena);
 printDivider();
 
@@ -133,7 +133,7 @@ printHeaders();
 $match = $final;
 $hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQL_ASSOC);
 $borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQL_ASSOC);
-$arena = mysql_fetch_array(mysql_query("SELECT vm2010arena.* FROM vm2010arena,matcher WHERE matcher.plats = vm2010arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
+$arena = mysql_fetch_array(mysql_query("SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
 printGame($match, $hemma, $borta, $arena);
 
 ?>

@@ -460,10 +460,10 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `vm2010arena`
+-- Table structure for table `arena`
 -- 
 
-CREATE TABLE `vm2010arena` (
+CREATE TABLE `arena` (
   `id` int(11) NOT NULL,
   `arena` varchar(45) default NULL,
   `location` varchar(45) default NULL,
@@ -473,39 +473,22 @@ CREATE TABLE `vm2010arena` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- 
--- Dumping data for table `vm2010arena`
+-- Dumping data for table `arena`
 -- 
 
-INSERT INTO `vm2010arena` VALUES (1, 'Estadio do Maracana', 'Rio de Janeiro', '76935', '1900');
-INSERT INTO `vm2010arena` VALUES (2, 'Esdatio Nacional de Brasilia', 'Brasilia', '70042', '1900');
-INSERT INTO `vm2010arena` VALUES (3, 'Arena de Sao Paulo', 'Sao Paolo', '68000', '1900');
-INSERT INTO `vm2010arena` VALUES (4, 'Estadio Castelao', 'Fortaleza', '100', '1900');
-INSERT INTO `vm2010arena` VALUES (5, 'Estadio Mineirao', 'Belo Horizonte', '63547', '1900');
-INSERT INTO `vm2010arena` VALUES (6, 'Estadio Beira-Rio', 'Porto Alegre', '51300', '1900');
-INSERT INTO `vm2010arena` VALUES (7, 'Arena Fonte Nova', 'Salvador', '56000', '1900');
-INSERT INTO `vm2010arena` VALUES (8, 'Arena Pernambuco', 'Recife', '46154', '1900');
-INSERT INTO `vm2010arena` VALUES (9, 'Arena Pantanal', 'Culaba', '42968', '1900');
-INSERT INTO `vm2010arena` VALUES (10, 'Arena Amazonia', 'Manaus', '42374', '1900');
-INSERT INTO `vm2010arena` VALUES (11, 'Arena das Dunas', 'Natal', '42086', '1900');
-INSERT INTO `vm2010arena` VALUES (12, 'Arena da Baixada', 'Curitiba', '43981', '1900');
+INSERT INTO `arena` VALUES (1, 'Estadio do Maracana', 'Rio de Janeiro', '76935', '1900');
+INSERT INTO `arena` VALUES (2, 'Estadio Nacional de Brasilia', 'Brasilia', '70042', '1900');
+INSERT INTO `arena` VALUES (3, 'Arena de Sao Paulo', 'Sao Paolo', '68000', '1900');
+INSERT INTO `arena` VALUES (4, 'Estadio Castelao', 'Fortaleza', '100', '1900');
+INSERT INTO `arena` VALUES (5, 'Estadio Mineirao', 'Belo Horizonte', '63547', '1900');
+INSERT INTO `arena` VALUES (6, 'Estadio Beira-Rio', 'Porto Alegre', '51300', '1900');
+INSERT INTO `arena` VALUES (7, 'Arena Fonte Nova', 'Salvador', '56000', '1900');
+INSERT INTO `arena` VALUES (8, 'Arena Pernambuco', 'Recife', '46154', '1900');
+INSERT INTO `arena` VALUES (9, 'Arena Pantanal', 'Cuiaba', '42968', '1900');
+INSERT INTO `arena` VALUES (10, 'Arena Amazonia', 'Manaus', '42374', '1900');
+INSERT INTO `arena` VALUES (11, 'Arena das Dunas', 'Natal', '42086', '1900');
+INSERT INTO `arena` VALUES (12, 'Arena da Baixada', 'Curitiba', '43981', '1900');
 
--- --------------------------------------------------------
-
--- 
--- Table structure for table `vm2010tipp`
--- 
-
-CREATE TABLE `vm2010tipp` (
-  `idvm2010tipp` int(11) NOT NULL,
-  PRIMARY KEY  (`idvm2010tipp`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- 
--- Dumping data for table `vm2010tipp`
--- 
-
-
--- --------------------------------------------------------
 
 -- 
 -- Table structure for table `vmwinner`
