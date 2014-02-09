@@ -286,22 +286,22 @@ INSERT INTO `matcher` VALUES (32, 'H4', 'H2', '2014-06-22', '13:00', 6);
 INSERT INTO `matcher` VALUES (47, 'H4', 'H1', '2014-06-26', '17:00', 3);
 INSERT INTO `matcher` VALUES (48, 'H2', 'H3', '2014-06-26', '17:00', 12);
 
-INSERT INTO `matcher` VALUES (49, 'A3', 'B3', '2014-06-28', '13:00', 5);
-INSERT INTO `matcher` VALUES (50, 'C2', 'D4', '2014-06-28', '17:00', 1);
-INSERT INTO `matcher` VALUES (51, 'E1', 'F4', '2014-06-29', '13:00', 4);
-INSERT INTO `matcher` VALUES (52, 'G1', 'H4', '2014-06-29', '17:00', 8);
-INSERT INTO `matcher` VALUES (53, 'B1', 'A2', '2014-06-30', '13:00', 2);
-INSERT INTO `matcher` VALUES (54, 'D1', 'C1', '2014-07-30', '17:00', 6);
-INSERT INTO `matcher` VALUES (55, 'F2', 'E3', '2014-07-01', '13:00', 3);
-INSERT INTO `matcher` VALUES (56, 'H1', 'G4', '2014-07-01', '17:00', 7);
-INSERT INTO `matcher` VALUES (57, 'A3', 'D4', '2014-07-04', '17:00', 4);
-INSERT INTO `matcher` VALUES (58, 'E1', 'G1', '2014-07-04', '13:00', 1);
-INSERT INTO `matcher` VALUES (59, 'B1', 'D1', '2014-07-05', '17:00', 7);
-INSERT INTO `matcher` VALUES (60, 'F2', 'H1', '2014-07-05', '13:00', 2);
-INSERT INTO `matcher` VALUES (61, 'A3', 'E1', '2014-07-08', '17:00', 5);
-INSERT INTO `matcher` VALUES (62, 'D1', 'H1', '2014-07-09', '17:00', 3);
-INSERT INTO `matcher` VALUES (63, 'A3', 'D1', '2014-07-12', '17:00', 2);
-INSERT INTO `matcher` VALUES (64, 'E1', 'H1', '2014-07-13', '16:00', 1);
+INSERT INTO `matcher` VALUES (49, '', '', '2014-06-28', '13:00', 5);
+INSERT INTO `matcher` VALUES (50, '', '', '2014-06-28', '17:00', 1);
+INSERT INTO `matcher` VALUES (51, '', '', '2014-06-29', '13:00', 4);
+INSERT INTO `matcher` VALUES (52, '', '', '2014-06-29', '17:00', 8);
+INSERT INTO `matcher` VALUES (53, '', '', '2014-06-30', '13:00', 2);
+INSERT INTO `matcher` VALUES (54, '', '', '2014-07-30', '17:00', 6);
+INSERT INTO `matcher` VALUES (55, '', '', '2014-07-01', '13:00', 3);
+INSERT INTO `matcher` VALUES (56, '', '', '2014-07-01', '17:00', 7);
+INSERT INTO `matcher` VALUES (57, '', '', '2014-07-04', '17:00', 4);
+INSERT INTO `matcher` VALUES (58, '', '', '2014-07-04', '13:00', 1);
+INSERT INTO `matcher` VALUES (59, '', '', '2014-07-05', '17:00', 7);
+INSERT INTO `matcher` VALUES (60, '', '', '2014-07-05', '13:00', 2);
+INSERT INTO `matcher` VALUES (61, '', '', '2014-07-08', '17:00', 5);
+INSERT INTO `matcher` VALUES (62, '', '', '2014-07-09', '17:00', 3);
+INSERT INTO `matcher` VALUES (63, '', '', '2014-07-12', '17:00', 2);
+INSERT INTO `matcher` VALUES (64, '', '', '2014-07-13', '16:00', 1);
 
 -- --------------------------------------------------------
 
@@ -454,6 +454,7 @@ CREATE TABLE `users` (
   `betalt` varchar(45) default NULL,
   `admin` int(11) default NULL,
   `points` int(11) default NULL,
+  `nbrOfLogins` int(11) default 0,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
 

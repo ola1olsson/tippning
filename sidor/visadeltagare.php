@@ -64,6 +64,10 @@ if($_REQUEST['id'] != '')
 						<td>E-post:</td>
 						<td><?=$row['emailAddress'];?></td>
 					</tr>
+					<tr>
+						<td>Logins:</td>
+						<td><?=$row['nbrOfLogins'];?></td>
+					</tr>
 				</table>
 			</td>
 		</tr>

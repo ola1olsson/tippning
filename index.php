@@ -20,6 +20,7 @@
 			$_SESSION['betalt'] = $row['betalt'];
 			$_SESSION['permission'] = 1;
 			$_SESSION['admin'] = $row['admin'];
+                        #mysql_query("UPDATE SET nbrOfLogins = " . $row['nbrOfLogins'] . " +1 from USERS where '" . $_SESSION['userID'] . "' = '". $row['id'] . "';") or die(mysql_error());
 			//$_SESSION['admin'] = 1;
 			//$_SESSION['betalt'] = 1;
 		} else {
