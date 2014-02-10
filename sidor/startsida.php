@@ -25,7 +25,6 @@ if(!$cupStarted) {
 <p>
 	<span class="header2">
 		För tillfället är det <b><?= $totalPrice ?> SEK</b> i potten.<br/>
-		Vem kammar hem vinsten i år?!<br/>
 	</span>
 </p>
 </center>

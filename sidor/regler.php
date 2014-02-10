@@ -10,10 +10,15 @@ if(session_is_registered('permission') && $_SESSION['permission']) {
 			</center>
 			<br/>
 			<b>Allmänt<br/></b>
-			Detta är en privat tippning för ett slutet sällskap.<br/>
-			Du, som deltagare inte får bjuda in andra till sidan.<br/>
+			Detta är en privat tippning för ett slutet sällskap gjord av Thobias Karlsson från början.<br/>
+                        Ola har fått tillgång och ändrat i den ursprungliga koden.
 			Inbjudan gäller endast dig, eftersom du är så speciell.<br/>
-			Deltaga kostar <?=$price?> SEK<br/>
+			Deltagandet kostar <?=$price?> SEK där hälften går till FC Österlen<br/>
+                        Av de resterande pengarna går:</br>
+                        <?=$procent_ett?>% till vinnaren </br>
+                        <?=$procent_tva?>% till tvåan</br>
+                        <?=$procent_tre?>% till trean</br>
+                        </br> 
 			Du måste ha tippat <u>senast</u> <?=$last_bet_day?><br/>
 			Skulle någon match bli inställd kommer den inte att ge några poäng.<br/>
 			Din tippning behöver inte stämma hela vägen igenom.<br/>
@@ -58,17 +63,13 @@ if(session_is_registered('permission') && $_SESSION['permission']) {
 					<td>5p</td>
 				</tr>
 				<tr>
-				<!--<td>Rätt vinnare</td>
-				<td>5p</td>
-				</tr>-->
-				<!--<tr>
-				<td>Hur många mål gör Sverige</td>
-				<td>5p</td>
-				</tr>-->
-				<!--<tr>
-				<td>Vem gör flest mål</td>
-				<td>5p</td>
-				</tr>-->
+					<td>Hur många mål gör Brasilien</td>
+					<td>5p</td>
+				</tr>
+				<tr>
+					<td>Vem gör flest mål</td>
+					<td>5p</td>
+				</tr>
 			</table>
 			<br/>
 			<b>Betalning</b><BR/>

@@ -44,4 +44,8 @@ function daysLeft() {
 	$cupStart = mktime(0, 0, 0, 06, 12, 2014);
 	return floor(($cupStart - $now) / (60 * 60 * 24)) + 1;	
 }
+
+$procent_ett=70;
+$procent_tva=20;
+$procent_tre=10;
 ?>
