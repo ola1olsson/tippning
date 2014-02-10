@@ -52,6 +52,8 @@ if(isset($_POST['match'])) {
 		if($_SESSION['match'][$i][0]=='' || $_SESSION['match'][$i][1]=='' || $_SESSION['match'][$i][2]=='')
 			$err = true;	
 	}		
+        if($_SESSION['match']['swedishGoals']=='' || $_SESSION['match']['topScorer']=='')
+                $err = true;
 	
 	//echo 'ERRORS FOUND: ';
 	//if($err) 
@@ -74,6 +76,9 @@ if(isset($_POST['match'])) {
 			$_SESSION['match'][$i][1] = $tipp['m'.$i.'a'];
 			$_SESSION['match'][$i][2] = $tipp['m'.$i.'b'];
 		}
+                $_SESSION['match']['swedishGoals'] = $tipp['swedishGoals'];
+                $_SESSION['match']['topScorer'] = $tipp['topScorer'];
+
 	}
 }
 
@@ -113,6 +118,8 @@ if(isset($_POST['match']) && !$err && date('Y-m-d')<=$last_bet_day) {
 				$query .= ", ";
 			}
 		}
+                $query .= "swedishGoals='" . $_SESSION['match']['swedishGoals'] . "', ";
+                $query .= "topScorer='" . $_SESSION['match']['topScorer'] . "'";
 		
 		$query .= " WHERE id = ".$_SESSION['userID'].";";
 	} else {
@@ -125,6 +132,7 @@ if(isset($_POST['match']) && !$err && date('Y-m-d')<=$last_bet_day) {
 		for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
 			$query .= ', m'.$i.', m'.$i.'a, m'.$i.'b';		
 		}
+                $query .= ', swedishGoals, topScorer';
 		$query .= ') VALUES (';
 		$query .= "'".$_SESSION['userID']."'";
 		for($i=1; $i<=$grundspel_max; $i++) {
@@ -134,6 +142,8 @@ if(isset($_POST['match']) && !$err && date('Y-m-d')<=$last_bet_day) {
 			for($k=0; $k<=2; $k++)
 				$query .= ", '".$_SESSION['match'][$i][$k]."'";		
 		}
+                $query .= ", " . $_SESSION['match']['swedishGoals'] . ",";
+                $query .= "'" . $_SESSION['match']['topScorer'] . "'";
 		$query .= ');';
 		
 		
@@ -681,6 +691,31 @@ echo '<tr><td colspan=7 align=center><hr align=center style="width:96%; height:1
 echo '</table><br><br><br>';
 
 // ------------------------ FINAL ----------------------------------- SLUT
+?>
+<h2>Extrafrågor</h2>
+<table border=0 cellspacing=0 cellpadding=2>
+<tr><td></td><td>Hur många mål gör värdlandet brasilien genom hela turningen:</td><td>
+<td colspan="2"><input type="text" size="3" maxlength="3" name="match[swedishGoals]" value="<?=$_SESSION['match']['swedishGoals'];?>"
+<?
+        if(!empty($_SESSION['match']) && $_SESSION['match']['swedishGoals'] == '') {
+                echo ' style="background-color: #FF0000;"';
+                $err = true;
+        }
+?>
+</td></tr>
+
+<tr><td></td><td>Vilken spelare gör flest mål i turneringen:</td><td>
+<td colspan="2"><input type="text" size="30" maxlength="30" name="match[topScorer]" value="<?=$_SESSION['match']['topScorer'];?>"
+<?
+        if(!empty($_SESSION['match']) && $_SESSION['match']['topScorer'] == '') {
+                echo ' style="background-color: #FF0000;"';
+                $err = true;
+        }
+?>
+></td></tr>
+</table><br><br><br>
+<?
+
 		
 if($err) {
 	echo '<tr><td colspan=7 align="center"><span style="color: #FF0000; font-size: 14px; font-weight: bold;">DU HAR GLÖMT ATT FYLLA I NÅGOT!</span></td></tr>';	

@@ -407,6 +407,8 @@ CREATE TABLE `tippning` (
   `m64` varchar(2) default NULL,
   `m64a` varchar(2) default NULL,
   `m64b` varchar(2) default NULL,
+  `swedishGoals` int(11) NOT NULL,
+  `topScorer` varchar(50) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
