@@ -105,7 +105,7 @@
 					<td id="westContainer" border="1" valign="top" align="left">
 						<div class="westPanel">
 							<?php if ($_SESSION['foto'] != '') { ?>
-								<img class="profilePicture" src="./pic/users/<?=$_SESSION['foto'];?>" />
+								<img class="profilePicture" src="<?=$_SESSION['foto'];?>" />
 							<?php }?>
 							<p>
 								<b><?=$_SESSION['user']?></b>
