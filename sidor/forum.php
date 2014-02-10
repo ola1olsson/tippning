@@ -92,7 +92,7 @@ if(!isset($_REQUEST['cmd'])) {
 				<tr>
 					<td bgcolor="'.$bgcolor.'" align=left valign=top>';
 			if($entry['foto']!='') 
-				echo '<img src="./pic/users/'.$entry['foto'].'" alt="'.$entry['user'].'" border=1 style="width:55px;"><br>';
+				echo '<img src="'.$entry['foto'].'" alt="'.$entry['user'].'" border=1 style="width:55px;"><br>';
 			echo '	</td>
 					<td align=left valign=top colspan=2>'.$entry['contribution'].'</td>
 				</tr>
@@ -141,7 +141,7 @@ if(!isset($_REQUEST['cmd'])) {
 		$owner = mysql_fetch_array(mysql_query("SELECT username, givenName, familyName, foto FROM users WHERE id = '".$ft['owner']."';"), MYSQL_ASSOC);
 		echo '<tr><td colspan=2><span class="header3">Ägare</span></td></tr>';
 		if($owner['foto'] != '') 
-			echo '<tr><td></td><td><img src="./pic/users/'.$owner['foto'].'" border=0 style="width:55px;"></td></tr>';
+			echo '<tr><td></td><td><img src="'.$owner['foto'].'" border=0 style="width:55px;"></td></tr>';
 		echo '<tr><td>Användarnamn:&nbsp;</td><td>'.$owner['user'].'</td></tr>
 			<tr><td>Fullnamn:&nbsp;</td><td>'.$owner['familyName'].', '.$owner['givenName'].'</td></tr>
 			</table>';

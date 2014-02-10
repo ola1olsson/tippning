@@ -38,7 +38,7 @@ if($_REQUEST['id'] != '')
 		<tr align="left">
 			<td class="photoContainer">
 				<?php if ($row['foto'] != '') { ?>
-					<img class="photo" src="./pic/users/<?=$row['foto'];?>" />
+					<img class="photo" src="<?=$row['foto'];?>" />
 				<?php } ?>
 			</td>
 			<td class="details">

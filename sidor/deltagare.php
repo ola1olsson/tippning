@@ -9,7 +9,7 @@ while($row = mysql_fetch_array( $result )) {
 			<tr>
 				<td class="photoContainer">
 					<?php if ($row['foto'] != '') { ?>
-						<img class="photo" src="./pic/users/<?=$row['foto'];?>">
+						<img class="photo" src="<?=$row['foto'];?>">
 					<?php } ?>
 				</td>
 				<td class="details">
