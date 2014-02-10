@@ -72,7 +72,7 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 	<td height="100%">
 	
 
-<table width="850" height="600" background="pic\uefa_euro2008_logo.jpg" border="0" bordercolor="black" align="center">
+<table width="850" height="600" background="pic\uefa_logo.jpg" border="0" bordercolor="black" align="center">
 	<tr> 
 	<td height="325" colspan=4 valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tänk på att inte använda några användarnamn & lösenord<br>
 											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;som du använder t.ex. på jobbet, till din mail m.m.<br>&nbsp;

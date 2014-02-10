@@ -22,11 +22,11 @@ $price = 100;
 // Boolean - Has cup started?
 $cupStarted = date('Y-m-d') >= $firstGameDate;
 
-$contactName = "Tobias Lundgren";
-$contactBankAccount = "111222333";
-$contactBankName = "Swedbank";
-$contactPhone = "07066666666";
-$contactEmail = "ola1olsson@gmail.com";
+$contactName = "";
+$contactBankAccount = "";
+$contactBankName = "";
+$contactPhone = "";
+$contactEmail = "";
 
 $grundspel_max = 48; // 1-48
 $eights_max = $grundspel_max + 8; // 49 - 56
