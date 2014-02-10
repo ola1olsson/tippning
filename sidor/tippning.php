@@ -694,7 +694,7 @@ echo '</table><br><br><br>';
 ?>
 <h2>Extrafrågor</h2>
 <table border=0 cellspacing=0 cellpadding=2>
-<tr><td></td><td>Hur många mål gör värdlandet brasilien genom hela turningen:</td><td>
+<tr><td></td><td>Hur många mål gör värdlandet Brasilien genom hela turningen:</td><td>
 <td colspan="2"><input type="text" size="3" maxlength="3" name="match[swedishGoals]" value="<?=$_SESSION['match']['swedishGoals'];?>"
 <?
         if(!empty($_SESSION['match']) && $_SESSION['match']['swedishGoals'] == '') {

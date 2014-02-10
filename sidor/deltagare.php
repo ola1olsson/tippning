@@ -14,9 +14,10 @@ while($row = mysql_fetch_array( $result )) {
 				</td>
 				<td class="details">
 					<span class="header2"><?=$row['username'];?><br/></span>
-					<?=$row['givenName'], '&nbsp;', $row['familyName'];?><br/>
-					<?=$row['city'];?><br/>
-					<?=$row['Company'];?>
+					Namn: <?=$row['givenName'], '&nbsp;', $row['familyName'];?><br/>
+					Ort: <?=$row['city'];?><br/>
+					Foretag: <?=$row['Company'];?><br/>
+					Antal logins: <?=$row['nbrOfLogins'];?>
 					<?/*
 					if(mysql_num_rows($result2) > 0)
 					{

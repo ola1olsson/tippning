@@ -79,6 +79,11 @@ if($cmd == 'passwd') {
 						<td colspan="2"><input type="text" style="width:200px;" name="emailAddress" value="<?=$dbuser['emailAddress'];?>"></td>
 					</tr>
 					<tr>
+						<td>Logins</td>
+						<td><?=$dbuser['nbrOfLogins'];?></td>
+					</tr>
+	
+					<tr>
 						<input type="hidden" name="register" value="register">
 						<td></td>
 						<td align="left"><input type="button" value="Tillbaka" onClick="history.back();" class="btn"></td>
