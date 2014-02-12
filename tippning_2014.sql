@@ -232,7 +232,7 @@ CREATE TABLE `matcher` (
 
 INSERT INTO `matcher` VALUES (1, 'A1', 'A2', '2014-06-12', '22:00', 3);
 INSERT INTO `matcher` VALUES (2, 'A3', 'A4', '2014-06-13', '18:00', 11);
-INSERT INTO `matcher` VALUES (17, 'A1', 'A3', '2014-06-17', '18:00', 4);
+INSERT INTO `matcher` VALUES (17, 'A1', 'A3', '2014-06-17', '23:59', 4);
 INSERT INTO `matcher` VALUES (18, 'A4', 'A2', '2014-06-18', '18:00', 10);
 INSERT INTO `matcher` VALUES (33, 'A4', 'A1', '2014-06-23', '18:00', 2);
 INSERT INTO `matcher` VALUES (34, 'A2', 'A3', '2014-06-23', '18:00', 8);
@@ -245,13 +245,13 @@ INSERT INTO `matcher` VALUES (35, 'B4', 'B1', '2014-06-23', '22:00', 12);
 INSERT INTO `matcher` VALUES (36, 'B2', 'B3', '2014-06-23', '22:00', 3);
 
 INSERT INTO `matcher` VALUES (5, 'C1', 'C2', '2014-06-14', '18:00', 5);
-INSERT INTO `matcher` VALUES (6, 'C3', 'C4', '2014-06-14', '23:59', 8);
+INSERT INTO `matcher` VALUES (6, 'C3', 'C4', '2014-06-14', '21:00', 8);
 INSERT INTO `matcher` VALUES (21, 'C1', 'C3', '2014-06-19', '18:00', 2);
 INSERT INTO `matcher` VALUES (22, 'C4', 'C2', '2014-06-19', '21:00', 11);
 INSERT INTO `matcher` VALUES (37, 'C4', 'C1', '2014-06-24', '18:00', 9);
 INSERT INTO `matcher` VALUES (38, 'C2', 'C3', '2014-06-24', '18:00', 4);
 
-INSERT INTO `matcher` VALUES (7, 'D1', 'D2', '2014-06-14', '21:00', 4);
+INSERT INTO `matcher` VALUES (7, 'D1', 'D2', '2014-06-14', '23:59', 4);
 INSERT INTO `matcher` VALUES (8, 'D3', 'D4', '2014-06-15', '03:00', 10);
 INSERT INTO `matcher` VALUES (23, 'D1', 'D3', '2014-06-19', '23:59', 3);
 INSERT INTO `matcher` VALUES (24, 'D4', 'D2', '2014-06-20', '18:00', 8);
@@ -266,21 +266,21 @@ INSERT INTO `matcher` VALUES (41, 'E4', 'E1', '2014-06-25', '18:00', 10);
 INSERT INTO `matcher` VALUES (42, 'E2', 'E3', '2014-06-25', '18:00', 1);
 
 INSERT INTO `matcher` VALUES (11, 'F1', 'F2', '2014-06-15', '23:59', 1);
-INSERT INTO `matcher` VALUES (12, 'F3', 'F4', '2014-06-16', '16:00', 12);
+INSERT INTO `matcher` VALUES (12, 'F3', 'F4', '2014-06-16', '18:00', 12);
 INSERT INTO `matcher` VALUES (27, 'F1', 'F3', '2014-06-21', '18:00', 5);
 INSERT INTO `matcher` VALUES (28, 'F4', 'F2', '2014-06-21', '21:00', 9);
 INSERT INTO `matcher` VALUES (43, 'F4', 'F1', '2014-06-25', '22:00', 6);
 INSERT INTO `matcher` VALUES (44, 'F2', 'F3', '2014-06-25', '22:00', 7);
 
-INSERT INTO `matcher` VALUES (13, 'G1', 'G2', '2014-06-16', '13:00', 7);
-INSERT INTO `matcher` VALUES (14, 'G3', 'G4', '2014-06-16', '19:00', 11);
+INSERT INTO `matcher` VALUES (13, 'G1', 'G2', '2014-06-16', '21:00', 7);
+INSERT INTO `matcher` VALUES (14, 'G3', 'G4', '2014-06-16', '23:59', 11);
 INSERT INTO `matcher` VALUES (29, 'G1', 'G3', '2014-06-21', '23:59', 4);
 INSERT INTO `matcher` VALUES (30, 'G4', 'G2', '2014-06-22', '18:00', 10);
 INSERT INTO `matcher` VALUES (45, 'G4', 'G1', '2014-06-26', '18:00', 8);
 INSERT INTO `matcher` VALUES (46, 'G2', 'G3', '2014-06-26', '18:00', 2);
 
-INSERT INTO `matcher` VALUES (15, 'H1', 'H2', '2014-06-17', '21:00', 5);
-INSERT INTO `matcher` VALUES (16, 'H3', 'H4', '2014-06-17', '23:59', 9);
+INSERT INTO `matcher` VALUES (15, 'H1', 'H2', '2014-06-17', '18:00', 5);
+INSERT INTO `matcher` VALUES (16, 'H3', 'H4', '2014-06-17', '21:00', 9);
 INSERT INTO `matcher` VALUES (31, 'H1', 'H3', '2014-06-22', '21:00', 1);
 INSERT INTO `matcher` VALUES (32, 'H4', 'H2', '2014-06-22', '23:59', 6);
 INSERT INTO `matcher` VALUES (47, 'H4', 'H1', '2014-06-26', '22:00', 3);
