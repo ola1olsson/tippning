@@ -59,7 +59,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
   else
     {
       move_uploaded_file($_FILES["file"]["tmp_name"], "./pic/users/" . $_SESSION['userID']);
-      mysql_query("UPDATE users SET foto= './pic/users/" . $_SESSION['userID'] . "';") or die(mysql_error());
+      mysql_query("UPDATE users SET foto= './pic/users/" . $_SESSION['userID'] . "' WHERE id = '".$_SESSION['userID']."';") or die(mysql_error());
     }
   }
 else
