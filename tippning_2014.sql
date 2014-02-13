@@ -460,6 +460,8 @@ CREATE TABLE `users` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
 
+-- The correct row has id -1
+INSERT INTO `tippning`.`users` (`id`) VALUES (-1);
 -- --------------------------------------------------------
 
 -- 
