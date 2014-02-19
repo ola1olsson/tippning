@@ -48,4 +48,5 @@ function daysLeft() {
 $procent_ett=70;
 $procent_tva=20;
 $procent_tre=10;
+define("$WORLD_CUP", "1");
 ?>

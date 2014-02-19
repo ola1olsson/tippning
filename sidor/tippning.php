@@ -238,7 +238,7 @@ $groups[8][1] = 'G';
 
 $match_offset = $grundspel_max; // sista matchnumret i gruppspelet
 $err = false;
-for($match = 1; $match <= $nbr_eight_games; $match++) {
+for($match = 1; $match <= 8; $match++) {
 	$hamtahemma = mysql_query("SELECT * FROM lag WHERE lag LIKE '".$groups[$match][0]."%';");
 	$hamtaborta = mysql_query("SELECT * FROM lag WHERE lag LIKE '".$groups[$match][1]."%';");
 	
@@ -256,32 +256,6 @@ for($match = 1; $match <= $nbr_eight_games; $match++) {
 	}
 ?>	>
 		<td align="center"><?=$matchnumber?></td>
-		<td><select style="width:100%;" name="<?='match['.$matchnumber.'][1]'?>">
-			<option value="">---- Välj lag ----
-			
-<?			
-			while($alag = mysql_fetch_array($hamtahemma,MYSQL_ASSOC)) {
-				echo '<option value="'.$alag['lag'].'"'; // här kan du använda ID istället om du vill, så länge du använder samma attribut som när du skall spara det i databasen
-				if($_SESSION['match'][$matchnumber][1] == $alag['lag']) 
-					echo ' selected';
-				echo '>'.$alag['countryName_sv'];
-			}
-?>
-			</select>
-		</td>
-		<td align="center"> - </td>
-		<td><select style="width:100%;" name="<?='match['.$matchnumber.'][2]'?>">
-			<option value="">---- Välj lag ----
-<?
-			while($blag = mysql_fetch_array($hamtaborta,MYSQL_ASSOC)) {
-				echo '<option value="'.$blag['lag'].'"';
-				if($_SESSION['match'][$matchnumber][2] == $blag['lag']) 
-					echo ' selected';
-				echo '>'.$blag['countryName_sv'];
-			}
-?>
-			</select>
-		</td>
 		<td align="center"><input type="radio" class="radio" name="<?='match['.$matchnumber.'][0]'?>" value="1"
 <?
 	// kolla om matchen redan är tippad (och isf sparad i sessionen), i så fall skall rätt tippning "checkas"
@@ -403,10 +377,6 @@ if (defined($WORLD_CUP)) {
 		$err = true;
 	}
 	echo '><td align="center">'.($matchnumber).'</td>'.
-			'<td align="center">Vinnare grupp ' . $groups[$match][0] .
-			'</td>'.
-			'<td align="center"> - </td>'.
-			'<td align="center"> Tvåan grupp ' . $groups[$match][1] .
 			'</td>'.		
 			'<td align="center"><input type="radio" class=radio name="match['.($matchnumber).'][0]" value="1"';
 	if($_SESSION['match'][$matchnumber][0] == '1') // används för att kolla med tippningen som ligger i sessionen om man tippat "etta"
@@ -538,7 +508,6 @@ echo '</table><br><br><br>';
 
 // ------------------------ SECOND FINAL -----------------------------------
 if (defined($WORLD_CUP)) {
-if ($_SESSION['betalt'] != 1) {
 echo '<h3>Match om tredjeplats</h3>';
 echo '<table border=0 cellspacing=0 cellpadding=2>';
 echo '<tr class="header"><td align=right>Match</td><td width=150 align=center>Hemma</td><td>-</td><td width=150 align=center>Borta</td><td align=center>1</td><td align=center>-</td><td align=center>2</td></tr>';
@@ -548,7 +517,6 @@ echo '<tr class="header"><td align=right>Match</td><td width=150 align=center>He
 		//$hamtaborta = mysql_query("SELECT * FROM lag WHERE id >= '9' && id <= '16' '%' ORDER BY lag;");
 
 $matchfinal = $secondFinalId;
-echo 'SecMatchfinal: "'.$matchfinal.'"<br/>';
 echo '<tr';
 if(!empty($_SESSION['match']) && ($_SESSION['match'][$matchfinal][0]=='' || $_SESSION['match'][$matchfinal][1]=='' || $_SESSION['match'][$matchfinal][2]=='')) {
 	echo ' style="background-color: #FF0000;"';
@@ -592,7 +560,6 @@ echo '<tr><td></td><td>Förlorare semifinal 1</td><td></td><td>Förlorare semifina
 echo '<tr><td colspan=7 align=center><hr align=center style="width:96%; height:1px;" color="#6C261F"></td></tr>';	
 
 echo '</table><br><br><br>';
-}
 }
 // ------------------------ SECOND FINAL ----------------------------------- SLUT
 		
