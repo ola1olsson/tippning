@@ -223,14 +223,14 @@ $groups[1][0] = 'A';
 $groups[1][1] = 'B';
 $groups[2][0] = 'C';
 $groups[2][1] = 'D';
-$groups[3][0] = 'E';
-$groups[3][1] = 'F';
-$groups[4][0] = 'G';
-$groups[4][1] = 'H';
-$groups[5][0] = 'B';
-$groups[5][1] = 'A';
-$groups[6][0] = 'D';
-$groups[6][1] = 'C';
+$groups[3][0] = 'B';
+$groups[3][1] = 'A';
+$groups[4][0] = 'D';
+$groups[4][1] = 'C';
+$groups[5][0] = 'E';
+$groups[5][1] = 'F';
+$groups[6][0] = 'G';
+$groups[6][1] = 'H';
 $groups[7][0] = 'F';
 $groups[7][1] = 'E';
 $groups[8][0] = 'H';
@@ -250,7 +250,7 @@ for($match = 1; $match <= 8; $match++) {
 	</tr>
 	<tr
 <?	// kollar så att just denna match blivit tippad, annars färgar vi hela TR'n röööööööd
-	if(!empty($_SESSION['match']) && ($_SESSION['match'][$matchnumber][0] == '' || $_SESSION['match'][$matchnumber][1] == '' || $_SESSION['match'][$matchnumber][2] == '')) {
+	if(!empty($_SESSION['match']) && ($_SESSION['match'][$matchnumber][0] == '')) {
 		echo '  style="background-color: #FF0000;"';
 		$err = true;
 	}
@@ -329,12 +329,12 @@ $groups[4][0][1] = 'E';
 $groups[4][1][0] = 'H';
 $groups[4][1][1] = 'G';
 
-$winner[1][0] = 1;
-$winner[1][1] = 2;
-$winner[2][0] = 3;
-$winner[2][1] = 4;
-$winner[3][0] = 5;
-$winner[3][1] = 6;
+$winner[1][0] = 2;
+$winner[1][1] = 1;
+$winner[2][0] = 5;
+$winner[2][1] = 6;
+$winner[3][0] = 3;
+$winner[3][1] = 4;
 $winner[4][0] = 7;
 $winner[4][1] = 8;
 $match_offset = $eights_max; // Sista matchen av åttondelsfinalerna + 1 = första kvartsfinalen
