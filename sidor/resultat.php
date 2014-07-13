@@ -58,6 +58,9 @@ if(isset($_POST['check'])) {
 			$result[$db_res['id']][$i][1] = $db_res['m'.$i.'a'];
 			$result[$db_res['id']][$i][2] = $db_res['m'.$i.'b'];
 		}
+		$result[$db_res['id']]['topScorer'] = $db_res['topScorer'];
+		$result[$db_res['id']]['swedishGoals'] = $db_res['swedishGoals'];
+        
 	}
 	$rowspan = (8*7)+3;
 	echo '<table border=0 bordercolor=black cellspacing=5 cellpadding=0>';
@@ -144,6 +147,10 @@ if(isset($_POST['check'])) {
 		echo '<td colspan=4 align=center><span style="font-weight:bold;">'.$i.'</span></td>'.
 			'<td style="width:1px;" bgcolor="#550000" rowspan='.$rowspan.'><img src="./pics/spacer.gif" style="width:1px;" border=0></td>';
 	}
+		echo '<td colspan=4 align=center><span style="font-weight:bold;">TopScorer and Goals</span></td>'.
+			'<td style="width:1px;" bgcolor="#550000" rowspan='.$rowspan.'><img src="./pics/spacer.gif" style="width:1px;" border=0></td>';
+	
+	
 	echo '</tr>';
 	
 	echo '<tr bgcolor="#AAFFAA"><td><span class="header5">Resultat</span></td>';
@@ -196,8 +203,27 @@ if(isset($_POST['check'])) {
 					echo ' bgcolor="#FFAAAA"';
 			}
 			echo '><span style="font-size:18px;">'.$result[$users[$k]][$i][0].'</span></td>';
-		}
-		echo 	'</tr>';
+
+	    }
+		echo	'</td><td align=center';
+        if($result[-1]['topScorer'] != '') {
+           if(strcmp($result[$users[$k]]['topScorer'],$result[-1]['topScorer']) == 0)
+               echo ' bgcolor="#00FF00"';
+            else
+               echo ' bgcolor="#FFAAAA"';
+        }
+        echo '><span style="font-size:18px;">' . $result[$users[$k]]['topScorer'] . '</span></td>';
+
+		echo	'<td align=center';
+        if($result[-1]['swedishGoals'] != '') {
+           if($result[$users[$k]]['swedishGoals'] == $result[-1]['swedishGoals'])
+               echo ' bgcolor="#00FF00"';
+            else
+               echo ' bgcolor="#FFAAAA"';
+        }
+        echo '><span style="font-size:18px;">' . $result[$users[$k]]['swedishGoals'] . '</span></td>';
+		echo 	'</td></tr>';
+
 	}
 	
 	echo '</table></div>';

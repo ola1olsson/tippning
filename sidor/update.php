@@ -49,6 +49,32 @@ if($_SESSION['admin']) {
 						<b><?=$userIdx?>. <?=$user['givenName']?> <?=$user['familyName']?> (<?=$user['username']?>)</b>
 					</td>
 				</tr>
+						<?
+						if($userTip['topScorer'] == $correctTip['topScorer'] && $userTip['topScorer'] != '') {
+							$points = $points + 5
+							?>
+							<td bgcolor="#00ff00">Topscorer:<?=$correctTip['topScorer']?></td>
+							<?
+						} else {
+							?>
+							<td bgcolor="#ff0000">Topscorer:<?=$correctTip['topScorer']?></td>
+							<?
+						}
+						?>
+	
+						<?
+						if($userTip['swedishGoals'] == $correctTip['swedishGoals'] && $userTip['swedishGoals'] != '') {
+							$points = $points + 5
+							?>
+							<td bgcolor="#00ff00">Goals:<?=$correctTip['swedishGoals']?></td>
+							<?
+						} else {
+							?>
+							<td bgcolor="#ff0000">Goals:<?=$correctTip['swedishGoals']?></td>
+							<?
+						}
+						?>
+	
 					<?
 					// 1p för rätt resultat för varje match
 					$points_result = 1;
