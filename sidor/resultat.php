@@ -11,15 +11,6 @@ if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['
 <?
 
 
-$grundspel_max = 48; // 1-48
-$eights_max = $grundspel_max + 8; // 49 - 56
-$quarter_max = $eights_max + 4; // 57 - 60
-$semi_max = $quarter_max + 2; // 61 - 62
-$secondFinalId = $semi_max + 1; // 63
-$finalId = $secondFinalId + 1; // 64
-
-$slutspel_max = $finalId; // 64
-
 //echo '<div style="width: 100%; height: 100%; background-color: white;" align="center">';
 // <div style="width: 100%; height: 100%; left: 0px; top: 0px; position: absolute; z-index: 0;"></div> -->
 if(isset($_POST['check'])) {

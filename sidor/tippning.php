@@ -638,7 +638,7 @@ echo '</table><br><br><br>';
 ?>
 <h2>Extrafrågor</h2>
 <table border=0 cellspacing=0 cellpadding=2>
-<tr><td></td><td>Hur många mål gör Brasilien:</td><td>
+<tr><td></td><td>Hur många mål gör Sverige?:</td><td>
 <td colspan="2"><input type="text" size="3" maxlength="3" name="match[swedishGoals]" value="<?=$_SESSION['match']['swedishGoals'];?>"
 <?
 	if(!empty($_SESSION['match']) && $_SESSION['match']['swedishGoals'] == '') {
@@ -648,7 +648,7 @@ echo '</table><br><br><br>';
 ?>
 </td></tr>
 
-<tr><td></td><td>Vilken spelare gör flest mål i turneringen:</td><td>
+<tr><td></td><td>Vilken spelare, för- och efternamn, gör flest mål i turneringen:</td><td>
 <td colspan="2"><input type="text" size="30" maxlength="30" name="match[topScorer]" value="<?=$_SESSION['match']['topScorer'];?>"
 <?
         if(!empty($_SESSION['match']) && $_SESSION['match']['topScorer'] == '') {

@@ -24,25 +24,30 @@ $price = 100;
 // Boolean - Has cup started?
 $cupStarted = date('Y-m-d') >= $firstGameDate;
 
-$contactName = "";
-$contactBankAccount = "";
-$contactBankName = "";
-$contactPhone = "";
-$contactEmail = "";
+$contactName = "Bagaren";
+$contactBankAccount = "xxx";
+$contactBankName = "Baker";
+$contactPhone = "071";
+$contactEmail = ".se";
 
-$grundspel_max = 48; // 1-48
-$eights_max = $grundspel_max + 8; // 49 - 56
-$quarter_max = $eights_max + 4; // 57 - 60
-$semi_max = $quarter_max + 2; // 61 - 62
-$secondFinalId = $semi_max + 1; // 63
-$finalId = $secondFinalId + 1; // 64
-$slutspel_max = $finalId; // 64
+#define("$WORLD_CUP", "1");
+if (defined($WORLD_CUP)) {
+	$grundspel_max = 48;
+	$grundspel = Array('A','B','C','D','E','F','G','H');
+} else {
+	$grundspel_max = 36;
+	$grundspel = Array('A','B','C','D','E','F');
+}
+$eights_max = $grundspel_max + 8;
+$quarter_max = $eights_max + 4;
+$semi_max = $quarter_max + 2;
+$secondFinalId = $semi_max + 1;
+$finalId = $secondFinalId + 1;
+$slutspel_max = $finalId;
 
-$grundspel = Array('A','B','C','D','E','F','G','H');
 
 function daysLeft() {
 	$now = mktime();
-//	$cupStart = mktime(0, 0, 0, $firstGameStartM, $firstGameStartD, $firstGameStartY);
 	$cupStart = mktime(0, 0, 0, 06, 10, 2016);
 	return floor(($cupStart - $now) / (60 * 60 * 24)) + 1;	
 }
@@ -50,5 +55,4 @@ function daysLeft() {
 $procent_ett=70;
 $procent_tva=20;
 $procent_tre=10;
-define("$WORLD_CUP", "0");
 ?>

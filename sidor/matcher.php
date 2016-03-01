@@ -118,14 +118,14 @@ while($match = mysql_fetch_array($semis, MYSQL_ASSOC)) {
 printDivider();
 
 //---------------------------------------------------------- THIRD PLACE FINAL ----------------------------------------------------
-printTitle('Match om tredjeplats');
-printHeaders();
-$match = $thirdPlaceFinal;
-$hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQL_ASSOC);
-$borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQL_ASSOC);
-$arena = mysql_fetch_array(mysql_query("SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
-printGame($match, $hemma, $borta, $arena);
-printDivider();
+//printTitle('Match om tredjeplats');
+//printHeaders();
+//$match = $thirdPlaceFinal;
+//$hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQL_ASSOC);
+//$borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQL_ASSOC);
+//$arena = mysql_fetch_array(mysql_query("SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQL_ASSOC);
+//printGame($match, $hemma, $borta, $arena);
+//printDivider();
 
 //---------------------------------------------------------- FINAL ----------------------------------------------------
 printTitle('Final');
