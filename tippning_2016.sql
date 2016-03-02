@@ -219,69 +219,69 @@ CREATE TABLE `matcher` (
 
 INSERT INTO `matcher` VALUES (1, 'A1', 'A2', '2016-06-10', '21:00', 1);
 
-INSERT INTO `matcher` VALUES (2, 'A3', 'A4', '2016-06-11', '15:00', 1);
-INSERT INTO `matcher` VALUES (3, 'B3', 'B4', '2016-06-11', '18:00', 1);
-INSERT INTO `matcher` VALUES (4, 'B1', 'B2', '2016-06-11', '21:00', 1);
+INSERT INTO `matcher` VALUES (2, 'A3', 'A4', '2016-06-11', '15:00', 2);
+INSERT INTO `matcher` VALUES (3, 'B3', 'B4', '2016-06-11', '18:00', 3);
+INSERT INTO `matcher` VALUES (4, 'B1', 'B2', '2016-06-11', '21:00', 4);
 
-INSERT INTO `matcher` VALUES (5, 'D3', 'D4', '2016-06-12', '15:00', 1);
-INSERT INTO `matcher` VALUES (6, 'C3', 'C4', '2016-06-12', '18:00', 1);
-INSERT INTO `matcher` VALUES (7, 'C1', 'C2', '2016-06-12', '21:00', 1);
+INSERT INTO `matcher` VALUES (5, 'D3', 'D4', '2016-06-12', '15:00', 5);
+INSERT INTO `matcher` VALUES (6, 'C3', 'C4', '2016-06-12', '18:00', 6);
+INSERT INTO `matcher` VALUES (7, 'C1', 'C2', '2016-06-12', '21:00', 7);
 
-INSERT INTO `matcher` VALUES (8, 'D1', 'D2', '2016-06-13', '15:00', 1);
+INSERT INTO `matcher` VALUES (8, 'D1', 'D2', '2016-06-13', '15:00', 8);
 INSERT INTO `matcher` VALUES (9, 'E3', 'E4', '2016-06-13', '18:00', 1);
-INSERT INTO `matcher` VALUES (10, 'E1', 'E2', '2016-06-13', '21:00', 1);
+INSERT INTO `matcher` VALUES (10, 'E1', 'E2', '2016-06-13', '21:00', 10);
 
-INSERT INTO `matcher` VALUES (11, 'F3', 'F4', '2016-06-14', '18:00', 1);
-INSERT INTO `matcher` VALUES (12, 'F1', 'F2', '2016-06-14', '21:00', 1);
+INSERT INTO `matcher` VALUES (11, 'F3', 'F4', '2016-06-14', '18:00', 3);
+INSERT INTO `matcher` VALUES (12, 'F1', 'F2', '2016-06-14', '21:00', 9);
 
-INSERT INTO `matcher` VALUES (13, 'B2', 'B4', '2016-06-15', '15:00', 1);
-INSERT INTO `matcher` VALUES (14, 'A2', 'A4', '2016-06-15', '18:00', 1);
-INSERT INTO `matcher` VALUES (15, 'A1', 'A3', '2016-06-15', '21:00', 1);
+INSERT INTO `matcher` VALUES (13, 'B2', 'B4', '2016-06-15', '15:00', 7);
+INSERT INTO `matcher` VALUES (14, 'A2', 'A4', '2016-06-15', '18:00', 5);
+INSERT INTO `matcher` VALUES (15, 'A1', 'A3', '2016-06-15', '21:00', 4);
 
-INSERT INTO `matcher` VALUES (16, 'B1', 'B3', '2016-06-16', '15:00', 1);
-INSERT INTO `matcher` VALUES (17, 'C2', 'C4', '2016-06-16', '18:00', 1);
+INSERT INTO `matcher` VALUES (16, 'B1', 'B3', '2016-06-16', '15:00', 2);
+INSERT INTO `matcher` VALUES (17, 'C2', 'C4', '2016-06-16', '18:00', 10);
 INSERT INTO `matcher` VALUES (18, 'C1', 'C3', '2016-06-16', '21:00', 1);
 
-INSERT INTO `matcher` VALUES (19, 'E2', 'E4', '2016-06-17', '15:00', 1);
-INSERT INTO `matcher` VALUES (20, 'D2', 'D4', '2016-06-17', '18:00', 1);
-INSERT INTO `matcher` VALUES (21, 'D1', 'D3', '2016-06-17', '21:00', 1);
+INSERT INTO `matcher` VALUES (19, 'E2', 'E4', '2016-06-17', '15:00', 8);
+INSERT INTO `matcher` VALUES (20, 'D2', 'D4', '2016-06-17', '18:00', 9);
+INSERT INTO `matcher` VALUES (21, 'D1', 'D3', '2016-06-17', '21:00', 6);
 
-INSERT INTO `matcher` VALUES (22, 'E1', 'E3', '2016-06-18', '15:00', 1);
-INSERT INTO `matcher` VALUES (23, 'F2', 'F4', '2016-06-18', '18:00', 1);
-INSERT INTO `matcher` VALUES (24, 'F1', 'F3', '2016-06-18', '21:00', 1);
+INSERT INTO `matcher` VALUES (22, 'E1', 'E3', '2016-06-18', '15:00', 3);
+INSERT INTO `matcher` VALUES (23, 'F2', 'F4', '2016-06-18', '18:00', 4);
+INSERT INTO `matcher` VALUES (24, 'F1', 'F3', '2016-06-18', '21:00', 5);
 
-INSERT INTO `matcher` VALUES (25, 'A4', 'A1', '2016-06-19', '21:00', 1);
-INSERT INTO `matcher` VALUES (26, 'A2', 'A3', '2016-06-19', '21:00', 1);
+INSERT INTO `matcher` VALUES (25, 'A4', 'A1', '2016-06-19', '21:00', 7);
+INSERT INTO `matcher` VALUES (26, 'A2', 'A3', '2016-06-19', '21:00', 10);
 
-INSERT INTO `matcher` VALUES (27, 'B4', 'B1', '2016-06-20', '21:00', 1);
-INSERT INTO `matcher` VALUES (28, 'B2', 'B3', '2016-06-20', '21:00', 1);
+INSERT INTO `matcher` VALUES (27, 'B4', 'B1', '2016-06-20', '21:00', 9);
+INSERT INTO `matcher` VALUES (28, 'B2', 'B3', '2016-06-20', '21:00', 8);
 
-INSERT INTO `matcher` VALUES (29, 'C4', 'C1', '2016-06-21', '18:00', 1);
-INSERT INTO `matcher` VALUES (30, 'C2', 'C3', '2016-06-21', '18:00', 1);
-INSERT INTO `matcher` VALUES (31, 'D4', 'D1', '2016-06-21', '21:00', 1);
-INSERT INTO `matcher` VALUES (32, 'D2', 'D3', '2016-06-21', '21:00', 1);
+INSERT INTO `matcher` VALUES (29, 'C4', 'C1', '2016-06-21', '18:00', 5);
+INSERT INTO `matcher` VALUES (30, 'C2', 'C3', '2016-06-21', '18:00', 4);
+INSERT INTO `matcher` VALUES (31, 'D4', 'D1', '2016-06-21', '21:00', 3);
+INSERT INTO `matcher` VALUES (32, 'D2', 'D3', '2016-06-21', '21:00', 2);
 
 
-INSERT INTO `matcher` VALUES (33, 'F4', 'F1', '2016-06-22', '18:00', 1);
+INSERT INTO `matcher` VALUES (33, 'F4', 'F1', '2016-06-22', '18:00', 10);
 INSERT INTO `matcher` VALUES (34, 'F2', 'F3', '2016-06-22', '18:00', 1);
-INSERT INTO `matcher` VALUES (35, 'E4', 'E1', '2016-06-22', '21:00', 1);
-INSERT INTO `matcher` VALUES (36, 'E2', 'E3', '2016-06-22', '21:00', 1);
+INSERT INTO `matcher` VALUES (35, 'E4', 'E1', '2016-06-22', '21:00', 6);
+INSERT INTO `matcher` VALUES (36, 'E2', 'E3', '2016-06-22', '21:00', 7);
 
 
-INSERT INTO `matcher` VALUES (37, '', '', '2016-06-25', '15:00', 1);
-INSERT INTO `matcher` VALUES (38, '', '', '2016-06-25', '18:00', 1);
-INSERT INTO `matcher` VALUES (39, '', '', '2016-06-25', '21:00', 1);
-INSERT INTO `matcher` VALUES (40, '', '', '2016-06-26', '15:00', 1);
-INSERT INTO `matcher` VALUES (41, '', '', '2016-06-26', '18:00', 1);
-INSERT INTO `matcher` VALUES (42, '', '', '2016-06-26', '21:00', 1);
+INSERT INTO `matcher` VALUES (37, '', '', '2016-06-25', '15:00', 9);
+INSERT INTO `matcher` VALUES (38, '', '', '2016-06-25', '18:00', 5);
+INSERT INTO `matcher` VALUES (39, '', '', '2016-06-25', '21:00', 2);
+INSERT INTO `matcher` VALUES (40, '', '', '2016-06-26', '15:00', 10);
+INSERT INTO `matcher` VALUES (41, '', '', '2016-06-26', '18:00', 7);
+INSERT INTO `matcher` VALUES (42, '', '', '2016-06-26', '21:00', 8);
 INSERT INTO `matcher` VALUES (43, '', '', '2016-06-27', '18:00', 1);
-INSERT INTO `matcher` VALUES (44, '', '', '2016-06-27', '21:00', 1);
-INSERT INTO `matcher` VALUES (45, '', '', '2016-06-30', '21:00', 1);
-INSERT INTO `matcher` VALUES (46, '', '', '2016-07-01', '21:00', 1);
-INSERT INTO `matcher` VALUES (47, '', '', '2016-07-02', '21:00', 1);
+INSERT INTO `matcher` VALUES (44, '', '', '2016-06-27', '21:00', 6);
+INSERT INTO `matcher` VALUES (45, '', '', '2016-06-30', '21:00', 4);
+INSERT INTO `matcher` VALUES (46, '', '', '2016-07-01', '21:00', 7);
+INSERT INTO `matcher` VALUES (47, '', '', '2016-07-02', '21:00', 3);
 INSERT INTO `matcher` VALUES (48, '', '', '2016-07-03', '21:00', 1);
-INSERT INTO `matcher` VALUES (49, '', '', '2016-07-06', '21:00', 1);
-INSERT INTO `matcher` VALUES (50, '', '', '2016-07-07', '21:00', 1);
+INSERT INTO `matcher` VALUES (49, '', '', '2016-07-06', '21:00', 10);
+INSERT INTO `matcher` VALUES (50, '', '', '2016-07-07', '21:00', 4);
 INSERT INTO `matcher` VALUES (51, '', '', '2016-07-10', '21:00', 1);
 
 -- --------------------------------------------------------
@@ -462,18 +462,16 @@ CREATE TABLE `arena` (
 -- Dumping data for table `arena`
 -- 
 
-INSERT INTO `arena` VALUES (1, 'Estadio do Maracana', 'Rio de Janeiro', '76935', '1900');
-INSERT INTO `arena` VALUES (2, 'Estadio Nacional de Brasilia', 'Brasilia', '70042', '1900');
-INSERT INTO `arena` VALUES (3, 'Arena de Sao Paulo', 'Sao Paolo', '68000', '1900');
-INSERT INTO `arena` VALUES (4, 'Estadio Castelao', 'Fortaleza', '100', '1900');
-INSERT INTO `arena` VALUES (5, 'Estadio Mineirao', 'Belo Horizonte', '63547', '1900');
-INSERT INTO `arena` VALUES (6, 'Estadio Beira-Rio', 'Porto Alegre', '51300', '1900');
-INSERT INTO `arena` VALUES (7, 'Arena Fonte Nova', 'Salvador', '56000', '1900');
-INSERT INTO `arena` VALUES (8, 'Arena Pernambuco', 'Recife', '46154', '1900');
-INSERT INTO `arena` VALUES (9, 'Arena Pantanal', 'Cuiaba', '42968', '1900');
-INSERT INTO `arena` VALUES (10, 'Arena Amazonia', 'Manaus', '42374', '1900');
-INSERT INTO `arena` VALUES (11, 'Arena das Dunas', 'Natal', '42086', '1900');
-INSERT INTO `arena` VALUES (12, 'Arena da Baixada', 'Curitiba', '43981', '1900');
+INSERT INTO `arena` VALUES (1, 'Stade de France', 'Saint-Denis', '76935', '1900');
+INSERT INTO `arena` VALUES (2, 'Stade Bollaert-Delelis', 'Lens', '70042', '1900');
+INSERT INTO `arena` VALUES (3, 'Stade de Bordeaux','Bordeaux', '68000', '1900');
+INSERT INTO `arena` VALUES (4, 'Stade Vélodrome','Marseille', '100', '1900');
+INSERT INTO `arena` VALUES (5, 'Parc des Princes', 'Paris', '63547', '1900');
+INSERT INTO `arena` VALUES (6, 'Stade de Nice', 'Nice', '51300', '1900');
+INSERT INTO `arena` VALUES (7, 'Stade Pierre Mauroy','Lille', '56000', '1900');
+INSERT INTO `arena` VALUES (8, 'Stadium de Toulouse','Toulouse', '46154', '1900');
+INSERT INTO `arena` VALUES (9, 'Stade Geoffroy Guichard', 'St-Etienne', '42968', '1900');
+INSERT INTO `arena` VALUES (10,'Stade de Lyon','Lyon', '42374', '1900');
 
 
 -- 

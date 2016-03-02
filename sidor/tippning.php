@@ -198,9 +198,7 @@ foreach($grundspel AS $grupp) {
 
 ?>
 
-<? if (defined($WORLD_CUP)) { ?>
 <h3>Åttondelsfinaler</h3>
-<?}?>
 
 <table border="0" cellspacing="0" cellpadding="2">
 	<tr class="header">
@@ -219,22 +217,22 @@ foreach($grundspel AS $grupp) {
 	groups[i][k] -> k(0) = hemma, k(1) = borta
 */
 
-$groups[1][0] = 'A';
-$groups[1][1] = 'B';
-$groups[2][0] = 'C';
-$groups[2][1] = 'D';
-$groups[3][0] = 'B';
-$groups[3][1] = 'A';
-$groups[4][0] = 'D';
-$groups[4][1] = 'C';
-$groups[5][0] = 'E';
-$groups[5][1] = 'F';
-$groups[6][0] = 'G';
-$groups[6][1] = 'H';
-$groups[7][0] = 'F';
-$groups[7][1] = 'E';
-$groups[8][0] = 'H';
-$groups[8][1] = 'G';
+$groups[1][0] = '2:a i grupp A';
+$groups[1][1] = '2:a i grupp C';
+$groups[2][0] = '1:a i grupp B';
+$groups[2][1] = 'Bästa 3:a i A/C/D';
+$groups[3][0] = '1:a grupp D';
+$groups[3][1] = 'Bästa 3:A i B/E/F';
+$groups[4][0] = '1:a i grupp A';
+$groups[4][1] = 'Bästa 3:e i C/D/E';
+$groups[5][0] = '1:a i grupp C';
+$groups[5][1] = 'Bästa 3:a i A/B/F';
+$groups[6][0] = '1:a i grupp F';
+$groups[6][1] = '2:a i grupp E';
+$groups[7][0] = '1:a i grupp E';
+$groups[7][1] = '2:a i grupp D';
+$groups[8][0] = '2:a i grupp B';
+$groups[8][1] = '2:a i grupp F';
 
 $match_offset = $grundspel_max; // sista matchnumret i gruppspelet
 $err = false;
@@ -273,9 +271,9 @@ for($match = 1; $match <= 8; $match++) {
 	</tr>
 	<tr>
 		<td></td>
-		<td>Vinnare grupp <?=$groups[$match][0]?></td>
+		<td align="center"><?=$groups[$match][0]?></td>
 		<td></td>
-		<td>Andraplats grupp <?=$groups[$match][1]?></td>
+		<td align="center"><?=$groups[$match][1]?></td>
 	</tr>	
 	<tr>
 	<td colspan=7 align="center"><hr align="center" style="width:96%; height:1px;" color="#6C261F"></td>
@@ -339,15 +337,15 @@ $winner[4][0] = 7;
 $winner[4][1] = 8;
 $match_offset = $eights_max; // Sista matchen av åttondelsfinalerna + 1 = första kvartsfinalen
 } else {
-$groups[1][0] = 'A';
-$groups[1][1] = 'B';
-$groups[2][0] = 'B';
-$groups[2][1] = 'A';
-$groups[3][0] = 'C';
-$groups[3][1] = 'D';
-$groups[4][0] = 'D';
-$groups[4][1] = 'C';
-$match_offset = $grundspel_max;
+$groups[1][0] = 'Vinnare match 37';
+$groups[1][1] = 'Vinnare match 39';
+$groups[2][0] = 'Vinnare match 38';
+$groups[2][1] = 'Vinnare match 42';
+$groups[3][0] = 'Vinnare match 41';
+$groups[3][1] = 'Vinnare match 43';
+$groups[4][0] = 'Vinnare match 40';
+$groups[4][1] = 'Vinnare match 44';
+$match_offset = $eights_max;
 }
 
 for($match = 1; $match <= 4; $match++) {
@@ -388,9 +386,9 @@ if (defined($WORLD_CUP)) {
 		echo ' checked';
 	echo '></td>'.
 			'</tr>';
-if (defined($WORLD_CUP)) {
-	echo '<tr><td></td><td>Vinnare åttondelsfinal '.$winner[$match][0].'</td><td></td><td>Vinnare åttondelsfinal '.$winner[$match][1].'</td></tr>';	
-}
+//if (defined($WORLD_CUP)) {
+	echo '<tr><td></td><td align="center">'.$groups[$match][0].'</td><td></td><td align="center">'.$groups[$match][1].'</td></tr>';	
+//}
 	echo '<tr><td colspan=7 align=center><hr align=center style="width:96%; height:1px;" color="#6C261F"></td></tr>';	
 
 }
