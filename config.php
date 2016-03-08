@@ -1,5 +1,6 @@
 <?php
 // mysql -u root -p < tippning_2014.sql
+// mysql> update users set admin=1 where username='ola';
 // drop database tippning;
 // Database host URL
 $dbhost = "localhost";
