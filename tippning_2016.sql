@@ -428,6 +428,7 @@ CREATE TABLE `users` (
 
 -- The correct row has id -1
 INSERT INTO `tippning`.`users` (`id`) VALUES (-1);
+INSERT INTO `tippning` (`id`) VALUES (-1);
 -- --------------------------------------------------------
 
 -- 
