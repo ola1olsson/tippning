@@ -1,13 +1,12 @@
 <?php
-
 // ansluter till MySQL
 
-$opendb = mysql_connect($dbhost, $dbuser, $dbpass)
-or die("Kunde inte ansluta till MySQL:<br />" . mysql_error());
+$opendb = mysqli_connect($dbhost, $dbuser, $dbpass)
+or die("Kunde inte ansluta till MySQL:<br />" . mysqli_connect_error());
 
 // ansluter till min valda databas.
 
-mysql_select_db($dbname)
-or die("Kunde inte ansluta till databasen:<br />" . mysql_error());
+mysqli_select_db($opendb, $dbname)
+or die("Kunde inte ansluta till databasen:<br />" . mysqli_error($opendb));
 
-?> 
+?>

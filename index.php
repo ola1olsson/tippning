@@ -1,18 +1,14 @@
-<?
+<?php
 	session_start();
-	if($_GET['sida'] != '') {
-		$page = $_GET['sida'];
-	} else {
-		$page = 'startsida';
-	}
+	$page = (isset($_GET['sida']) ? $_GET['sida'] : 'startsida');
 	
 	include "config.php";
 	include "connect_database.php";
-	
+
 	// Register
-	if($_POST['register'] == 'true') {
-		$result = mysql_query("SELECT * FROM users WHERE username = '".addslashes($_POST['username'])."' AND password = '".md5(addslashes($_POST['password']))."';") or die(mysql_error());
-		if($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
+	if(isset($_POST['register']) && isset($_POST['username']) && isset($_POST['password'])) {
+		$result = mysqli_query($opendb, "SELECT * FROM users WHERE username = '".addslashes($_POST['username'])."' AND password = '".md5(addslashes($_POST['password']))."';") or die(mysqli_error($opendb));
+		if($row = mysqli_fetch_array($result,MYSQL_ASSOC)) {
 			$_SESSION['user'] = $row['username'];
 			$_SESSION['userFullName'] = $row['givenName'].' '.$row['familyName'];
 			$_SESSION['userID'] = $row['id'];
@@ -20,7 +16,7 @@
 			$_SESSION['betalt'] = $row['betalt'];
 			$_SESSION['permission'] = 1;
 			$_SESSION['admin'] = $row['admin'];
-                        mysql_query("UPDATE users SET nbrOfLogins = nbrOfLogins + 1 where id = '" . $row['id'] . "';");
+                        mysqli_query($opendb, "UPDATE users SET nbrOfLogins = nbrOfLogins + 1 where id = '" . $row['id'] . "';");
 			//$_SESSION['admin'] = 1;
 			//$_SESSION['betalt'] = 1;
 		} else {
@@ -29,11 +25,13 @@
 		}
 	}
 	
-	if($_GET['command'] == 'logout') {
-		$_SESSION['username'] = '';
-		$_SESSION['permission'] = 0;
-		session_destroy();
-		$logstatus = "Du är nu utloggad!";
+	if(isset($_GET['command'])) {
+		if ($_GET['command'] == 'logout') {
+			$_SESSION['username'] = '';
+			$_SESSION['permission'] = 0;
+			session_destroy();
+			$logstatus = "Du är nu utloggad!";
+		}
 	}
 
 
@@ -45,8 +43,8 @@
 		<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<?
-		if($_SESSION['permission'] == 1) {
+		<?php
+		if(isset($_SESSION['permission']) && $_SESSION['permission'] == 1) {
 			$menu[0]['token'] 	= 'startsida';
 			$menu[0]['text']	= 'Start';
 			$menu[0]['access']	= true;
@@ -61,11 +59,11 @@
 			
 			$menu[3]['token'] 	= 'tippning';
 			$menu[3]['text']	= 'Tippning';
-			$menu[3]['access']	= !$cupStarted;// || $_SESSION['admin'];
+			$menu[3]['access']	= !$cupStarted || $_SESSION['admin'];
 			
 			$menu[4]['token'] 	= 'resultat';
 			$menu[4]['text']	= 'Resultat';
-			$menu[4]['access']	= $cupStarted;// || $_SESSION['admin'];
+			$menu[4]['access']	= $cupStarted || $_SESSION['admin'];
 			
 			$menu[5]['token'] 	= 'regler';
 			$menu[5]['text']	= 'Regler';
@@ -141,7 +139,7 @@
 				</tr>
 			</table>
 		</center>
-		<? } else { ?>
+		<?php } else { ?>
 		<form action="index.php" method="POST">
 			<table border="0" align="center">
 				<tr> 
@@ -154,7 +152,7 @@
 						<table border="0">
 							<tr>
 								<td colspan="2">
-									<h3><b>&nbsp;<?=$logstatus?></b></h3>
+									<h3><b>&nbsp;<?=isset($logstatus)? $logstatus : 'No status' ?></b></h3>
 								</td>
 							</tr>
 							<tr>
@@ -184,6 +182,3 @@
 		<?php } ?>
 	</body>
 </html>
-<?php 
-	mysql_close($opendb); 
-?>

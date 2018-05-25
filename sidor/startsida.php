@@ -1,14 +1,16 @@
 <?php 
+
+	include "config.php";
+	include "connect_database.php";
+
 // SLASS OVERRIDE
-if ($_SESSION['user'] == 'slass') {
+if (isset($_SESSION['user']) && $_SESSION['user'] == 'slass') {
      echo '<center><span style="background-color: yellow; color: magenta; font-size: 60pt; font-weight: bold;">YOU SUCK!!!<br/></span></center>';
 }
 
 
-
-
-$nbrPayedUsers = mysql_result(mysql_query("SELECT COUNT(*) FROM users WHERE betalt = '1';"), 0);
-$nbrUsers = mysql_result(mysql_query("SELECT COUNT(*) FROM users;"), 0);
+$nbrPayedUsers = mysqli_fetch_assoc(mysqli_query($opendb, "SELECT COUNT(*) as total FROM users WHERE betalt = '1';"))['total'];
+$nbrUsers = mysqli_fetch_assoc(mysqli_query($opendb, "SELECT COUNT(*) as total FROM users;"))['total'];
 $totalPrice = $nbrPayedUsers * $price;
 if(!$cupStarted) { 	
 ?>
@@ -28,7 +30,7 @@ if(!$cupStarted) {
 	</span>
 </p>
 </center>
-<? if ($_SESSION['betalt'] != 1 && date('Y-m-d') <= $last_pay_day) { ?>
+<?php if (isset($_SESSION['betalt']) && $_SESSION['betalt'] != 1 && date('Y-m-d') <= $last_pay_day) { ?>
 <div class="container">
    <p>
      <span style="color: red;">
@@ -44,19 +46,19 @@ Se "<a href='index.php?sida=regler'>Regler</a>" för mer information.
 // ------------------ NÄSTA MATCH -------------------------
 $date = date('Y-m-d');
 $time = date('H:i');
-$nextGames = mysql_query("SELECT * FROM matcher WHERE datum >= '".$date."' ORDER BY datum ASC, tid ASC;") or die(mysql_error());
-$game = mysql_fetch_array($nextGames, MYSQL_ASSOC);
+$nextGames = mysqli_query($opendb, "SELECT * FROM matcher WHERE datum >= '".$date."' ORDER BY datum ASC, tid ASC;") or die(mysqli_error($opendb));
+$game = mysqli_fetch_array($nextGames, MYSQLI_ASSOC);
 while($game['tid'] < $time && $game['datum'] == $date) {
-	$game = mysql_fetch_array($nextGames, MYSQL_ASSOC);
+	$game = mysqli_fetch_array($nextGames, MYSQLI_ASSOC);
 }
-$hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$game['hemma']."';"), MYSQL_ASSOC);
-$borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$game['borta']."';"), MYSQL_ASSOC);
+$hemma = mysqli_fetch_array(mysqli_query($opendb,"SELECT * FROM lag WHERE lag = '".$game['hemma']."';"), MYSQLI_ASSOC);
+$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$game['borta']."';"), MYSQLI_ASSOC);
 $ods['1'] = 0;
 $ods['X'] = 0;
 $ods['2'] = 0;
-$odsRes = mysql_query("SELECT m".$game['ID']." FROM tippning WHERE m".$game['ID']." != '' AND id != -1;") or die(mysql_error());
-$nbrUsrs = mysql_num_rows($odsRes);
-while($tmp = mysql_fetch_array($odsRes, MYSQL_ASSOC)) {
+$odsRes = mysqli_query($opendb, "SELECT m".$game['ID']." FROM tippning WHERE m".$game['ID']." != '' AND id != -1;") or die(mysqli_error($opendb));
+$nbrUsrs = mysqli_num_rows($opendb, $odsRes);
+while($tmp = mysqli_fetch_array($opendb, $odsRes, MYSQL_ASSOC)) {
 	switch($tmp['m'.$game['ID']]) {
 		case '1': $ods['1']++; break;
 		case 'X': $ods['X']++; break;
@@ -64,7 +66,7 @@ while($tmp = mysql_fetch_array($odsRes, MYSQL_ASSOC)) {
 	}
 }
 
-$arena = mysql_fetch_array(mysql_query("SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$game['plats']."';"), MYSQL_ASSOC);
+$arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$game['plats']."';"), MYSQLI_ASSOC);
 ?>
 <div class="container">
 	<span class="header2">NÄSTA MATCH<br/></span>

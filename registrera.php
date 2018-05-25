@@ -1,4 +1,4 @@
-<?// Includerar uppkopling till MySQL-server.
+<?php
 include "config.php";
 include "connect_database.php";
 ?>
@@ -7,43 +7,16 @@ include "connect_database.php";
 <head>
 <link href="css\styles.css" rel="stylesheet" type="text/css">
 </head>
-<?
-// Om dagens datum inte är mer 2010-11-06 så är det ok att registrera sig på sidan.
+<?php
 if(date('Y-m-d')<=$last_bet_day) {
-?>
 
-<?
-// ---------------------- Avtalet ----------------------------
-/*
-Härmed godkänner jag att mina personuppgifter lagras i databasen.<br>
-Jag är införstådd med att jag kan bli utestängd från systemet<br>
-genom oacceptabelt uppträdande eller fuskande och därmed gå miste<br>
-om insatsen. Inbetalda pengar kan förloras genom dålig tippning.<br>
-Jag kommer att godta arrangörsbeslut oavsett min egen vilja, <br>
-samt erkänna att jag är dålig på att tippa.<br>
-Jag vet att detta är en sida för ett slutet sällskap och att <br>
-jag inte kan bjuda in vem som helst. <br>
-Då Ola är dålig på webbsidor så måste jag även spara mina tips <br>
-lokalt, gärna skriva ut dem som backup om något skulle gå åt h*vete<br>
-<br>
-För att komma vidare måste du acceptera ovanstående villkor.<br>
-*/
-?>
-
-
-
-
-
-<?
-
-
-if($_REQUEST['register'] == 'true') {
+if(isset($_REQUEST['register']) && $_REQUEST['register'] == 'true') {
 
 	// REGISTRERA ANVÄNDAREN	
-	$result = mysql_query("SELECT username FROM users WHERE username='".addslashes($_POST['user'])."';") or die(mysql_error());
+	$result = mysqli_query($opendb, "SELECT username FROM users WHERE username='".addslashes($_POST['user'])."';") or die(mysqli_error($opendb));
 	
 	//
-	if(mysql_num_rows($result)>0 || $_POST['user'] == '') {
+	if(mysqli_num_rows($result)>0 || $_POST['user'] == '') {
 		$errUser = true;
 	} else $errUser = false;
 
@@ -55,14 +28,14 @@ if($_REQUEST['register'] == 'true') {
 	
 	
 	// Om User och Password är ok, fortsätt 
-	if(!$errUser && !$errPass) {
-		mysql_query("INSERT INTO users (givenName, familyName, Company, emailAddress, phoneNumber, city, username, password) 
-					VALUES ('".addslashes($_POST['fornamn'])."', '".addslashes($_POST['efternamn'])."', '".addslashes($_POST['foretag'])."', '".addslashes($_POST['email'])."', '".addslashes($_POST['telefon'])."', '".addslashes($_POST['ort'])."', '".addslashes($_POST['user'])."', '".md5(addslashes($_POST['password1']))."');") or die(mysql_error());
+	if(!$errUser && !$errPass && isset($_POST['fornamn'])) {
+		mysqli_query($opendb, "INSERT INTO users (givenName, familyName, Company, emailAddress, phoneNumber, city, username, password) 
+					VALUES ('".addslashes($_POST['fornamn'])."', '".addslashes($_POST['efternamn'])."', '".addslashes($_POST['foretag'])."', '".addslashes($_POST['email'])."', '".addslashes($_POST['telefon'])."', '".addslashes($_POST['ort'])."', '".addslashes($_POST['user'])."', '".md5(addslashes($_POST['password1']))."');") or die(mysql_error($opendb));
 	} 
 	
 } 
 
-if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['register'])) {
+if(isset($_POST['register']) && ($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['register'])) {
 
 
 ?>
@@ -79,27 +52,27 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 		
 		<tr>
 		<form action="registrera.php" method="post" name="register">
-		<td width="150" height="20"></td><td width="25">Förnamn</td><td width="150"><input type="text" name="fornamn" value="<?=$_POST['fornamn'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="20"></td><td width="25">Förnamn</td><td width="150"><input type="text" name="fornamn" value="<?=isset($_POST['fornamn']) ? $_POST['fornamn'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
-		<td width="150" height="20"></td><td width="25">Efternamn</td><td width="150"><input type="text" name="efternamn" value="<?=$_POST['efternamn'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="20"></td><td width="25">Efternamn</td><td width="150"><input type="text" name="efternamn" value="<?=isset($_POST['efternamn']) ? $_POST['efternamn'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
-		<td width="150" height="20"></td><td width="25">Ort</td><td width="150"><input type="text" name="ort" value="<?=$_POST['ort'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="20"></td><td width="25">Ort</td><td width="150"><input type="text" name="ort" value="<?=isset($_POST['ort']) ? $_POST['ort'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
-		<td width="150" height="20"></td><td width="25">Företag</td><td width="150"><input type="text" name="foretag" value="<?=$_POST['foretag'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="20"></td><td width="25">Företag</td><td width="150"><input type="text" name="foretag" value="<?=isset($_POST['foretag']) ? $_POST['foretag'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
-		<td width="150" height="20"></td><td width="25">Mobiltel.</td><td width="150"><input type="text" name="telefon" value="<?=$_POST['telefon'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="20"></td><td width="25">Mobiltel.</td><td width="150"><input type="text" name="telefon" value="<?=isset($_POST['telefon']) ? $_POST['telefon'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
-		<td width="150" height="20"></td><td width="25">Email</td><td width="150"><input type="text" name="email" value="<?=$_POST['email'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="20"></td><td width="25">Email</td><td width="150"><input type="text" name="email" value="<?=isset($_POST['email']) ? $_POST['email'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
@@ -107,11 +80,11 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 		</tr>
 
 		<tr>
-		<td width="150" height="25"></td><td width="25">Användarnamn</td><td width="150"><input type="text" name="user" value="<?=$_POST['user'];?>" style="width:145px;"></td>
+		<td width="150" height="25"></td><td width="25">Användarnamn</td><td width="150"><input type="text" name="user" value="<?=isset($_POST['user']) ? $_POST['user'] : '';?>" style="width:145px;"></td>
 		<td>
-		<?
+		<?php
 		// Det är något som är fel med användarnamnet. Två alternativ: 1.Du har inte skrivit in något användarnamn. 2.Du har skrivit in ett användarnamn som redan existerar.
-		if($errUser) {
+		if(isset($errUser) &&$errUser) {
 		echo '<span style="color:FF0000;">';
 		if($_POST['user'] == '') 
 		echo 'Du måste ange ett <br>användarnamn.';
@@ -124,16 +97,16 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 		</tr>
 		
 		<tr>
-		<td width="150" height="25"></td><td width="25">Lösenord</td><td width="150"><input type="password" name="password1" value="<?=$_POST['password1'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="25"></td><td width="25">Lösenord</td><td width="150"><input type="password" name="password1" value="<?php=$_POST['password1'];?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
-		<td width="150" height="25"></td><td width="25">Upprepa Lösenord</td><td width="150"><input type="password" name="password2" value="<?=$_POST['password2'];?>" style="width:145px;"></td>
+		<td width="150" height="25"></td><td width="25">Upprepa Lösenord</td><td width="150"><input type="password" name="password2" value="<?php=$_POST['password2'];?>" style="width:145px;"></td>
 		<td>
-		<?
+		<?php
 		
 		// Det är något fel med lösenordet. Två alternativ: 1.Du har glömt att fylla i lösenord. 2.Du har skrivit in olika lösenord.
-		if($errPass)
+		if(isset($errPass) && $errPass)
 		{
 		echo '<span style="color:FF0000;">';
 		if (empty($_POST['password1']) || empty($_POST['password2']))
@@ -164,14 +137,10 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 </td>
 </tr>
 </table>
-<?
+<?php
 } else {
+?>
 
-//	echo 'Du är registrerad!';
-//	echo 'DEBUG:'=$debug;
-	?>
-		
-		
 <table width="850"  border="5" bordercolor="981a25" align="center">
 <tr> 
 	<td height="100%">
@@ -196,7 +165,6 @@ lokalt, gärna skriva ut dem som backup om något skulle gå åt h*vete<br>
 <br>
 För att komma vidare måste du acceptera ovanstående villkor.<br>
 
-
 			</td>
 		</tr>
 		<tr>
@@ -209,10 +177,10 @@ För att komma vidare måste du acceptera ovanstående villkor.<br>
 	</td>
 </tr>
 </table>
-	<?
+	<?php
 
 // stänger databasen
-mysql_close($opendb);
+mysqli_close($opendb);
 }
 
 } else // IF DATE IS OUT OF DATE

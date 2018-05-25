@@ -1,6 +1,11 @@
 <span class="header">Visa deltagare<br/></span>
 
-<?
+
+<?php
+include "config.php";
+include "connect_database.php";
+
+
 if($_REQUEST['id'] != '')
 {
 	$result = mysql_query("SELECT * FROM users WHERE id = ".$_REQUEST['id'].";") or die(mysql_error());

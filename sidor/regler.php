@@ -1,6 +1,11 @@
-<?
-if(session_is_registered('permission') && $_SESSION['permission']) {
+<?php
+	include "config.php";
+	include "connect_database.php";
+
+
+if(!isset($_SESSION['permission']) || !$_SESSION['permission']) {
 ?>
+
 
 <table BGCOLOR="#FFFFFF" width="100%" height="100%"  bordercolor="#6C261F"  cellpadding="30" cellspacing="0">
 	<tr>
@@ -84,7 +89,7 @@ if(session_is_registered('permission') && $_SESSION['permission']) {
 	</tr>
 </table>
 
-<?
+<?php
 } else
 	echo 'Permission denied!';
 ?>

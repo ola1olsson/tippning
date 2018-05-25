@@ -7,19 +7,19 @@ $dbhost = "localhost";
 // Database username
 $dbuser = "root";
 // Database password
-$dbpass = "Josefine1";
+$dbpass = "ziptac135";
 // Database name
 $dbname = "tippning";
 
 // Date of first game
-$firstGameStartY = 2016;
+$firstGameStartY = 2018;
 $firstGameStartM = 6;
 $firstGameStartD = 10;
-$firstGameDate = "2016-06-10";
+$firstGameDate = "2018-06-10";
 // Last day to place bet
-$last_bet_day = "2016-06-09";
+$last_bet_day = "2018-06-09";
 // Last day to pay
-$last_pay_day = "2016-06-10";
+$last_pay_day = "2088-06-10";
 // Price in SEK
 $price = 100;
 // Boolean - Has cup started?
@@ -31,7 +31,7 @@ $contactBankName = "Baker";
 $contactPhone = "071";
 $contactEmail = ".se";
 
-#define("$WORLD_CUP", "1");
+$WORLD_CUP =1;
 if (defined($WORLD_CUP)) {
 	$grundspel_max = 48;
 	$grundspel = Array('A','B','C','D','E','F','G','H');
@@ -42,15 +42,15 @@ if (defined($WORLD_CUP)) {
 $eights_max = $grundspel_max + 8;
 $quarter_max = $eights_max + 4;
 $semi_max = $quarter_max + 2;
-#$secondFinalId = $semi_max + 1;
-#$finalId = $secondFinalId + 1;
+$secondFinalId = $semi_max + 1;
+$finalId = $secondFinalId + 1;
 $finalId = $semi_max + 1;
 $slutspel_max = $finalId;
 
 
 function daysLeft() {
 	$now = mktime();
-	$cupStart = mktime(0, 0, 0, 06, 10, 2016);
+	$cupStart = mktime(0, 0, 0, 06, 10, 2014);
 	return floor(($cupStart - $now) / (60 * 60 * 24)) + 1;	
 }
 

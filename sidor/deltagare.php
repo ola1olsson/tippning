@@ -1,8 +1,11 @@
 <span class="header">Deltagare<br/></span>
 
-<?
-$result = mysql_query("SELECT * FROM users ORDER BY username") or die(mysql_error());
-while($row = mysql_fetch_array( $result )) { 
+<?php
+	include "config.php";
+	include "connect_database.php";
+
+$result = mysqli_query($opendb, "SELECT * FROM users ORDER BY username") or die(mysqli_error($opendb));
+while($row = mysqli_fetch_array($result )) { 
 	?>
 	<div class="userContainer" onclick="document.location='index.php?sida=visadeltagare&id=<?=$row['id'];?>';">
 		<table border="0" cellspacing="0" cellpadding="0">
@@ -29,7 +32,7 @@ while($row = mysql_fetch_array( $result )) {
 			</tr>
 		</table>
 	</div>
-	<?
+<?php
 }
 ?>
 

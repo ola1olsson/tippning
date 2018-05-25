@@ -1,6 +1,9 @@
-<?
-#include "../config.php";
-if(!session_is_registered('permission') || !$_SESSION['permission']) {
+<?php
+include "../config.php";
+include "../connect_database.php";
+
+
+if(isset($_SESSION['permission']) && !$_SESSION['permission']) {
 	echo '<span class="header2">Permission denied!</span>';
 //} else if ($_SESSION['betalt'] != 1) {
 //	echo '<span class="header2">Vi har inte registrerat någon betalning för dig - du måste betala innan du får tippa!</span>';	
@@ -19,7 +22,7 @@ if(!session_is_registered('permission') || !$_SESSION['permission']) {
 <br>
 <br>
 
-<?
+<?php
 if ($_SESSION['betalt'] != 1) { ?>
    <span style="color: red;">
       <b>VARNING!<br/></b>
@@ -27,7 +30,7 @@ if ($_SESSION['betalt'] != 1) { ?>
      <br/>
      <br/>
    </span>
-<? }
+<?php }
 
 $slutspel_max = $finalId; // 64
 
@@ -51,8 +54,6 @@ if(isset($_POST['match'])) {
 	
 	echo '<br><br>';
 	
-//----------------------------------------------------------------------------------------------------------------------	
-//																									
 } else {	
 	$restip = mysql_query("SELECT * FROM tippning WHERE id = ".$_SESSION['userID'].";") or die(mysql_error());
 	if($tipp = mysql_fetch_array($restip, MYSQL_ASSOC)) {
@@ -70,8 +71,6 @@ if(isset($_POST['match'])) {
 	}
 }
 
-//----------------------------------------------------------------------------------------------------------------------	
-// 																								REGISTRERA I DATABASEN
 if(isset($_POST['match']) && !$err && date('Y-m-d')<=$last_bet_day) {
 	// INSERT INTO DATABASE
 	$user_chk = mysql_query("SELECT id FROM tippning WHERE id = ".$_SESSION['userID'].";") or die(mysql_error());
@@ -648,7 +647,7 @@ echo '</table><br><br><br>';
 
 <tr><td></td><td>Vilken spelare, för- och efternamn, gör flest mål i turneringen:</td><td>
 <td colspan="2"><input type="text" size="30" maxlength="30" name="match[topScorer]" value="<?=$_SESSION['match']['topScorer'];?>"
-<?
+<?php
         if(!empty($_SESSION['match']) && $_SESSION['match']['topScorer'] == '') {
                 echo ' style="background-color: #FF0000;"';
                 $err = true;    
@@ -656,7 +655,7 @@ echo '</table><br><br><br>';
 ?>
 ></td></tr>
 </table><br><br><br>
-<?
+<?php
 
 if($err) {
 	echo '<tr><td colspan=7 align="center"><span style="color: #FF0000; font-size: 14px; font-weight: bold;">DU HAR GLÖMT ATT FYLLA I NÅGOT!</span></td></tr>';	
@@ -675,8 +674,7 @@ if($err) {
 </table>
 
 
-<?
+<?php
 }
-
 }
 ?>
