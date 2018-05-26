@@ -8,6 +8,7 @@
 if (1) {
 echo '<span class="header">Min profil<br><br></span>';
 
+		echo "<br>FAN1!";
 if(isset($cmd) && $cmd == 'passwd') {
 	if(isset($_POST['register']) && $_POST['register'] == 'register') {
 		// SAVE PASSWORD
@@ -30,10 +31,11 @@ if(isset($cmd) && $cmd == 'passwd') {
 			'<input type=button value="Spara lösenord" class=btn onClick="this.form.action=\'index.php?page=profile&cmd=passwd\'; this.form.submit();">';
 	}
 } else {
-	if(isset($_POST['register']) && $_POST['register'] == 'register' &&
-		isset($_POST['givenName']) && isset($_POST['familyName']) && isset($_POST['emailAddress']) &&
-		isset($_POST['phonenumber']) && isset($_POST['Company']) && isset($_POST['city'])) {
+		if (isset($_POST['givenName']) && isset($_POST['familyName']) && isset($_POST['emailAddress']) &&
+		isset($_POST['phoneNumber']) && isset($_POST['Company']) && isset($_POST['city'])) {
+		echo "<br>FAN33!";
 
+		//if(isset($_POST['register']) && $_POST['register'] == 'register' &&
 		// SPARA INSTÄLLNINGAR	
 		mysqli_query($opendb, "UPDATE users SET "  .
 					"givenName = '" . $_POST['givenName']  ."', ".
@@ -75,7 +77,7 @@ if(isset($cmd) && $cmd == 'passwd') {
 		?>
 		<table border="0" cellspacing="30">
 		<tr valign="top">
-			<td><img src="<?=isset($dbuser['photo']) ? $dbuser['photo'] : '';?>" width="150" height="150"></td>
+			<td><img src="<?=isset($dbuser['foto']) ? $dbuser['foto'] : '';?>" width="150" height="150"></td>
 			<td rowspan="2">
 				<table border=0 cellspacing=5 cellpadding=0 style="width:200px;">
 					<tr>

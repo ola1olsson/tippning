@@ -1,9 +1,6 @@
 <?php
-	include "config.php";
-	include "connect_database.php";
 
-
-if(!isset($_SESSION['permission']) || !$_SESSION['permission']) {
+if(isset($_SESSION['permission']) || !$_SESSION['permission']) {
 ?>
 
 

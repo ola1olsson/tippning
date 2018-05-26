@@ -1,4 +1,5 @@
 <?php
+	ini_set('display_errors', 'On');
 	session_start();
 	$page = (isset($_GET['sida']) ? $_GET['sida'] : 'startsida');
 	

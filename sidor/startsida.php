@@ -1,8 +1,5 @@
 <?php 
 
-	include "config.php";
-	include "connect_database.php";
-
 // SLASS OVERRIDE
 if (isset($_SESSION['user']) && $_SESSION['user'] == 'slass') {
      echo '<center><span style="background-color: yellow; color: magenta; font-size: 60pt; font-weight: bold;">YOU SUCK!!!<br/></span></center>';
