@@ -14,7 +14,7 @@ if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['
 	<table style="border: 1px dotted black;">
 		<tr>
 			<td><b>ID</b></td>
-			<td><b>Användare</b></td>
+			<td><b>Anv&aumlndare</b></td>
 			<td><b>Tippat?</b></td>
 			<td><b>Betalt?</b></td>
 		</tr>
@@ -58,7 +58,7 @@ if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['
 	?>
 	</table>
 	<br/>
-	Antal som är duktiga: <?=$nbrTipped;?><br/>
+	Antal som &aumlr duktiga: <?=$nbrTipped;?><br/>
 	Antal som suger balle: <?=$nbrLosers;?>
 	
 	</td>

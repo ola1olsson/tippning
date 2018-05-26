@@ -21,13 +21,13 @@ if(isset($_REQUEST['register']) && $_REQUEST['register'] == 'true') {
 	} else $errUser = false;
 
 
-	// Kontroll om lösenordet stämmer, Kontrollerar så att man skrivit in samma lösenord två gånger.
+	// Kontroll om l&oumlsenordet st&aumlmmer, Kontrollerar s&aring att man skrivit in samma l&oumlsenord tv&aring g&aringnger.
 	if($_POST['password1'] != $_POST['password2'] || empty($_POST['password1']) || empty($_POST['password2'])) {
 		$errPass = true;
 	} else $errPass = false;
 	
 	
-	// Om User och Password är ok, fortsätt 
+	// Om User och Password &aumlr ok, forts&aumltt 
 	if(!$errUser && !$errPass && isset($_POST['fornamn'])) {
 		mysqli_query($opendb, "INSERT INTO users (givenName, familyName, Company, emailAddress, phoneNumber, city, username, password) 
 					VALUES ('".addslashes($_POST['fornamn'])."', '".addslashes($_POST['efternamn'])."', '".addslashes($_POST['foretag'])."', '".addslashes($_POST['email'])."', '".addslashes($_POST['telefon'])."', '".addslashes($_POST['ort'])."', '".addslashes($_POST['user'])."', '".md5(addslashes($_POST['password1']))."');") or die(mysqli_error($opendb));
@@ -47,12 +47,12 @@ if(isset($_POST['register']) && ($_POST['register'] == 'true' && ($errUser || $e
 
 <table width="850" height="600" background="pic\uefa_logo.jpg" border="0" bordercolor="black" align="center">
 	<tr> 
-	<td height="325" colspan=4 valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tänk på att inte anv&aumlnda n&aringra anv&aumlndarnamn & l&oumlsenord<br>
-											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;som du använder t.ex. på jobbet, till din mail m.m.<br>&nbsp;
+	<td height="325" colspan=4 valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&aumlnk p&aring att inte anv&aumlnda n&aringra anv&aumlndarnamn & l&oumlsenord<br>
+											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;som du anv&aumlnder t.ex. p&aring jobbet, till din mail m.m.<br>&nbsp;
 		
 		<tr>
 		<form action="registrera.php" method="post" name="register">
-		<td width="150" height="20"></td><td width="25">Förnamn</td><td width="150"><input type="text" name="fornamn" value="<?=isset($_POST['fornamn']) ? $_POST['fornamn'] : '';?>" style="width:145px;"></td><td></td>
+		<td width="150" height="20"></td><td width="25">F&oumlrnamn</td><td width="150"><input type="text" name="fornamn" value="<?=isset($_POST['fornamn']) ? $_POST['fornamn'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
@@ -64,7 +64,7 @@ if(isset($_POST['register']) && ($_POST['register'] == 'true' && ($errUser || $e
 		</tr>
 		
 		<tr>
-		<td width="150" height="20"></td><td width="25">Företag</td><td width="150"><input type="text" name="foretag" value="<?=isset($_POST['foretag']) ? $_POST['foretag'] : '';?>" style="width:145px;"></td><td></td>
+		<td width="150" height="20"></td><td width="25">F&oumlretag</td><td width="150"><input type="text" name="foretag" value="<?=isset($_POST['foretag']) ? $_POST['foretag'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
@@ -80,16 +80,16 @@ if(isset($_POST['register']) && ($_POST['register'] == 'true' && ($errUser || $e
 		</tr>
 
 		<tr>
-		<td width="150" height="25"></td><td width="25">Användarnamn</td><td width="150"><input type="text" name="user" value="<?=isset($_POST['user']) ? $_POST['user'] : '';?>" style="width:145px;"></td>
+		<td width="150" height="25"></td><td width="25">Anv&aumlndarnamn</td><td width="150"><input type="text" name="user" value="<?=isset($_POST['user']) ? $_POST['user'] : '';?>" style="width:145px;"></td>
 		<td>
 		<?php
-		// Det är något som är fel med användarnamnet. Två alternativ: 1.Du har inte skrivit in något användarnamn. 2.Du har skrivit in ett användarnamn som redan existerar.
+		// Det &aumlr n&aringgot som &aumlr fel med anv&aumlndarnamnet. Tv&aring alternativ: 1.Du har inte skrivit in n&aringgot anv&aumlndarnamn. 2.Du har skrivit in ett anv&aumlndarnamn som redan existerar.
 		if(isset($errUser) &&$errUser) {
 		echo '<span style="color:FF0000;">';
 		if($_POST['user'] == '') 
-		echo 'Du måste ange ett <br>användarnamn.';
+		echo 'Du m&aringste ange ett <br>anv&aumlndarnamn.';
 		else 
-		echo 'Användarnamnet \''.$_POST['user'].'\' <br>är redan upptaget, prova ett nytt.';
+		echo 'Anv&aumlndarnamnet \''.$_POST['user'].'\' <br>&aumlr redan upptaget, prova ett nytt.';
 		echo '</span>';
 		}
 		?>
@@ -97,22 +97,22 @@ if(isset($_POST['register']) && ($_POST['register'] == 'true' && ($errUser || $e
 		</tr>
 		
 		<tr>
-		<td width="150" height="25"></td><td width="25">Lösenord</td><td width="150"><input type="password" name="password1" value="<?php=$_POST['password1'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="25"></td><td width="25">L&oumlsenord</td><td width="150"><input type="password" name="password1" value="<?php=$_POST['password1'];?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
-		<td width="150" height="25"></td><td width="25">Upprepa Lösenord</td><td width="150"><input type="password" name="password2" value="<?php=$_POST['password2'];?>" style="width:145px;"></td>
+		<td width="150" height="25"></td><td width="25">Upprepa L&oumlsenord</td><td width="150"><input type="password" name="password2" value="<?php=$_POST['password2'];?>" style="width:145px;"></td>
 		<td>
 		<?php
 		
-		// Det är något fel med lösenordet. Två alternativ: 1.Du har glömt att fylla i lösenord. 2.Du har skrivit in olika lösenord.
+		// Det &aumlr n&aringgot fel med l&oumlsenordet. Tv&aring alternativ: 1.Du har gl&oumlmt att fylla i l&oumlsenord. 2.Du har skrivit in olika l&oumlsenord.
 		if(isset($errPass) && $errPass)
 		{
 		echo '<span style="color:FF0000;">';
 		if (empty($_POST['password1']) || empty($_POST['password2']))
-		echo 'Du måste ange ett lösenord.';
+		echo 'Du m&aringste ange ett l&oumlsenord.';
 		else 
-		echo 'Du har angivit två olika lösenord.<br>Försök igen...';
+		echo 'Du har angivit tv&aring olika l&oumlsenord.<br>F&oumlrs&oumlk igen...';
 		echo '</span>';
 		}
 		?>
@@ -122,7 +122,7 @@ if(isset($_POST['register']) && ($_POST['register'] == 'true' && ($errUser || $e
 		<tr>
 		<td width="150" height="25"></td><td width="25"></td><td width="150">
 		<input type="hidden" name="register" value="true">
-		<input type="submit" class="btn" value="Nästa"> &nbsp;&nbsp;&nbsp;
+		<input type="submit" class="btn" value="N&aumlsta"> &nbsp;&nbsp;&nbsp;
 		<input type="button" onClick="history.back();" class="btn" value="Avbryt"></td><td></td>
 		</tr>
 		</form>
@@ -152,18 +152,18 @@ if(isset($_POST['register']) && ($_POST['register'] == 'true' && ($errUser || $e
 		<tr>
 			<td width="30" height="180"></td>
 			<td>
-Härmed godkänner jag att mina personuppgifter lagras i databasen.<br>
-Jag är införstådd med att jag kan bli utestängd från systemet<br>
-genom oacceptabelt uppträdande eller fuskande och därmed gå miste<br>
-om insatsen. Inbetalda pengar kan förloras genom dålig tippning.<br>
-Jag kommer att godta arrangörsbeslut oavsett min egen vilja, <br>
-samt erkänna att jag är dålig på att tippa.<br>
-Jag vet att detta är en sida för ett slutet sällskap och att <br>
+H&aumlrmed godk&aumlnner jag att mina personuppgifter lagras i databasen.<br>
+Jag &aumlr inf&oumlrst&aringdd med att jag kan bli utest&aumlngd fr&aringn systemet<br>
+genom oacceptabelt upptr&aumldande eller fuskande och d&aumlrmed g&aring miste<br>
+om insatsen. Inbetalda pengar kan f&oumlrloras genom d&aringlig tippning.<br>
+Jag kommer att godta arrang&oumlrsbeslut oavsett min egen vilja, <br>
+samt erk&aumlnna att jag &aumlr d&aringlig p&aring att tippa.<br>
+Jag vet att detta &aumlr en sida f&oumlr ett slutet s&aumlllskap och att <br>
 jag inte kan bjuda in vem som helst. <br>
-Då Ola är dålig på webbsidor så måste jag även spara mina tips <br>
-lokalt, gärna skriva ut dem som backup om något skulle gå åt h*vete<br>
+D&aring Ola &aumlr d&aringlig p&aring webbsidor s&aring m&aringste jag &aumlven spara mina tips <br>
+lokalt, g&aumlrna skriva ut dem som backup om n&aringgot skulle g&aring &aringt h*vete<br>
 <br>
-För att komma vidare måste du acceptera ovanstående villkor.<br>
+F&oumlr att komma vidare m&aringste du acceptera ovanst&aringende villkor.<br>
 
 			</td>
 		</tr>
@@ -179,7 +179,7 @@ För att komma vidare måste du acceptera ovanstående villkor.<br>
 </table>
 	<?php
 
-// stänger databasen
+// st&aumlnger databasen
 mysqli_close($opendb);
 }
 

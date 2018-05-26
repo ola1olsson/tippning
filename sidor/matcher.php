@@ -85,8 +85,8 @@ foreach($grundspel AS $grupp) {
 	printDivider();
 }
 
-//---------------------------------------------------------- ÅTTONDELSFINALERNA ----------------------------------------------------
-printTitle('Åttondelsfinaler');
+//---------------------------------------------------------- &AringTTONDELSFINALERNA ----------------------------------------------------
+printTitle('&Aringttondelsfinaler');
 printHeaders();
 while($match = mysqli_fetch_array($eights, MYSQLI_ASSOC)) {
 	$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
@@ -138,10 +138,11 @@ $arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,mat
 printGame($match, $hemma, $borta, $arena);
 
 ?>
+
 </table>
+
 <?php
 } else {
 	echo 'Permission denied!';
 }
-	
 ?>

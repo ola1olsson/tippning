@@ -9,31 +9,31 @@ if($_REQUEST['id'] != '')
 	$result = mysqli_query($opendb, "SELECT * FROM users WHERE id = ".$_REQUEST['id'].";") or die(mysqli_error($opendb));
 	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		 
-//--------------------Hämta användarens tippning från databasen------------------------------------- START - Används inte ännu... vet inte om det kommer att användas.
+//--------------------H&aumlmta anv&aumlndarens tippning fr&aringn databasen------------------------------------- START - Anv&aumlnds inte &aumlnnu... vet inte om det kommer att anv&aumlndas.
 /*
 	// DATABASE CONNECTION ESTABLISHMENT
-	$db_result = mysql_query("SELECT * FROM tippning WHERE id = '".$_REQUEST['id']."';") or die(mysql_error());		// Hämta alla värden från tabellen "tippning" där "id" är lika med "request id". Där request id" är användaren du vill titta på.
+	$db_result = mysql_query("SELECT * FROM tippning WHERE id = '".$_REQUEST['id']."';") or die(mysql_error());		// H&aumlmta alla v&aumlrden fr&aringn tabellen "tippning" d&aumlr "id" &aumlr lika med "request id". D&aumlr request id" &aumlr anv&aumlndaren du vill titta p&aring.
 
-	$db_result = mysql_query($query);								// vet inte om "mysql_query" ska vara med här... nått är riktigt fucked här!!!! Tar man bort denna raden blir det helevete!!!
+	$db_result = mysql_query($query);								// vet inte om "mysql_query" ska vara med h&aumlr... n&aringtt &aumlr riktigt fucked h&aumlr!!!! Tar man bort denna raden blir det helevete!!!
 	while($db_res = mysql_fetch_array($db_result, MYSQL_ASSOC)) {
 		for($i=1; $i<=$max_grupp; $i++) {
-			$result[$db_res['id']][$i] = $db_res['m'.$i];			// Hämta resultat i gruppspelet
+			$result[$db_res['id']][$i] = $db_res['m'.$i];			// H&aumlmta resultat i gruppspelet
 		}
 		for($i=$max_grupp + 1; $i<=$max_slut; $i++) {
-			$result[$db_res['id']][$i][0] = $db_res['m'.$i];		// Hämta resultat i slutspelet
-			$result[$db_res['id']][$i][1] = $db_res['m'.$i.'a'];	// Hämta hemmalag i slutspelet från användarens tippning
-			$result[$db_res['id']][$i][2] = $db_res['m'.$i.'b'];	// Hämta bortalag i slutspelet från användarens tippning
+			$result[$db_res['id']][$i][0] = $db_res['m'.$i];		// H&aumlmta resultat i slutspelet
+			$result[$db_res['id']][$i][1] = $db_res['m'.$i.'a'];	// H&aumlmta hemmalag i slutspelet fr&aringn anv&aumlndarens tippning
+			$result[$db_res['id']][$i][2] = $db_res['m'.$i.'b'];	// H&aumlmta bortalag i slutspelet fr&aringn anv&aumlndarens tippning
 		}
-		$result[$db_res['id']][$max_slut + 1] = $db_res['m'.($max_slut + 1)];				// Hämta resultat "Vem vinner EM2008?"
-		$result[$db_res['id']][$max_slut + 2] = $db_res['m'.($max_slut + 2)];				// Hämta resultat "Hur många mål gör Sverige?"
-		$result[$db_res['id']][$max_slut + 3][0] = $db_res['m'.($max_slut + 3).'a'];			// Hämta resultat "Vilken spelare gör flestmål?"
-		$result[$db_res['id']][$max_slut + 3][1] = $db_res['m'.($max_slut + 3).'b'];			// Hämta resultat "Och han spelar för landet?"
+		$result[$db_res['id']][$max_slut + 1] = $db_res['m'.($max_slut + 1)];				// H&aumlmta resultat "Vem vinner EM2008?"
+		$result[$db_res['id']][$max_slut + 2] = $db_res['m'.($max_slut + 2)];				// H&aumlmta resultat "Hur m&aringnga m&aringl g&oumlr Sverige?"
+		$result[$db_res['id']][$max_slut + 3][0] = $db_res['m'.($max_slut + 3).'a'];			// H&aumlmta resultat "Vilken spelare g&oumlr flestm&aringl?"
+		$result[$db_res['id']][$max_slut + 3][1] = $db_res['m'.($max_slut + 3).'b'];			// H&aumlmta resultat "Och han spelar f&oumlr landet?"
 	}
 */
-//--------------------Hämta användarens tippning från databasen------------------------------------- SLUT
+//--------------------H&aumlmta anv&aumlndarens tippning fr&aringn databasen------------------------------------- SLUT
 		 
 
-//--------------------Skriv ut användarens uppgifter från databasen------------------------------------- START
+//--------------------Skriv ut anv&aumlndarens uppgifter fr&aringn databasen------------------------------------- START
 	?>	 
 
 <div class="userContainer userContainer-full">
@@ -56,7 +56,7 @@ if($_REQUEST['id'] != '')
 						<td><?=$row['city'];?></td>
 					</tr>
 					<tr>
-						<td>Företag:</td>
+						<td>F&oumlretag:</td>
 						<td><?=$row['Company'];?></td>
 					</tr>
 					<tr>
@@ -81,14 +81,14 @@ if($_REQUEST['id'] != '')
 <span class="header3">
 	<?php
 
-	$result = mysqli_query($opendb, "SELECT * FROM tippning WHERE ID = ".$row['id'].";"); // Hämtar deltagarens tippning fr¨n databasen.
+	$result = mysqli_query($opendb, "SELECT * FROM tippning WHERE ID = ".$row['id'].";"); // H&aumlmtar deltagarens tippning fr¨n databasen.
 	if(mysqli_num_rows($result) > 0) {
 		echo $row['username'].' har en registrerad tippning!';
-		$correct = mysqli_query($opendb, "SELECT * FROM tippning WHERE ID = -1;"); 	// Hämtar den rätta raden i tippningen
-		$corr = mysqli_fetch_array($correct, MYSQLI_ASSOC);					// Lägger in den rätta raden i en Array
-		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);						// Lägger in deltagarens tippnings rad i en Array
+		$correct = mysqli_query($opendb, "SELECT * FROM tippning WHERE ID = -1;"); 	// H&aumlmtar den r&aumltta raden i tippningen
+		$corr = mysqli_fetch_array($correct, MYSQLI_ASSOC);					// L&aumlgger in den r&aumltta raden i en Array
+		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);						// L&aumlgger in deltagarens tippnings rad i en Array
 	} else {
-		echo $row['username'].' har inte tippat ännu!';
+		echo $row['username'].' har inte tippat &aumlnnu!';
 	}	
 ?>
 	<br/>
@@ -116,7 +116,7 @@ if(isset($_SESSION['permission']) && $_SESSION['permission'] && $_SESSION['betal
 			</tr>
 			</table>
 		</td>
-		<td align="center" width="50">Poäng</td>
+		<td align="center" width="50">Po&aumlng</td>
 	</tr>
 	
 	<?php
@@ -165,11 +165,11 @@ foreach($grundspel AS $grupp) {
 	<span class="header4">
 	<?php 
 	if ($_SESSION['betalt'] != 1) { ?>
-	Du har ännu inte betalt och får därmed inte se denna persons tippning.
+	Du har &aumlnnu inte betalt och f&aringr d&aumlrmed inte se denna persons tippning.
 	<?php } else if (!$cupStarted) { ?>
-		Från och med <?=$last_bet_day ?> kommer du att kunna se deltagarens tippning.
+		Fr&aringn och med <?=$last_bet_day ?> kommer du att kunna se deltagarens tippning.
 	<?php } else { ?>
-		Du är inte berättigad att se denna persons tippning.
+		Du &aumlr inte ber&aumlttigad att se denna persons tippning.
 	<?php } ?>
 	</span>	
 <?php } ?>

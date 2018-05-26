@@ -1,10 +1,10 @@
 <span class="header">Deltagare<br/></span>
 
 <?php
-
 $result = mysqli_query($opendb, "SELECT * FROM users ORDER BY username") or die(mysqli_error($opendb));
 while($row = mysqli_fetch_array($result )) { 
-	?>
+?>
+
 	<div class="userContainer" onclick="document.location='index.php?sida=visadeltagare&id=<?=$row['id'];?>';">
 		<table border="0" cellspacing="0" cellpadding="0">
 			<tr>

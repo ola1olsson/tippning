@@ -23,7 +23,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 ?>
 		<span style="color: red;">
 		<b>VARNING!<br/></b>
-		Du har ännu inte betalt. Dock har du chans att lägga din tippning fram till <?= $last_bet_day ?>, sen stänger vi slussarna, men är inte betalning gjord innan <?= $last_pay_day ?> så kommer din användaridentitet att tas bort.
+		Du har &aumlnnu inte betalt. Dock har du chans att l&aumlgga din tippning fram till <?= $last_bet_day ?>, sen st&aumlnger vi slussarna, men &aumlr inte betalning gjord innan <?= $last_pay_day ?> s&aring kommer din anv&aumlndaridentitet att tas bort.
 		<br/>
 		<br/>
 		</span>
@@ -132,7 +132,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 			</tr>
 <?php
 			while($match = mysqli_fetch_array($matcher, MYSQLI_ASSOC)) {
-				// Kolumn 'lag' är skönt - 2014 fixa sig!
+				// Kolumn 'lag' &aumlr sk&oumlnt - 2014 fixa sig!
 				if (isset($match) && isset($match['ID'])) {
 					$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
 					$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
@@ -184,8 +184,8 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 
 
 
-// -----------------------------------------ÅTTONDEL BÖRJAR -------------------------------------
-		<h3>Åttondelsfinaler</h3>
+// -----------------------------------------&AringTTONDEL B&OumlRJAR -------------------------------------
+		<h3>&Aringttondelsfinaler</h3>
 		<table border="0" cellspacing="0" cellpadding="2">
 			<tr class="header">
 			<td align="right"></td>
@@ -198,7 +198,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 		</tr>
 <?php
 /**
-		groups förklaring:
+		groups f&oumlrklaring:
 		groups[i] -> i = gruppnummer
 		groups[i][k] -> k(0) = hemma, k(1) = borta
 */
@@ -206,13 +206,13 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 		$groups[1][0] = '2:a i grupp A';
 		$groups[1][1] = '2:a i grupp C';
 		$groups[2][0] = '1:a i grupp B';
-		$groups[2][1] = 'Bästa 3:a i A/C/D';
+		$groups[2][1] = 'B&aumlsta 3:a i A/C/D';
 		$groups[3][0] = '1:a grupp D';
-		$groups[3][1] = 'Bästa 3:A i B/E/F';
+		$groups[3][1] = 'B&aumlsta 3:A i B/E/F';
 		$groups[4][0] = '1:a i grupp A';
-		$groups[4][1] = 'Bästa 3:e i C/D/E';
+		$groups[4][1] = 'B&aumlsta 3:e i C/D/E';
 		$groups[5][0] = '1:a i grupp C';
-		$groups[5][1] = 'Bästa 3:a i A/B/F';
+		$groups[5][1] = 'B&aumlsta 3:a i A/B/F';
 		$groups[6][0] = '1:a i grupp F';
 		$groups[6][1] = '2:a i grupp E';
 		$groups[7][0] = '1:a i grupp E';
@@ -231,11 +231,11 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 ?>
 
 			<tr>
-			<td colspan="7" align="center"><span class="header4"><b>Åttondelsfinal <?=$match?></b></span><br><br></td>
+			<td colspan="7" align="center"><span class="header4"><b>&Aringttondelsfinal <?=$match?></b></span><br><br></td>
 			</tr>
 			<tr>
 <?php
-			// kollar så att just denna match blivit tippad, annars färgar vi hela TR'n röööööööd
+			// kollar s&aring att just denna match blivit tippad, annars f&aumlrgar vi hela TR'n r&ouml&ouml&ouml&ouml&ouml&ouml&oumld
 			if(!empty($_SESSION['match']) && ($_SESSION['match'][$matchnumber][0] == '')) {
 				echo '  style="background-color: #FF0000;"';
 				$err = true;
@@ -244,7 +244,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 			<td align="center"><?=$matchnumber?></td>
 			<td align="center"><input type="radio" class="radio" name="<?='match['.$matchnumber.'][0]'?>" value="1"
 <?php
-			// kolla om matchen redan är tippad (och isf sparad i sessionen), i så fall skall rätt tippning "checkas"
+			// kolla om matchen redan &aumlr tippad (och isf sparad i sessionen), i s&aring fall skall r&aumltt tippning "checkas"
 			if(isset($_SESSION['match']) && $_SESSION['match'][$matchnumber][0] == '1') echo ' checked';
 ?>
 			></td>
@@ -274,8 +274,8 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 		<br>
 
 <?php
-// ------------------------------------------------ ÅTTONDEL SLUT ---------------------------
-// -------------------------------------------------------- KVART BÖRJAR --------------------------
+// ------------------------------------------------ &AringTTONDEL SLUT ---------------------------
+// -------------------------------------------------------- KVART B&OumlRJAR --------------------------
 ?>
 
 		<h3>Kvartsfinaler</h3>
@@ -317,7 +317,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 			$winner[3][1] = 4;
 			$winner[4][0] = 7;
 			$winner[4][1] = 8;
-			$match_offset = $eights_max; // Sista matchen av åttondelsfinalerna + 1 = första kvartsfinalen
+			$match_offset = $eights_max; // Sista matchen av &aringttondelsfinalerna + 1 = f&oumlrsta kvartsfinalen
 			} else {
 			$groups[1][0] = 'Vinnare match 37';
 			$groups[1][1] = 'Vinnare match 39';
@@ -348,8 +348,8 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 
 <?php
 			echo '<tr';
-			// Används för att kolla om man "glömt" tippa på nån match, i så fall skall hela den TR'n bli röd. 
-			//(err=true säger åt dig att något inte har tippats, används säkert senare..... 2014? Nu tänker du - "Ja!"
+			// Anv&aumlnds f&oumlr att kolla om man "gl&oumlmt" tippa p&aring n&aringn match, i s&aring fall skall hela den TR'n bli r&oumld. 
+			//(err=true s&aumlger &aringt dig att n&aringgot inte har tippats, anv&aumlnds s&aumlkert senare..... 2014? Nu t&aumlnker du - "Ja!"
 			if(!empty($_SESSION['match']) && ($_SESSION['match'][$matchnumber][0] == '')) 
 			{
 				echo ' style="background-color: #FF0000;"';
@@ -358,12 +358,12 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 			echo '><td align="center">'.($matchnumber).'</td>'.
 					'</td>'.		
 					'<td align="center"><input type="radio" class=radio name="match['.($matchnumber).'][0]" value="1"';
-			if(isset($_SESSION['match']) && $_SESSION['match'][$matchnumber][0] == '1') // används för att kolla med tippningen som ligger i sessionen om man tippat "etta"
+			if(isset($_SESSION['match']) && $_SESSION['match'][$matchnumber][0] == '1') // anv&aumlnds f&oumlr att kolla med tippningen som ligger i sessionen om man tippat "etta"
 				echo ' checked';
 				echo '></td>'.
 				'<td align="center"> - </td>'.
 				'<td align="center"><input type="radio" class=radio name="match['.($matchnumber).'][0]" value="2"';
-				if(isset($_SESSION['match']) && $_SESSION['match'][$matchnumber][0] == '2') // används för att kolla med tippningen som ligger i sessionen om man tippat "tvåa"
+				if(isset($_SESSION['match']) && $_SESSION['match'][$matchnumber][0] == '2') // anv&aumlnds f&oumlr att kolla med tippningen som ligger i sessionen om man tippat "tv&aringa"
 					echo ' checked';
 					echo '></td>'.
 					'</tr>';
@@ -373,7 +373,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 		echo '</table><br><br><br>';
 // -------------------------------------------------------- KVART SLUT ----------------------------
 
-// -------------------------------------------------------- SEMI BÖRJAR --------------------------
+// -------------------------------------------------------- SEMI B&OumlRJAR --------------------------
 ?>
 		<h3>Semifinaler</h3>
 		<table border=0 cellspacing=0 cellpadding=2>
@@ -419,7 +419,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 		$winner[2][0] = 3;
 		$winner[2][1] = 4;
 
-		$match_offset = $quarter_max; // sista matchen i kvartarna (+ 1 = första semin)
+		$match_offset = $quarter_max; // sista matchen i kvartarna (+ 1 = f&oumlrsta semin)
 
 		for($match = 1; $match <= 2; $match++) {
 
@@ -438,8 +438,8 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 			</tr>
 <?php
 			echo '<tr';
-			// Används för att kolla om man "glömt" tippa på nån match, i så fall skall hela den TR'n bli röd. 
-			//(err=true säger åt dig att något inte har tippats, används säkert senare.....
+			// Anv&aumlnds f&oumlr att kolla om man "gl&oumlmt" tippa p&aring n&aringn match, i s&aring fall skall hela den TR'n bli r&oumld. 
+			//(err=true s&aumlger &aringt dig att n&aringgot inte har tippats, anv&aumlnds s&aumlkert senare.....
 			if(!empty($_SESSION['match']) && ($_SESSION['match'][$matchnumber][0] == '')) {
 				echo ' style="background-color: #FF0000;"';
 				$err = true;
@@ -451,12 +451,12 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 			'<td align="center"> Vinnare kvartsfinal '. $winner[$match][1] .
 			'</td>'.		
 			'<td align="center"><input type="radio" class=radio name="match['.($matchnumber).'][0]" value="1"';
-			if(isset($_SESSION['match']) && $_SESSION['match'][$matchnumber][0] == '1') // används för att kolla med tippningen som ligger i sessionen om man tippat "etta"
+			if(isset($_SESSION['match']) && $_SESSION['match'][$matchnumber][0] == '1') // anv&aumlnds f&oumlr att kolla med tippningen som ligger i sessionen om man tippat "etta"
 				echo ' checked';
 			echo '></td>'.
 			'<td align="center"> - </td>'.
 			'<td align="center"><input type="radio" class=radio name="match['.($matchnumber).'][0]" value="2"';
-			if(isset($_SESSION['match']) && $_SESSION['match'][$matchnumber][0] == '2') // används för att kolla med tippningen som ligger i sessionen om man tippat "två"
+			if(isset($_SESSION['match']) && $_SESSION['match'][$matchnumber][0] == '2') // anv&aumlnds f&oumlr att kolla med tippningen som ligger i sessionen om man tippat "tv&aring"
 				echo ' checked';
 			echo '></td>'.
 			'</tr>';
@@ -481,7 +481,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 			}
 			echo '><td align="center">'.$matchfinal.'</td>'.
 			'<td><select style="width:100%;" name="match['.$matchfinal.'][1]">'.
-			'<option value="">-- Välj lag --';
+			'<option value="">-- V&aumllj lag --';
 			$allTeams = mysqli_query($opendb, "SELECT * FROM lag ORDER BY lag;");
 			while($alag = mysqli_fetch_array($allTeams,MYSQLI_ASSOC)) {
 				echo '<option value="'.$alag['lag'].'"';
@@ -493,7 +493,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 			'</td>'.
 			'<td align="center"> - </td>'.
 			'<td><select style="width:100%;" name="match['.$matchfinal.'][2]">'.
-			'<option value="">-- Välj lag --';
+			'<option value="">-- V&aumllj lag --';
 			$allTeams = mysqli_query($opendb, "SELECT * FROM lag ORDER BY lag;");
 			while($blag = mysqli_fetch_array($allTeams,MYSQLI_ASSOC)) {
 				echo '<option value="'.$blag['lag'].'"';
@@ -513,7 +513,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 				echo ' checked';
 			echo '></td>'.
 			'</tr>';
-			echo '<tr><td></td><td>Förlorare semifinal 1</td><td></td><td>Förlorare semifinal 2</td></tr>';	
+			echo '<tr><td></td><td>F&oumlrlorare semifinal 1</td><td></td><td>F&oumlrlorare semifinal 2</td></tr>';	
 			echo '<tr><td colspan=7 align=center><hr align=center style="width:96%; height:1px;" color="#6C261F"></td></tr>';	
 			echo '</table><br><br><br>';
 		}
@@ -545,7 +545,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 		}
 		echo '><td align="center">'.$matchfinal.'</td>'.
 		'<td><select style="width:100%;" name="match['.$matchfinal.'][1]">'.
-		'<option value="">-- Välj lag --';
+		'<option value="">-- V&aumllj lag --';
 		$allTeams = mysqli_query($opendb, "SELECT * FROM lag ORDER BY lag;");
 		while($alag = mysqli_fetch_array($allTeams,MYSQLI_ASSOC)) {
 			echo '<option value="'.$alag['lag'].'"';
@@ -557,7 +557,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 		'</td>'.
 		'<td align="center"> - </td>'.
 		'<td><select style="width:100%;" name="match['.$matchfinal.'][2]">'.
-		'<option value="">-- Välj lag --';
+		'<option value="">-- V&aumllj lag --';
 		$allTeams = mysqli_query($opendb, "SELECT * FROM lag ORDER BY lag;");
 		while($blag = mysqli_fetch_array($allTeams,MYSQLI_ASSOC)) {
 			echo '<option value="'.$blag['lag'].'"';
@@ -584,9 +584,9 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 // ------------------------ FINAL ----------------------------------- SLUT
 		if (isset($_SESSION['match'])) {
 ?>
-			<h2>Extrafrågor</h2>
+			<h2>Extrafr&aringgor</h2>
 			<table border=0 cellspacing=0 cellpadding=2>
-			<tr><td></td><td>Hur många mål gör Sverige?:</td><td>
+			<tr><td></td><td>Hur m&aringnga m&aringl g&oumlr Sverige?:</td><td>
 			<td colspan="2"><input type="text" size="3" maxlength="3" name="match[swedishGoals]" value="<?=$_SESSION['match']['swedishGoals'];?>"
 <?php
 		}
@@ -601,7 +601,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 		if (isset($_SESSION['match'])) {
 ?>
 			</td></tr>
-			<tr><td></td><td>Vilken spelare, för- och efternamn, gör flest mål i turneringen:</td><td>
+			<tr><td></td><td>Vilken spelare, f&oumlr- och efternamn, g&oumlr flest m&aringl i turneringen:</td><td>
 			<td colspan="2"><input type="text" size="30" maxlength="30" name="match[topScorer]" value="<?=$_SESSION['match']['topScorer'];?>"
 <?php
 		}
@@ -616,7 +616,7 @@ if(isset($_SESSION['permission']) && !$_SESSION['permission'] && !$cupStarted ||
 
 <?php
 		if($err){
-			echo '<tr><td colspan=7 align="center"><span style="color: #FF0000; font-size: 14px; font-weight: bold;">DU HAR GLÖMT ATT FYLLA I NÅGOT!</span></td></tr>';	
+			echo '<tr><td colspan=7 align="center"><span style="color: #FF0000; font-size: 14px; font-weight: bold;">DU HAR GL&OumlMT ATT FYLLA I N&AringGOT!</span></td></tr>';	
 		}
 ?>
 		<tr>

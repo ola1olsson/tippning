@@ -6,7 +6,7 @@ if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['
 <tr>
 <td align="left" valign="top" frame="rhs" border="1"> 
 
-<span class="header">Jämför<br></span><br>
+<span class="header">J&aumlmf&oumlr<br></span><br>
 
 <?
 
@@ -21,7 +21,7 @@ if(isset($_POST['check'])) {
 	while($usr = mysqli_fetch_array($allusers, MYSQLI_ASSOC))
 		$_POST['users'][$k_usr++] = $usr['id'];	
 	} 
-	echo '<a href="index.php?sida=resultat">Klicka här för att göra en ny jämförelse</a><br><br>';
+	echo '<a href="index.php?sida=resultat">Klicka h&aumlr f&oumlr att g&oumlra en ny j&aumlmf&oumlrelse</a><br><br>';
 	
 	$users[0] = -1;
 	$users[1] = $_SESSION['userID'];
@@ -73,7 +73,7 @@ if(isset($_POST['check'])) {
 	}
 	echo '</tr>';
 	echo '<tr style="font-weight:bold;">
-			<td align=left valign=bottom colspan=5>Antal poäng:</td>';
+			<td align=left valign=bottom colspan=5>Antal po&aumlng:</td>';
 	for($i=1; $i<sizeof($users); $i++) 
 	{
 		$user_points = mysqli_fetch_array(mysqli_query($opendb, "SELECT points FROM users WHERE id = ".$users[$i].";"), MYSQLI_ASSOC);
@@ -222,7 +222,7 @@ if(isset($_POST['check'])) {
 		/**
 		echo '<table border=0 bordercolor=black cellspacing=2 cellpadding=0>';
 		
-		echo '<tr><td colspan='.$colspans.' align=left><span class="header2"><br>Åttondelsfinaler</span></td></tr>';
+		echo '<tr><td colspan='.$colspans.' align=left><span class="header2"><br>&Aringttondelsfinaler</span></td></tr>';
 		echo '<tr>
 				<td align=left valign=bottom colspan=4></td>
 				<td align=center valign=bottom><span class=vertical>Resultat</span></td>';
@@ -356,8 +356,8 @@ if(isset($_POST['check'])) {
 } else {
 
 	if(mysqli_num_rows(mysqli_query($opendb, "SELECT id FROM tippning WHERE id = ".$_SESSION['userID'].";"))) {
-		echo '<span class="header4">Kryssa för de personer vilka Du vill jämföra Ditt resultat med.<br></span>Obs! Endast de personer som har tippat visas i listan.<br><br>';
-		echo '<input type=button class=btn value="Jämför alla" onClick="this.form.action=\'index.php?sida=resultat&cmd=allusers\'; this.form.submit();"><br><br>';
+		echo '<span class="header4">Kryssa f&oumlr de personer vilka Du vill j&aumlmf&oumlra Ditt resultat med.<br></span>Obs! Endast de personer som har tippat visas i listan.<br><br>';
+		echo '<input type=button class=btn value="J&aumlmf&oumlr alla" onClick="this.form.action=\'index.php?sida=resultat&cmd=allusers\'; this.form.submit();"><br><br>';
 		echo '<input type=hidden name=check value=true>';
 		$users = mysqli_query($opendb, "SELECT users.id, users.givenName, users.familyName FROM users, tippning WHERE users.id != ".$_SESSION['userID']." AND users.id = tippning.id ORDER BY givenName ASC;") or die(mysqli_error($opendb));
 		echo '<table border=0 cellspacing=0 cellpadding=2>';
@@ -365,9 +365,9 @@ if(isset($_POST['check'])) {
 		while($user = mysqli_fetch_array($users, MYSQLI_ASSOC)) {
 			echo '<tr><td>'.$user['givenName'].' '.$user['familyName'].'</td><td><input type=checkbox name=users['.($i_users++).'] value="'.$user['id'].'"></td></tr>';
 		}
-		echo '</tr><tr><td colspan=2 align=right><input type=button class=btn value="Jämför!" onClick="this.form.action=\'index.php?sida=resultat\'; this.form.submit();"></td></tr></table>';
+		echo '</tr><tr><td colspan=2 align=right><input type=button class=btn value="J&aumlmf&oumlr!" onClick="this.form.action=\'index.php?sida=resultat\'; this.form.submit();"></td></tr></table>';
 	} else {
-		echo '<span class="header2">Du måste tippa innan du kan jämföra ditt resultat med någon annans.<br></span>';
+		echo '<span class="header2">Du m&aringste tippa innan du kan j&aumlmf&oumlra ditt resultat med n&aringgon annans.<br></span>';
 	}
 }
 ?>

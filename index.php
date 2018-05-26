@@ -31,7 +31,7 @@
 			$_SESSION['username'] = '';
 			$_SESSION['permission'] = 0;
 			session_destroy();
-			$logstatus = "Du är nu utloggad!";
+			$logstatus = "Du &aumlr nu utloggad!";
 		}
 	}
 
@@ -121,8 +121,8 @@
 							<a href="index.php?command=logout">Logga ut</a>
 							<?php if ($_SESSION['admin']) { ?>
 								<p>
-									<a href="index.php?sida=usertip">Användar Info<br/></a>
-									<a href="index.php?sida=update">Uppdatera Poäng<br/></a>
+									<a href="index.php?sida=usertip">Anv&aumlndar Info<br/></a>
+									<a href="index.php?sida=update">Uppdatera Po&aumlng<br/></a>
 								</p>
 							<?php } ?>
 						</div>
@@ -154,15 +154,15 @@
 						<table border="0">
 							<tr>
 								<td colspan="2">
-									<h3><b>&nbsp;<?=isset($logstatus)? $logstatus : 'No status' ?></b></h3>
+									<h3><b>&nbsp;<?=isset($logstatus)? $logstatus : '' ?></b></h3>
 								</td>
 							</tr>
 							<tr>
-								<td>Användarnamn</td>
+								<td>Anv&aumlndarnamn</td>
 								<td><input type="text" name="username" style="width:145px;"></td>
 							</tr>
 							<tr>
-								<td>Lösenord</td>
+								<td>L&oumlsenord</td>
 								<td><input type="password" name="password" style="width:145px;"></td>
 							</tr>
 							<tr>
@@ -173,9 +173,9 @@
 							</tr>
 						</table>
 						<?php if(!$cupStarted) { ?>
-							<a href="registrera.php">Registrera ny användare</a>
+							<a href="registrera.php">Registrera ny anv&aumlndare</a>
 						<?php } else { ?>
-							<i>Registreringen är stängd - cupen har startat!</i>
+							<i>Registreringen &aumlr st&aumlngd - cupen har startat!</i>
 						<?php } ?>
 					</td>
 				</tr>

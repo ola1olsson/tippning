@@ -4,7 +4,7 @@
 <link href="css\styles.css" rel="stylesheet" type="text/css">
 </head>
 <?
-// Om dagens datum inte är mer 2010-11-06 så är det ok att registrera sig på sidan.
+// Om dagens datum inte &aumlr mer 2010-11-06 s&aring &aumlr det ok att registrera sig p&aring sidan.
 // <<CONFIG>>
 if(date('Y-m-d')<'2010-11-06') {
 ?>
@@ -12,14 +12,14 @@ if(date('Y-m-d')<'2010-11-06') {
 <?
 // ---------------------- Avtalet ----------------------------
 /*
-Här med godkänner jag att mina personuppgifter lagras av waldis.se
-Jag är införstådd med att jag kan bli utestängd från systemet för oacceptabelt uppträdande eller fuskande och där igenom gå miste om min insats och mitt livs störta upplevelse.
-Jag fattar också att mina eventuellt inbetalda pengar kan gå förlorade pga min usla tippning.
-Jag kommer att godtaga arragörensbeslut oavsett min egen vilja, samt erkänna att jag är dålig på att tippa.
-Jag vet att detta är en sida för ett slutet sällskap och att jag inte kan bjuda in vem som helst. 
-Ska jag vara med och tävla vet jag att jag måste få arrangörens godkännande innan jag börjar.
+H&aumlr med godk&aumlnner jag att mina personuppgifter lagras av waldis.se
+Jag &aumlr inf&oumlrst&aringdd med att jag kan bli utest&aumlngd fr&aringn systemet f&oumlr oacceptabelt upptr&aumldande eller fuskande och d&aumlr igenom g&aring miste om min insats och mitt livs st&oumlrta upplevelse.
+Jag fattar ocks&aring att mina eventuellt inbetalda pengar kan g&aring f&oumlrlorade pga min usla tippning.
+Jag kommer att godtaga arrag&oumlrensbeslut oavsett min egen vilja, samt erk&aumlnna att jag &aumlr d&aringlig p&aring att tippa.
+Jag vet att detta &aumlr en sida f&oumlr ett slutet s&aumlllskap och att jag inte kan bjuda in vem som helst. 
+Ska jag vara med och t&aumlvla vet jag att jag m&aringste f&aring arrang&oumlrens godk&aumlnnande innan jag b&oumlrjar.
 
-För att komma vidare måste du acceptera ovanstående villkor.
+F&oumlr att komma vidare m&aringste du acceptera ovanst&aringende villkor.
 
 Acceptera	Avbryt 
 */
@@ -37,7 +37,7 @@ include "connect_database.php";
 
 if($_REQUEST['register'] == 'true') {
 
-	// REGISTRERA ANVÄNDAREN	
+	// REGISTRERA ANV&AumlNDAREN	
 	$result = mysqli_query($opendb, "SELECT user FROM users WHERE user='".addslashes($_POST['user'])."';");
 	
 	//
@@ -46,13 +46,13 @@ if($_REQUEST['register'] == 'true') {
 	} else $errUser = false;
 
 
-	// Kontroll om lösenordet stämmer, Kontrollerar så att man skrivit in samma lösenord två gånger.
+	// Kontroll om l&oumlsenordet st&aumlmmer, Kontrollerar s&aring att man skrivit in samma l&oumlsenord tv&aring g&aringnger.
 	if($_POST['password1'] != $_POST['password2'] || empty($_POST['password1']) || empty($_POST['password2'])) {
 		$errPass = true;
 	} else $errPass = false;
 	
 	
-	// Om User och Password är ok, fortsätt 
+	// Om User och Password &aumlr ok, forts&aumltt 
 	if(!$errUser && !$errPass) {
 		mysqli_query($opendb, "INSERT INTO users (givenName, familyName, Company, emailAddress, phoneNumber, city, username, password) 
 					VALUES ('".addslashes($_POST['fornamn'])."', '".addslashes($_POST['efternamn'])."', '".addslashes($_POST['foretag'])."', '".addslashes($_POST['email'])."', '".addslashes($_POST['telefon'])."', '".addslashes($_POST['ort'])."', '".addslashes($_POST['user'])."', '".md5(addslashes($_POST['password1']))."');") or die(mysqli_error($opendb));
@@ -72,12 +72,12 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 
 <table width="850" height="600" background="pic\uefa_euro2008_logo.jpg" border="0" bordercolor="black" align="center">
 	<tr> 
-	<td height="325" colspan=4 valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tänk på att inte använda några användarnamn & lösenord<br>
-											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;som du använder t.ex. på jobbet, till din mail m.m.<br>&nbsp;
+	<td height="325" colspan=4 valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&aumlnk p&aring att inte anv&aumlnda n&aringgra anv&aumlndarnamn & l&oumlsenord<br>
+											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;som du anv&aumlnder t.ex. p&aring jobbet, till din mail m.m.<br>&nbsp;
 		
 		<tr>
 		<form action="registrera.php" method="post" name="register">
-		<td width="150" height="20"></td><td width="25">Förnamn</td><td width="150"><input type="text" name="fornamn" value="<?=$_POST['fornamn'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="20"></td><td width="25">F&oumlrnamn</td><td width="150"><input type="text" name="fornamn" value="<?=$_POST['fornamn'];?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
@@ -89,7 +89,7 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 		</tr>
 		
 		<tr>
-		<td width="150" height="20"></td><td width="25">Företag</td><td width="150"><input type="text" name="foretag" value="<?=$_POST['foretag'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="20"></td><td width="25">F&oumlretag</td><td width="150"><input type="text" name="foretag" value="<?=$_POST['foretag'];?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
@@ -105,16 +105,16 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 		</tr>
 
 		<tr>
-		<td width="150" height="25"></td><td width="25">Användarnamn</td><td width="150"><input type="text" name="user" value="<?=$_POST['user'];?>" style="width:145px;"></td>
+		<td width="150" height="25"></td><td width="25">Anv&aumlndarnamn</td><td width="150"><input type="text" name="user" value="<?=$_POST['user'];?>" style="width:145px;"></td>
 		<td>
 		<?
-		// Det är något som är fel med användarnamnet. Två alternativ: 1.Du har inte skrivit in något användarnamn. 2.Du har skrivit in ett användarnamn som redan existerar.
+		// Det &aumlr n&aringgot som &aumlr fel med anv&aumlndarnamnet. Tv&aring alternativ: 1.Du har inte skrivit in n&aringgot anv&aumlndarnamn. 2.Du har skrivit in ett anv&aumlndarnamn som redan existerar.
 		if($errUser) {
 		echo '<span style="color:FF0000;">';
 		if($_POST['user'] == '') 
-		echo 'Du måste ange ett <br>användarnamn.';
+		echo 'Du m&aringste ange ett <br>anv&aumlndarnamn.';
 		else 
-		echo 'Användarnamnet \''.$_POST['user'].'\' <br>är redan upptaget, prova ett nytt.';
+		echo 'Anv&aumlndarnamnet \''.$_POST['user'].'\' <br>&aumlr redan upptaget, prova ett nytt.';
 		echo '</span>';
 		}
 		?>
@@ -122,22 +122,22 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 		</tr>
 		
 		<tr>
-		<td width="150" height="25"></td><td width="25">Lösenord</td><td width="150"><input type="password" name="password1" value="<?=$_POST['password1'];?>" style="width:145px;"></td><td></td>
+		<td width="150" height="25"></td><td width="25">L&oumlsenord</td><td width="150"><input type="password" name="password1" value="<?=$_POST['password1'];?>" style="width:145px;"></td><td></td>
 		</tr>
 		
 		<tr>
-		<td width="150" height="25"></td><td width="25">Upprepa Lösenord</td><td width="150"><input type="password" name="password2" value="<?=$_POST['password2'];?>" style="width:145px;"></td>
+		<td width="150" height="25"></td><td width="25">Upprepa L&oumlsenord</td><td width="150"><input type="password" name="password2" value="<?=$_POST['password2'];?>" style="width:145px;"></td>
 		<td>
 		<?
 		
-		// Det är något fel med lösenordet. Två alternativ: 1.Du har glömt att fylla i lösenord. 2.Du har skrivit in olika lösenord.
+		// Det &aumlr n&aringgot fel med l&oumlsenordet. Tv&aring alternativ: 1.Du har gl&oumlmt att fylla i l&oumlsenord. 2.Du har skrivit in olika l&oumlsenord.
 		if($errPass)
 		{
 		echo '<span style="color:FF0000;">';
 		if (empty($_POST['password1']) || empty($_POST['password2']))
-		echo 'Du måste ange ett lösenord.';
+		echo 'Du m&aringste ange ett l&oumlsenord.';
 		else 
-		echo 'Du har angivit två olika lösenord.<br>Försök igen...';
+		echo 'Du har angivit tv&aring olika l&oumlsenord.<br>F&oumlrs&oumlk igen...';
 		echo '</span>';
 		}
 		?>
@@ -147,7 +147,7 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 		<tr>
 		<td width="150" height="25"></td><td width="25"></td><td width="150">
 		<input type="hidden" name="register" value="true">
-		<input type="submit" class="btn" value="Nästa"> &nbsp;&nbsp;&nbsp;
+		<input type="submit" class="btn" value="N&aumlsta"> &nbsp;&nbsp;&nbsp;
 		<input type="button" onClick="history.back();" class="btn" value="Avbryt"></td><td></td>
 		</tr>
 		</form>
@@ -165,7 +165,7 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 <?
 } else {
 
-//	echo 'Du är registrerad!';
+//	echo 'Du &aumlr registrerad!';
 //	echo 'DEBUG:'=$debug;
 	?>
 		
@@ -181,18 +181,18 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 		<tr>
 			<td width="30" height="180"></td>
 			<td>
-			Jag godkänner att mina personuppgifter lagras av waldis.se<br><br>
-			Jag är införstådd med att jag kan bli utestängd från systemet <br>
-			för oacceptabelt uppträdande eller fuskande och där igenom gå<br>
-			miste om min insats och mitt livs störta upplevelse.<br><br>
-			Jag fattar också att mina eventuellt inbetalda pengar kan gå<br>
-			förlorade pga min usla tippning.<br><br>
-			Jag kommer att godtaga arragörensbeslut oavsett min egen vilja,<br>
-			samt erkänna att jag är dålig på att tippa.<br><br>
-			Jag vet att detta är en sida för ett slutet sällskap och att <br>
+			Jag godk&aumlnner att mina personuppgifter lagras av waldis.se<br><br>
+			Jag &aumlr inf&oumlrst&aringdd med att jag kan bli utest&aumlngd fr&aringn systemet <br>
+			f&oumlr oacceptabelt upptr&aumldande eller fuskande och d&aumlr igenom g&aring<br>
+			miste om min insats och mitt livs st&oumlrta upplevelse.<br><br>
+			Jag fattar ocks&aring att mina eventuellt inbetalda pengar kan g&aring<br>
+			f&oumlrlorade pga min usla tippning.<br><br>
+			Jag kommer att godtaga arrag&oumlrensbeslut oavsett min egen vilja,<br>
+			samt erk&aumlnna att jag &aumlr d&aringlig p&aring att tippa.<br><br>
+			Jag vet att detta &aumlr en sida f&oumlr ett slutet s&aumlllskap och att <br>
 			jag inte kan bjuda in vem som helst.<br><br> 
-			Ska jag vara med och tävla vet jag att jag måste få arrangörens<br>
-			godkännande innan jag börjar.<br>
+			Ska jag vara med och t&aumlvla vet jag att jag m&aringste f&aring arrang&oumlrens<br>
+			godk&aumlnnande innan jag b&oumlrjar.<br>
 			</td>
 		</tr>
 		<tr>
@@ -207,7 +207,7 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 </table>
 	<?
 
-// stänger databasen
+// st&aumlnger databasen
 mysqli_close($opendb);
 }
 

@@ -9,7 +9,7 @@ if($_SESSION['admin']) {
 	<tr>
 		<td align="left" valign="top" frame="rhs" border="1"> 
 			<center>
-				<span class="header">Uppdatering av poängställning</span>
+				<span class="header">Uppdatering av po&aumlngst&aumlllning</span>
 			</center>
 			<br>
 			<table>
@@ -76,7 +76,7 @@ if($_SESSION['admin']) {
 						?>
 	
 					<?
-					// 1p för rätt resultat för varje match
+					// 1p f&oumlr r&aumltt resultat f&oumlr varje match
 					$points_result = 1;
 					for($k = 1; $k <= $slutspel_max; $k++) {
 						$maxPoints = $maxPoints + $points_result;
@@ -102,7 +102,7 @@ if($_SESSION['admin']) {
 						<?
 					}
 					
-					// 2p - Rätt tippad åttondels-, kvarts-, semi- eller tredjeplatslag, (och final just nu)
+					// 2p - R&aumltt tippad &aringttondels-, kvarts-, semi- eller tredjeplatslag, (och final just nu)
 					for ($k = $grundspel_max + 1; $k <= $eights_max; $k++) {
 						$points_team[$k] = 2; // Points for correct eights final team
 					}
@@ -177,7 +177,7 @@ if($_SESSION['admin']) {
 				}
 				?>
 			<table>
-			<?=$nbrUsers?>st deltagares poängställning har uppdaterats.<br/>
+			<?=$nbrUsers?>st deltagares po&aumlngst&aumlllning har uppdaterats.<br/>
 			<br/>
 			<input type=button class=btn value="Startsidan" onClick="document.location=\'index.php?sida=startsida\';" />
 		</td>

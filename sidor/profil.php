@@ -8,35 +8,33 @@
 if (1) {
 echo '<span class="header">Min profil<br><br></span>';
 
-		echo "<br>FAN1!";
 if(isset($cmd) && $cmd == 'passwd') {
 	if(isset($_POST['register']) && $_POST['register'] == 'register') {
 		// SAVE PASSWORD
 		$passres = mysqli_query($opendb, "SELECT password FROM users WHERE ID = '".$_SESSION['userID']."';");
 		if(mysql_result($passres,0,'password') == $_POST['oldPass'] && $_POST['newPass1'] == $_POST['newPass2']) {
 			mysqli_query($opendb, "UPDATE users SET password = '".$_POST['newPass1']."' WHERE ID = '".$_SESSION['userID']."';");
-			echo '<span class="header3">Det nya lösenordet sparades!<br></span><br>'.
+			echo '<span class="header3">Det nya l&oumlsenordet sparades!<br></span><br>'.
 					'<input type=button value="Ok" onClick="document.location=\'default.php?page=default\';" class=btn>';
 		} else {
 			// ERROR PASSWORD
-			echo '<span class="header3">Fel uppstod vid sparandet! Försök igen...<br></span>'.
-				'<input type=button class=btn value="Försök igen..." onClick="document.location=\'index.php?page=profile&cmd=passwd\';">';
+			echo '<span class="header3">Fel uppstod vid sparandet! F&oumlrs&oumlk igen...<br></span>'.
+				'<input type=button class=btn value="F&oumlrs&oumlk igen..." onClick="document.location=\'index.php?page=profile&cmd=passwd\';">';
 		}
 	} else {
 		// ENTER NEW PASSWORD
-		echo 'Gammalt lösenord:<br><input type=password name=oldPass><br><br><br>'.
-			'Nytt lösenord:<br><input type=password name=newPass1><br><br>'.
-			'Upprepa lösenord:<br><input type=password name=newPass2><br><br>'.
+		echo 'Gammalt l&oumlsenord:<br><input type=password name=oldPass><br><br><br>'.
+			'Nytt l&oumlsenord:<br><input type=password name=newPass1><br><br>'.
+			'Upprepa l&oumlsenord:<br><input type=password name=newPass2><br><br>'.
 			'<input type=hidden name=register value=register>'.
-			'<input type=button value="Spara lösenord" class=btn onClick="this.form.action=\'index.php?page=profile&cmd=passwd\'; this.form.submit();">';
+			'<input type=button value="Spara l&oumlsenord" class=btn onClick="this.form.action=\'index.php?page=profile&cmd=passwd\'; this.form.submit();">';
 	}
 } else {
 		if (isset($_POST['givenName']) && isset($_POST['familyName']) && isset($_POST['emailAddress']) &&
 		isset($_POST['phoneNumber']) && isset($_POST['Company']) && isset($_POST['city'])) {
-		echo "<br>FAN33!";
 
 		//if(isset($_POST['register']) && $_POST['register'] == 'register' &&
-		// SPARA INSTÄLLNINGAR	
+		// SPARA INST&AumlLLNINGAR	
 		mysqli_query($opendb, "UPDATE users SET "  .
 					"givenName = '" . $_POST['givenName']  ."', ".
 					"familyName = '"  . $_POST['familyName'] ."', ".
@@ -81,7 +79,7 @@ if(isset($cmd) && $cmd == 'passwd') {
 			<td rowspan="2">
 				<table border=0 cellspacing=5 cellpadding=0 style="width:200px;">
 					<tr>
-						<td>Förnamn</td>
+						<td>F&oumlrnamn</td>
 						<td colspan="2"><input type="text" style="width:200px;" name="givenName" value="<?=isset($dbuser['givenName']) ? $dbuser['givenName'] : '';?>"></td>
 					</tr>	
 					<tr>
@@ -89,7 +87,7 @@ if(isset($cmd) && $cmd == 'passwd') {
 						<td colspan="2"><input type="text" style="width:200px;" name="familyName" value="<?=isset($dbuser['familyName']) ? $dbuser['familyName'] : '';?>"</td>
 					</tr>
 					<tr>
-						<td>Företag</td>
+						<td>F&oumlretag</td>
 						<td colspan="2"><input type="text" style="width:200px;" name="Company" value="<?=isset($dbuser['Company']) ? $dbuser['Company'] : '';?>"></td>
 					</tr>
 					<tr>

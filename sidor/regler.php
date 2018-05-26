@@ -11,75 +11,75 @@ if(isset($_SESSION['permission']) || !$_SESSION['permission']) {
 				<span class="header">Regler</span>
 			</center>
 			<br/>
-			<b>Allmänt<br/></b>
-			Detta är en privat tippning för ett slutet sällskap gjord av Thobias Karlsson från början.<br/>
-                        Ola har fått tillgång och ändrat i den ursprungliga koden.
-			Inbjudan gäller endast dig, eftersom du är så speciell.<br/>
-			Deltagandet kostar <?=$price?> SEK där hälften går till FC Österlen<br/>
-                        Av de resterande pengarna går:</br>
+			<b>Allm&aumlnt<br/></b>
+			Detta &aumlr en privat tippning f&oumlr ett slutet s&aumlllskap gjord av Thobias Karlsson fr&aringn b&oumlrjan.<br/>
+                        Ola har f&aringtt tillg&aringng och &aumlndrat i den ursprungliga koden.
+			Inbjudan g&aumlller endast dig, eftersom du &aumlr s&aring speciell.<br/>
+			Deltagandet kostar <?=$price?> SEK d&aumlr h&aumllften g&aringr till FC &Oumlsterlen<br/>
+                        Av de resterande pengarna g&aringr:</br>
                         <?=$procent_ett?>% till vinnaren </br>
-                        <?=$procent_tva?>% till tvåan</br>
+                        <?=$procent_tva?>% till tv&aringan</br>
                         <?=$procent_tre?>% till trean</br>
                         </br> 
-			Du måste ha tippat <u>senast</u> <?=$last_bet_day?><br/>
-			Skulle någon match bli inställd kommer den inte att ge några poäng.<br/>
-			Din tippning behöver inte stämma hela vägen igenom.<br/>
-			Dvs att om du i gruppspelet får ett lag som vinnare via resultat behöver du inte sätta detta lag som vinnare för gruppen.<br/>
+			Du m&aringste ha tippat <u>senast</u> <?=$last_bet_day?><br/>
+			Skulle n&aringgon match bli inst&aumllld kommer den inte att ge n&aringgra po&aumlng.<br/>
+			Din tippning beh&oumlver inte st&aumlmma hela v&aumlgen igenom.<br/>
+			Dvs att om du i gruppspelet f&aringr ett lag som vinnare via resultat beh&oumlver du inte s&aumltta detta lag som vinnare f&oumlr gruppen.<br/>
 			<br/>
 			<b>Resultat<br/></b>
-			I gruppspelet gäller resultaten 1 X 2<br/>
-			I slutspelet gäller 1 2, eftersom ett lag måste vinna.<br/>
-			Skulle lagen vara skiftade, dvs hemma och bortalag, får du inget poäng.<br/>
+			I gruppspelet g&aumlller resultaten 1 X 2<br/>
+			I slutspelet g&aumlller 1 2, eftersom ett lag m&aringste vinna.<br/>
+			Skulle lagen vara skiftade, dvs hemma och bortalag, f&aringr du inget po&aumlng.<br/>
 			<br/>
 			<b>Vinst</b><br/>
-			Den person med flest poäng tar hem rubbet!
+			Den person med flest po&aumlng tar hem rubbet!
 			<br/>
 			<b>Tvist</b><br/>
-			Skulle tvist av något slag uppstå kommer ansvarig för tippningen att avgöra beslut.<br/>
-			Ansvarigs beslut gäller oavsett deltagarens vilja.<br/>
+			Skulle tvist av n&aringgot slag uppst&aring kommer ansvarig f&oumlr tippningen att avg&oumlra beslut.<br/>
+			Ansvarigs beslut g&aumlller oavsett deltagarens vilja.<br/>
 			<br/>
-			<b>Poängsättning</b><br/>
+			<b>Po&aumlngs&aumlttning</b><br/>
 			<table width="200" border="0">
 				<tr>
 					<td width="150">1 X 2</td>
 					<td>1p</td>
 				</tr>
 				<tr>
-					<td>Rätt åttondelsfinallag</td>
+					<td>R&aumltt &aringttondelsfinallag</td>
 					<td>2p</td>
 				</tr>
 				<tr>
-					<td>Rätt kvartsfinallag</td>
+					<td>R&aumltt kvartsfinallag</td>
 					<td>3p</td>
 				</tr>
 				<tr>
-					<td>Rätt semifinallag</td>
+					<td>R&aumltt semifinallag</td>
 					<td>4p</td>
 				</tr>
 				<tr>
-					<td>Rätt tredjeplatsfinallag</td>
+					<td>R&aumltt tredjeplatsfinallag</td>
 					<td>5p</td>
 				</tr>
 				<tr>
-					<td>Rätt finallag</td>
+					<td>R&aumltt finallag</td>
 					<td>5p</td>
 				</tr>
 				<tr>
-					<td>Hur många mål gör Brasilien</td>
+					<td>Hur m&aringnga m&aringl g&oumlr Brasilien</td>
 					<td>5p</td>
 				</tr>
 				<tr>
-					<td>Vem gör flest mål</td>
+					<td>Vem g&oumlr flest m&aringl</td>
 					<td>5p</td>
 				</tr>
 			</table>
 			<br/>
 			<b>Betalning</b><BR/>
-			För att vara med i tippningen måste man betala in <?= $price ?>kr till bankkonto <b><?= $contactBankAccount ?></b> (<?= $contactBankName ?>). Betalning måste vara gjord <font color="red">SENAST <?= $last_pay_day ?></font>, annars tas användaren bort. <br/>
+			F&oumlr att vara med i tippningen m&aringste man betala in <?= $price ?>kr till bankkonto <b><?= $contactBankAccount ?></b> (<?= $contactBankName ?>). Betalning m&aringste vara gjord <font color="red">SENAST <?= $last_pay_day ?></font>, annars tas anv&aumlndaren bort. <br/>
 
-			<p><b>Var noga med att skriva ert användarnamn i meddelandefältet vid betalning så att vi kan koppla rätt pengar till rätt konto!</b></p>
+			<p><b>Var noga med att skriva ert anv&aumlndarnamn i meddelandef&aumlltet vid betalning s&aring att vi kan koppla r&aumltt pengar till r&aumltt konto!</b></p>
 
-			För frågor eller mer information, kontakta <?= $contactName ?>.<br/>
+			F&oumlr fr&aringgor eller mer information, kontakta <?= $contactName ?>.<br/>
 			Telefon: <?= $contactPhone ?><br/>
 			E-mail: <?= $contactEmail ?><br/>
 		</td>

@@ -14,8 +14,8 @@ if(!$cupStarted) {
 
 <div class="container">
 	<p>
-		<span class="header">Det är nu <span class="megaHeader"><?= daysLeft() ?></span> dagar kvar tills VM 2014 börjar!<br/></span>
-		Sista datum för tippning är <?= $last_bet_day ?>, sedan stänger vi slussen - inga konstigheter! :)<br/> 
+		<span class="header">Det &aumlr nu <span class="megaHeader"><?= daysLeft() ?></span> dagar kvar tills VM 2014 b&oumlrjar!<br/></span>
+		Sista datum f&oumlr tippning &aumlr <?= $last_bet_day ?>, sedan st&aumlnger vi slussen - inga konstigheter! :)<br/> 
 	</p>
 </div>
 
@@ -23,7 +23,7 @@ if(!$cupStarted) {
 <center>
 <p>
 	<span class="header2">
-		För tillfället är det <b><?= $totalPrice ?> SEK</b> i potten.<br/>
+		F&oumlr tillf&aumlllet &aumlr det <b><?= $totalPrice ?> SEK</b> i potten.<br/>
 	</span>
 </p>
 </center>
@@ -32,15 +32,15 @@ if(!$cupStarted) {
    <p>
      <span style="color: red;">
         <b>Varning!<br/></b>
-        Du har ännu inte betalat. Detta året gör vi ett undantag, vilket innebär att du får tippa fram tills <?= $last_bet_day ?> även om du inte betalt. Dock måste betalning vara gjord innan <?= $last_pay_day ?>, annars kommer ditt konto att tas bort.<br/>
-Se "<a href='index.php?sida=regler'>Regler</a>" för mer information.
+        Du har &aumlnnu inte betalat. Detta &aringret g&oumlr vi ett undantag, vilket inneb&aumlr att du f&aringr tippa fram tills <?= $last_bet_day ?> &aumlven om du inte betalt. Dock m&aringste betalning vara gjord innan <?= $last_pay_day ?>, annars kommer ditt konto att tas bort.<br/>
+Se "<a href='index.php?sida=regler'>Regler</a>" f&oumlr mer information.
      </span>
    </p>
 </div>
 <?php 
 }
 
-// ------------------ NÄSTA MATCH -------------------------
+// ------------------ N&AumlSTA MATCH -------------------------
 $date = date('Y-m-d');
 $time = date('H:i');
 $nextGames = mysqli_query($opendb, "SELECT * FROM matcher WHERE datum >= '".$date."' ORDER BY datum ASC, tid ASC;") or die(mysqli_error($opendb));
@@ -66,7 +66,7 @@ while($tmp = mysqli_fetch_array($opendb, $odsRes, MYSQLI_ASSOC)) {
 $arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$game['plats']."';"), MYSQLI_ASSOC);
 ?>
 <div class="container">
-	<span class="header2">NÄSTA MATCH<br/></span>
+	<span class="header2">N&AumlSTA MATCH<br/></span>
 	<center>
 		<table border="0" cellspacing="0" cellpadding="2" width="250">
 			<tr>
@@ -116,7 +116,7 @@ $arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,mat
 </div>
 
 <div class="container">
-	<span class="header2">Tidigare års vinnare av Tippningen EM & VM<br/></span>
+	<span class="header2">Tidigare &aringrs vinnare av Tippningen EM & VM<br/></span>
 	<center>
 		<table>
 			<tr class="header">
