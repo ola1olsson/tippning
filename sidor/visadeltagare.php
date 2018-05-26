@@ -2,14 +2,12 @@
 
 
 <?php
-include "config.php";
-include "connect_database.php";
 
 
 if($_REQUEST['id'] != '')
 {
-	$result = mysql_query("SELECT * FROM users WHERE id = ".$_REQUEST['id'].";") or die(mysql_error());
-	$row = mysql_fetch_array($result, MYSQL_ASSOC);
+	$result = mysqli_query($opendb, "SELECT * FROM users WHERE id = ".$_REQUEST['id'].";") or die(mysqli_error($opendb));
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		 
 //--------------------Hämta användarens tippning från databasen------------------------------------- START - Används inte ännu... vet inte om det kommer att användas.
 /*
@@ -47,7 +45,7 @@ if($_REQUEST['id'] != '')
 				<?php } ?>
 			</td>
 			<td class="details">
-				<span class="header2"><?=$row['user'];?><br/></span>
+				<span class="header2"><?=$row['username'];?><br/></span>
 				<table border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td>Namn:</td>
@@ -81,27 +79,27 @@ if($_REQUEST['id'] != '')
 <br/>
 	
 <span class="header3">
-	<?
+	<?php
 
-	$result = mysql_query("SELECT * FROM tippning WHERE ID = ".$row['id'].";"); // Hämtar deltagarens tippning fr¨n databasen.
-	if(mysql_num_rows($result) > 0) {
+	$result = mysqli_query($opendb, "SELECT * FROM tippning WHERE ID = ".$row['id'].";"); // Hämtar deltagarens tippning fr¨n databasen.
+	if(mysqli_num_rows($result) > 0) {
 		echo $row['username'].' har en registrerad tippning!';
-		$correct = mysql_query("SELECT * FROM tippning WHERE ID = -1;"); 	// Hämtar den rätta raden i tippningen
-		$corr = mysql_fetch_array($correct, MYSQL_ASSOC);					// Lägger in den rätta raden i en Array
-		$row = mysql_fetch_array($result, MYSQL_ASSOC);						// Lägger in deltagarens tippnings rad i en Array
+		$correct = mysqli_query($opendb, "SELECT * FROM tippning WHERE ID = -1;"); 	// Hämtar den rätta raden i tippningen
+		$corr = mysqli_fetch_array($correct, MYSQLI_ASSOC);					// Lägger in den rätta raden i en Array
+		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);						// Lägger in deltagarens tippnings rad i en Array
 	} else {
 		echo $row['username'].' har inte tippat ännu!';
 	}	
 ?>
 	<br/>
 </span>
-<?
+<?php
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Display users bet
-if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['betalt'] == 1 && ($cupStarted || $_SESSION['admin'])) {
+if(isset($_SESSION['permission']) && $_SESSION['permission'] && $_SESSION['betalt'] == 1 && ($cupStarted || $_SESSION['admin'])) {
 ?>
 	<table border="0" cellspacing="0" cellpadding="0">
 	<tr class="header">
@@ -121,15 +119,15 @@ if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['
 		<td align="center" width="50">Poäng</td>
 	</tr>
 	
-	<? // Gruppspelet, visar - så här har deltagaren tippat.
+	<?php
 foreach($grundspel AS $grupp) {
-	$matcher = mysql_query("SELECT * FROM matcher WHERE hemma LIKE '".$grupp."%' AND borta LIKE '".$grupp."%' ORDER BY ID ASC;");
+	$matcher = mysqli_query($opendb,"SELECT * FROM matcher WHERE hemma LIKE '".$grupp."%' AND borta LIKE '".$grupp."%' ORDER BY ID ASC;");
 ?>	
 		<tr><td colspan=7><span class="header2">Grupp <?echo $grupp;?></span></td></tr>
-		<?
+		<?php
 		while($match = mysql_fetch_array($matcher)) {
-		$hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQL_ASSOC);
-		$borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQL_ASSOC);
+		$hemma = mysqli_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQL_ASSOC);
+		$borta = mysqli_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQL_ASSOC);
 		?>
 			<tr>
 			<td valign="center" align="center"><?=$match['ID']?></td>
@@ -139,7 +137,7 @@ foreach($grundspel AS $grupp) {
 			<td>
 				<table border="0" bordercolor="black" cellspacing="0" cellpadding="0">
 				<tr>
-					<?
+					<?php
 						$tmp_c = $corr['m'.$match['ID']];
 						$tmp_r = $row['m'.$match['ID']];
 					?>
@@ -154,15 +152,15 @@ foreach($grundspel AS $grupp) {
 							  elseif($tmp_r == '2') { if($tmp_c == '2') echo '1p'; else echo ''; } ?>
 			</td>			
 		</tr>
-	<?		
+	<?php
 	}
 	?>
 	<tr><td colspan=7 align="center"><hr align="center" style="width:96%; height:2px;" color="#6C261F"></td></tr>
-<?	
+<?php
 }
 ?>
 </table>
-<? } else {	
+<?php } else {
 	?>
 	<span class="header4">
 	<?php 

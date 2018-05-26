@@ -15,10 +15,10 @@ if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['
 // <div style="width: 100%; height: 100%; left: 0px; top: 0px; position: absolute; z-index: 0;"></div> -->
 if(isset($_POST['check'])) {
 	if($_REQUEST['cmd'] == 'allusers') {
-	$allusers = mysql_query("SELECT tippning.id FROM users, tippning WHERE users.id != ".$_SESSION['userID']." AND users.id = tippning.id ORDER BY givenName ASC;") or die(mysql_error());
+	$allusers = mysqli_query($opendb, "SELECT tippning.id FROM users, tippning WHERE users.id != ".$_SESSION['userID']." AND users.id = tippning.id ORDER BY givenName ASC;") or die(mysqli_error($opendb));
 	$k_usr = -1;
 	unset($_POST['users']);
-	while($usr = mysql_fetch_array($allusers, MYSQL_ASSOC))
+	while($usr = mysqli_fetch_array($allusers, MYSQLI_ASSOC))
 		$_POST['users'][$k_usr++] = $usr['id'];	
 	} 
 	echo '<a href="index.php?sida=resultat">Klicka här för att göra en ny jämförelse</a><br><br>';
@@ -39,8 +39,8 @@ if(isset($_POST['check'])) {
 		}
 	}
 	$query .= ";";
-	$db_result = mysql_query($query) or die(mysql_error());
-	while($db_res = mysql_fetch_array($db_result,MYSQL_ASSOC)) {
+	$db_result = mysqli_query($opendb, $query) or die(mysqli_error($opendb));
+	while($db_res = mysqli_fetch_array($db_result,MYSQLI_ASSOC)) {
 		for($i=1; $i<=$grundspel_max; $i++) {
 			$result[$db_res['id']][$i] = $db_res['m'.$i];	
 		}
@@ -61,7 +61,7 @@ if(isset($_POST['check'])) {
 			<td align=center valign=bottom><span class=vertical>Resultat</span></td>';
 	for($i=1; $i<sizeof($users); $i++) 
 	{	
-		$user_name = mysql_fetch_array(mysql_query("SELECT givenName, familyName FROM users WHERE id = ".$users[$i].";"), MYSQL_ASSOC);
+		$user_name = mysqli_fetch_array(mysqli_query($opendb, "SELECT givenName, familyName FROM users WHERE id = ".$users[$i].";"), MYSQLI_ASSOC);
 		$givenName = $user_name['givenName'];
 		$vertUserName = '';
 		for ($k = 0; $k < strlen($givenName); $k++) {
@@ -76,7 +76,7 @@ if(isset($_POST['check'])) {
 			<td align=left valign=bottom colspan=5>Antal poäng:</td>';
 	for($i=1; $i<sizeof($users); $i++) 
 	{
-		$user_points = mysql_fetch_array(mysql_query("SELECT points FROM users WHERE id = ".$users[$i].";"), MYSQL_ASSOC);
+		$user_points = mysqli_fetch_array(mysqli_query($opendb, "SELECT points FROM users WHERE id = ".$users[$i].";"), MYSQLI_ASSOC);
 		echo '<td align=center valign=bottom>'.$user_points['points'].'p</td>';
 	}
 	echo '</tr>';
@@ -86,12 +86,12 @@ if(isset($_POST['check'])) {
 	echo '<tr><td colspan='.$colspans.' align=left><span class="header4">Gruppspel</span></td></tr>';
 	$grundspel = Array('A','B','C','D','E','F','G','H');
 	foreach($grundspel AS $grupp) {
-		$matcher = mysql_query("SELECT * FROM matcher WHERE hemma LIKE '".$grupp."%' AND borta LIKE '".$grupp."%' ORDER BY id ASC;");
+		$matcher = mysqli_query($opendb, "SELECT * FROM matcher WHERE hemma LIKE '".$grupp."%' AND borta LIKE '".$grupp."%' ORDER BY id ASC;");
 		echo '<tr><td colspan='.$colspans.' align=left><span class="header5">Grupp '.$grupp.'</span></td></tr>';
 		
-		while($match = mysql_fetch_array($matcher, MYSQL_ASSOC)) {
-			$hemma = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['hemma']."';"),MYSQL_ASSOC);
-			$borta = mysql_fetch_array(mysql_query("SELECT * FROM lag WHERE lag = '".$match['borta']."';"),MYSQL_ASSOC);
+		while($match = mysqli_fetch_array($matcher, MYSQLI_ASSOC)) {
+			$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"),MYSQLI_ASSOC);
+			$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"),MYSQLI_ASSOC);
 			?>
 			<tr>
 				<td align=left><?=$match['ID']?>. </td>
@@ -124,8 +124,8 @@ if(isset($_POST['check'])) {
 	// SLUTSPELET
 	
 	$rowspan = 2+sizeof($users);
-	$teams_res = mysql_query("SELECT * FROM lag ORDER BY id ASC;");
-	while($team_row = mysql_fetch_array($teams_res)) {
+	$teams_res = mysqli_query($opendb, "SELECT * FROM lag ORDER BY id ASC;");
+	while($team_row = mysqli_fetch_array($teams_res)) {
 		$teams[$team_row['lag']]['land'] = substr($team_row['countryName_sv'],0,3);
 		$teams[$team_row['lag']]['flag'] = $team_row['flagImage'];
 	}
@@ -163,7 +163,7 @@ if(isset($_POST['check'])) {
 	}
 	echo '</tr>';
 	for($k=1; $k<sizeof($users); $k++) {
-		$user_name = mysql_fetch_array(mysql_query("SELECT givenName, familyName FROM users WHERE id = ".$users[$k].";"), MYSQL_ASSOC);
+		$user_name = mysqli_fetch_array(mysqli_query($opendb, "SELECT givenName, familyName FROM users WHERE id = ".$users[$k].";"), MYSQLI_ASSOC);
 		
 		echo 	'<tr>'.
 				'<td align=left>'.$user_name['givenName'].' '.$user_name['familyName']{0}.'</td>';
@@ -227,14 +227,14 @@ if(isset($_POST['check'])) {
 				<td align=left valign=bottom colspan=4></td>
 				<td align=center valign=bottom><span class=vertical>Resultat</span></td>';
 		for($i=1; $i<sizeof($users); $i++) {
-			$user_name = mysql_fetch_array(mysql_query("SELECT givenName, familyName FROM users WHERE ID ='".$users[$i]."';"), MYSQL_ASSOC);
+			$user_name = mysqli_fetch_array(mysqli_query($opendb, "SELECT givenName, familyName FROM users WHERE ID ='".$users[$i]."';"), MYSQLI_ASSOC);
 			echo '<td align=left valign=bottom><span class=vertical>'.$user_name['givenName'].'<br>'.$user_name['givenName'].'</span></td>';
 			echo '<td style="width:1px;" bgcolor="#550000" rowspan='.$rowspan.'><img src="./pics/spacer.gif" style="width:1px;" border=0></td>';
 		}
 		echo '</tr>';
 		$colspans = 3+sizeof($users)*3;
-		$teams_res = mysql_query("SELECT * FROM teams ORDER BY ID ASC;");
-		while($team_row = mysql_fetch_array($teams_res)) {
+		$teams_res = mysqli_query($opendb, "SELECT * FROM teams ORDER BY ID ASC;");
+		while($team_row = mysqli_fetch_array($teams_res)) {
 			$teams[$team_row['ID']]['land'] = substr($team_row['land'],0,3);
 			$teams[$team_row['ID']]['flag'] = $team_row['flagImage'];	
 		}
@@ -355,14 +355,14 @@ if(isset($_POST['check'])) {
 	
 } else {
 
-	if(mysql_num_rows(mysql_query("SELECT id FROM tippning WHERE id = ".$_SESSION['userID'].";"))) {
+	if(mysqli_num_rows(mysqli_query($opendb, "SELECT id FROM tippning WHERE id = ".$_SESSION['userID'].";"))) {
 		echo '<span class="header4">Kryssa för de personer vilka Du vill jämföra Ditt resultat med.<br></span>Obs! Endast de personer som har tippat visas i listan.<br><br>';
 		echo '<input type=button class=btn value="Jämför alla" onClick="this.form.action=\'index.php?sida=resultat&cmd=allusers\'; this.form.submit();"><br><br>';
 		echo '<input type=hidden name=check value=true>';
-		$users = mysql_query("SELECT users.id, users.givenName, users.familyName FROM users, tippning WHERE users.id != ".$_SESSION['userID']." AND users.id = tippning.id ORDER BY givenName ASC;") or die(mysql_error());
+		$users = mysqli_query($opendb, "SELECT users.id, users.givenName, users.familyName FROM users, tippning WHERE users.id != ".$_SESSION['userID']." AND users.id = tippning.id ORDER BY givenName ASC;") or die(mysqli_error($opendb));
 		echo '<table border=0 cellspacing=0 cellpadding=2>';
 		$i_user = 0;
-		while($user = mysql_fetch_array($users, MYSQL_ASSOC)) {
+		while($user = mysqli_fetch_array($users, MYSQLI_ASSOC)) {
 			echo '<tr><td>'.$user['givenName'].' '.$user['familyName'].'</td><td><input type=checkbox name=users['.($i_users++).'] value="'.$user['id'].'"></td></tr>';
 		}
 		echo '</tr><tr><td colspan=2 align=right><input type=button class=btn value="Jämför!" onClick="this.form.action=\'index.php?sida=resultat\'; this.form.submit();"></td></tr></table>';

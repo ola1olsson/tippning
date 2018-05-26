@@ -5,13 +5,13 @@ if($_SESSION['admin']) {
 		<form action="index.jsp?sida=putresult" method="POST">
 		<?
 		$gameId = $_GET['gameId'];
-		$game = mysql_query("SELECT * FROM matcher WHERE ID = ".$gameId.";") or die(mysql_error());
-		$game = mysql_fetch_array($game);
+		$game = mysqli_query("SELECT * FROM matcher WHERE ID = ".$gameId.";") or die(mysqli_error($opendb));
+		$game = mysqli_fetch_array($game);
 		
-		$home = mysql_query("SELECT * FROM lag WHERE lag = '".$game['hemma']."';") or die(mysql_error());
-		$home = mysql_fetch_array($home);
-		$gone = mysql_query("SELECT * FROM lag WHERE lag = '".$game['borta']."';") or die(mysql_error());
-		$gone = mysql_fetch_array($gone);
+		$home = mysqli_query("SELECT * FROM lag WHERE lag = '".$game['hemma']."';") or die(mysqli_error($opendb));
+		$home = mysqli_fetch_array($home);
+		$gone = mysqli_query("SELECT * FROM lag WHERE lag = '".$game['borta']."';") or die(mysqli_error($opendb));
+		$gone = mysqli_fetch_array($gone);
 		?>
 		Update game <?=$gameId?> (<?=$home['countryName_sv'] ?> - <?=$gone['countryName_sv']?>)<br>
 			<input type="text" name="gameId" value="<?=$gameId?>" />
@@ -33,8 +33,8 @@ if($_SESSION['admin']) {
 						<select name="home">
 							<option value="">-- Not set --</option>
 						<?
-						$allTeams = mysql_query("SELECT * FROM lag ORDER BY lag ASC;") or die(mysql_error());
-						while ($team = mysql_fetch_array($allTeams)) {
+						$allTeams = mysqli_query("SELECT * FROM lag ORDER BY lag ASC;") or die(mysqli_error($opendb));
+						while ($team = mysqli_fetch_array($allTeams)) {
 							echo '<option value="'.$team['lag'].'"';
 							if ($team['lag'] == $home['lag']) {
 								echo ' selected="true"';
@@ -49,8 +49,8 @@ if($_SESSION['admin']) {
 						<select name="gone">
 							<option value="">-- Not set --</option>
 						<?
-						$allTeams = mysql_query("SELECT * FROM lag ORDER BY lag ASC;") or die(mysql_error());
-						while ($team = mysql_fetch_array($allTeams)) {
+						$allTeams = mysqli_query("SELECT * FROM lag ORDER BY lag ASC;") or die(mysqli_error($opendb));
+						while ($team = mysqli_fetch_array($allTeams)) {
 							echo '<option value="'.$team['lag'].'"';
 							if ($team['lag'] == $gone['lag']) {
 								echo ' selected="true"';
@@ -74,12 +74,12 @@ if($_SESSION['admin']) {
 	} else {
 		$gameId = $_POST['gameId'];
 		$result = $_POST['result'];
-		mysql_query("UPDATE tippning SET m".$gameId."='".$result."' WHERE id = -1;") or die(mysql_error());
+		mysqli_query("UPDATE tippning SET m".$gameId."='".$result."' WHERE id = -1;") or die(mysqli_error($opendb));
 		if ($gameId > $grundspel_max) {
 			$newHome = $_POST['home'];
 			$newGone = $_POST['gone'];
-			mysql_query("UPDATE tippning SET m".$gameId."a='".$newHome."', m".$gameId."b='".$newGone."' WHERE id = -1;") or die(mysql_error());
-			mysql_query("UPDATE matcher SET hemma='".$newHome."', borta='".$newGone."' WHERE id = ".$gameId.";") or die(mysql_error());
+			mysqli_query("UPDATE tippning SET m".$gameId."a='".$newHome."', m".$gameId."b='".$newGone."' WHERE id = -1;") or die(mysqli_error($opendb));
+			mysqli_query("UPDATE matcher SET hemma='".$newHome."', borta='".$newGone."' WHERE id = ".$gameId.";") or die(mysqli_error($opendb));
 		}
 		?>
 		Game <?=$gameId?> updated successfully!

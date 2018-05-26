@@ -30,7 +30,7 @@ if(isset($_REQUEST['register']) && $_REQUEST['register'] == 'true') {
 	// Om User och Password är ok, fortsätt 
 	if(!$errUser && !$errPass && isset($_POST['fornamn'])) {
 		mysqli_query($opendb, "INSERT INTO users (givenName, familyName, Company, emailAddress, phoneNumber, city, username, password) 
-					VALUES ('".addslashes($_POST['fornamn'])."', '".addslashes($_POST['efternamn'])."', '".addslashes($_POST['foretag'])."', '".addslashes($_POST['email'])."', '".addslashes($_POST['telefon'])."', '".addslashes($_POST['ort'])."', '".addslashes($_POST['user'])."', '".md5(addslashes($_POST['password1']))."');") or die(mysql_error($opendb));
+					VALUES ('".addslashes($_POST['fornamn'])."', '".addslashes($_POST['efternamn'])."', '".addslashes($_POST['foretag'])."', '".addslashes($_POST['email'])."', '".addslashes($_POST['telefon'])."', '".addslashes($_POST['ort'])."', '".addslashes($_POST['user'])."', '".md5(addslashes($_POST['password1']))."');") or die(mysqli_error($opendb));
 	} 
 	
 } 
@@ -47,7 +47,7 @@ if(isset($_POST['register']) && ($_POST['register'] == 'true' && ($errUser || $e
 
 <table width="850" height="600" background="pic\uefa_logo.jpg" border="0" bordercolor="black" align="center">
 	<tr> 
-	<td height="325" colspan=4 valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tänk på att inte använda några användarnamn & lösenord<br>
+	<td height="325" colspan=4 valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tänk på att inte anv&aumlnda n&aringra anv&aumlndarnamn & l&oumlsenord<br>
 											   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;som du använder t.ex. på jobbet, till din mail m.m.<br>&nbsp;
 		
 		<tr>

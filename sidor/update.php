@@ -31,16 +31,16 @@ if($_SESSION['admin']) {
 					</td>
 				</tr>
 				<?
-				$correctTipQuery = mysql_query("SELECT * FROM tippning WHERE id = -1;") or die(mysql_error());
-				$correctTip = mysql_fetch_array($correctTipQuery, MYSQL_ASSOC);
+				$correctTipQuery = mysqli_query("SELECT * FROM tippning WHERE id = -1;") or die(mysqli_error($opendb));
+				$correctTip = mysqli_fetch_array($correctTipQuery, MYSQLI_ASSOC);
 				
-				$usersTips = mysql_query("SELECT * FROM tippning WHERE id != -1;") or die(mysql_error());
-				$nbrUsers = mysql_num_rows($usersTips);
+				$usersTips = mysqli_query("SELECT * FROM tippning WHERE id != -1;") or die(mysqli_error($opendb));
+				$nbrUsers = mysqli_num_rows($usersTips);
 				$userIdx = 0;
-				while($userTip = mysql_fetch_array($usersTips, MYSQL_ASSOC)) {
+				while($userTip = mysqli_fetch_array($usersTips, MYSQLI_ASSOC)) {
 					$userIdx++;
-					$userQuery = mysql_query("SELECT * FROM users WHERE id =".$userTip['id'].";") or die(mysql_error());
-					$user = mysql_fetch_array($userQuery, MYSQL_ASSOC);
+					$userQuery = mysqli_query("SELECT * FROM users WHERE id =".$userTip['id'].";") or die(mysqli_error($opendb));
+					$user = mysqli_fetch_array($userQuery, MYSQLI_ASSOC);
 					$points = 0;
 					$maxPoints = 0;
 					?>
@@ -173,7 +173,7 @@ if($_SESSION['admin']) {
 					<td colspan="4"></td>
 				</tr>
 				<?
-				mysql_query("UPDATE users SET points = '".$points."' WHERE id = ".$userTip['id'].";") or die(mysql_error());
+				mysqli_query("UPDATE users SET points = '".$points."' WHERE id = ".$userTip['id'].";") or die(mysqli_error($opendb));
 				}
 				?>
 			<table>

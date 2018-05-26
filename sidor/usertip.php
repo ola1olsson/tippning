@@ -1,7 +1,7 @@
 
 <?
 if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['admin']) {
-	$users = mysql_query("SELECT * FROM deltagare ORDER BY fornamn ASC;");
+	$users = mysqli_query($opendb, "SELECT * FROM deltagare ORDER BY fornamn ASC;");
 	
 	?>
 	<table BGCOLOR="#FFFFFF" width="100%" height="100%"  bordercolor="#6C261F"  cellpadding="30" cellspacing="0">
@@ -21,15 +21,15 @@ if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['
 	<?
 	$nbrTipped = 0;
 	$nbrLoser = 0;
-	while($user = mysql_fetch_array($users, MYSQL_ASSOC))
+	while($user = mysqli_fetch_array($users, MYSQLI_ASSOC))
 	{
 		?>
 		<tr>
 			<td><?=$user['id']?></td>
 			<td><?=$user['fornamn'].' '.$user['efternamn']?></td>
 			<td><?
-			$tip = mysql_query("SELECT * FROM tippning WHERE id = '".$user['id']."';");
-			if (mysql_num_rows($tip) != 0)
+			$tip = mysqli_query($opendb, "SELECT * FROM tippning WHERE id = '".$user['id']."';");
+			if (mysqli_num_rows($tip) != 0)
 			{
 				$nbrTipped++;
 				echo '<span style="color: green;">Japps</span>';

@@ -55,7 +55,7 @@ $ods['X'] = 0;
 $ods['2'] = 0;
 $odsRes = mysqli_query($opendb, "SELECT m".$game['ID']." FROM tippning WHERE m".$game['ID']." != '' AND id != -1;") or die(mysqli_error($opendb));
 $nbrUsrs = mysqli_num_rows($opendb, $odsRes);
-while($tmp = mysqli_fetch_array($opendb, $odsRes, MYSQL_ASSOC)) {
+while($tmp = mysqli_fetch_array($opendb, $odsRes, MYSQLI_ASSOC)) {
 	switch($tmp['m'.$game['ID']]) {
 		case '1': $ods['1']++; break;
 		case 'X': $ods['X']++; break;

@@ -38,10 +38,10 @@ include "connect_database.php";
 if($_REQUEST['register'] == 'true') {
 
 	// REGISTRERA ANVÄNDAREN	
-	$result = mysql_query("SELECT user FROM users WHERE user='".addslashes($_POST['user'])."';");
+	$result = mysqli_query($opendb, "SELECT user FROM users WHERE user='".addslashes($_POST['user'])."';");
 	
 	//
-	if(mysql_num_rows($result)>0 || $_POST['user'] == '') {
+	if(mysqli_num_rows($result)>0 || $_POST['user'] == '') {
 		$errUser = true;
 	} else $errUser = false;
 
@@ -54,8 +54,8 @@ if($_REQUEST['register'] == 'true') {
 	
 	// Om User och Password är ok, fortsätt 
 	if(!$errUser && !$errPass) {
-		mysql_query("INSERT INTO users (givenName, familyName, Company, emailAddress, phoneNumber, city, username, password) 
-					VALUES ('".addslashes($_POST['fornamn'])."', '".addslashes($_POST['efternamn'])."', '".addslashes($_POST['foretag'])."', '".addslashes($_POST['email'])."', '".addslashes($_POST['telefon'])."', '".addslashes($_POST['ort'])."', '".addslashes($_POST['user'])."', '".md5(addslashes($_POST['password1']))."');") or die(mysql_error());
+		mysqli_query($opendb, "INSERT INTO users (givenName, familyName, Company, emailAddress, phoneNumber, city, username, password) 
+					VALUES ('".addslashes($_POST['fornamn'])."', '".addslashes($_POST['efternamn'])."', '".addslashes($_POST['foretag'])."', '".addslashes($_POST['email'])."', '".addslashes($_POST['telefon'])."', '".addslashes($_POST['ort'])."', '".addslashes($_POST['user'])."', '".md5(addslashes($_POST['password1']))."');") or die(mysqli_error($opendb));
 	} 
 	
 } 
@@ -208,7 +208,7 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 	<?
 
 // stänger databasen
-mysql_close($opendb);
+mysqli_close($opendb);
 }
 
 } else // IF DATE IS OUT OF DATE

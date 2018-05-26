@@ -32,7 +32,7 @@ if(!isset($_REQUEST['cmd'])) {
 				<td>Ägare</td>
 			</tr>
 			<tr><td colspan=5><hr align=center style="width:100%; height:1px;" color="'.$hrcolor.'"></td></tr>';
-		while($ft = mysqli_fetch_array($opendb, $forum_titles, MYSQL_ASSOC)) {
+		while($ft = mysqli_fetch_array($opendb, $forum_titles, MYSQLI_ASSOC)) {
 			$nbrEntries = mysqli_num_rows(mysqli_query($opendb,"SELECT ID FROM forum_entries WHERE forumID = '".$ft['forumID']."';"));
 			echo '<tr>
 					<td>'.$ft['date'].'&nbsp;</td>
@@ -53,7 +53,7 @@ if(!isset($_REQUEST['cmd'])) {
 	} else if($_REQUEST['cmd2'] == 'newEntry') {
 		mysqli_query($opendb, "INSERT INTO forum_entries (forumID,user,date,time,title,contribution) VALUES ('".$_REQUEST['id']."','".$_SESSION['userID']."','".date('Y-m-d')."','".date('H:i')."','".$_POST['title']."','".$_POST['contribution']."');");
 	}
-	$ft = mysqli_fetch_array(mysqli_query($opendb, "SELECT title, owner FROM forum_titles WHERE ID = '".$_REQUEST['id']."';"), MYSQL_ASSOC);
+	$ft = mysqli_fetch_array(mysqli_query($opendb, "SELECT title, owner FROM forum_titles WHERE ID = '".$_REQUEST['id']."';"), MYSQLI_ASSOC);
 	$fe = mysqli_query($opendb, "SELECT forum_entries.forumID AS entryID,
 							forum_entries.date, 
 							forum_entries.time, 
@@ -78,7 +78,7 @@ if(!isset($_REQUEST['cmd'])) {
 		</tr><tr><td colspan=3><hr align=left style="width:100%px; height:1px;" color="'.$hrcolor.'"></td></tr></table>';
 	if(mysqli_num_rows($fe)>0) {
 		echo '<table border=0 cellspacing=0 cellpadding=1 style="width:400px;">';
-		while($entry = mysqli_fetch_array($fe, MYSQL_ASSOC)) {
+		while($entry = mysqli_fetch_array($fe, MYSQLI_ASSOC)) {
 			echo '<tr bgcolor="'.$bgcolor.'"> 
 					<td align=left valign=bottom><a href="./index.php?sida=visadeltagare&id='.$entry['userID'].'"><span class="header3" style="font-weight:bold;">'.$entry['user'].'</span></a></td>
 					<td align=left valign=bottom><span class="header3">'.$entry['title'].'</span></td>
@@ -102,7 +102,7 @@ if(!isset($_REQUEST['cmd'])) {
 	}
 	
 } else if($cmd == 'newEntry') {
-	$ft = mysqli_fetch_array(mysqli_query($opendb, "SELECT title FROM forum_titles WHERE ID = '".$_REQUEST['entryID']."';"), MYSQL_ASSOC);
+	$ft = mysqli_fetch_array(mysqli_query($opendb, "SELECT title FROM forum_titles WHERE ID = '".$_REQUEST['entryID']."';"), MYSQLI_ASSOC);
 	echo '<span class="header2">Nytt inlägg i \''.$ft['title'].'\'<br></span><br>
 		Titel:<br>
 		<input type=text style="width:400px;" value="SV: '.$ft['title'].'" name=title><br><br>
@@ -132,13 +132,13 @@ if(!isset($_REQUEST['cmd'])) {
 		echo '<span class="header2">Tråd borttagen.<br></span><br>
 			<input type=button class=btn value="Tillbaka" onClick="document.location=\'index.php?sida=forum\';">';	
 	} else {
-		$ft = mysqli_fetch_array(mysqli_query($opendb, "SELECT title, owner FROM forum_titles WHERE ID = '".$_REQUEST['forumID']."';"), MYSQL_ASSOC);
+		$ft = mysqli_fetch_array(mysqli_query($opendb, "SELECT title, owner FROM forum_titles WHERE ID = '".$_REQUEST['forumID']."';"), MYSQLI_ASSOC);
 		echo '<span class="header2" style="color: #550000;">Är du säker på att du vill ta bort denna tråd?<br></span><br>
 				<table border=0 cellspacing=0 cellpadding=0>
 				<tr><td colspan=2><span class="header3">Tråd</span></td></tr>
 				<tr><td align=left>Titel:&nbsp;</td><td>'.$ft['title'].'</td></tr>
 				<tr><td colspan=2>&nbsp;</td></tr>';
-		$owner = mysqli_fetch_array(mysqli_query($opendb, "SELECT username, givenName, familyName, foto FROM users WHERE id = '".$ft['owner']."';"), MYSQL_ASSOC);
+		$owner = mysqli_fetch_array(mysqli_query($opendb, "SELECT username, givenName, familyName, foto FROM users WHERE id = '".$ft['owner']."';"), MYSQLI_ASSOC);
 		echo '<tr><td colspan=2><span class="header3">Ägare</span></td></tr>';
 		if($owner['foto'] != '') 
 			echo '<tr><td></td><td><img src="'.$owner['foto'].'" border=0 style="width:55px;"></td></tr>';

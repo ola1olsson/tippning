@@ -9,7 +9,7 @@
 	// Register
 	if(isset($_POST['register']) && isset($_POST['username']) && isset($_POST['password'])) {
 		$result = mysqli_query($opendb, "SELECT * FROM users WHERE username = '".addslashes($_POST['username'])."' AND password = '".md5(addslashes($_POST['password']))."';") or die(mysqli_error($opendb));
-		if($row = mysqli_fetch_array($result,MYSQL_ASSOC)) {
+		if($row = mysqli_fetch_array($result,MYSQLI_ASSOC)) {
 			$_SESSION['user'] = $row['username'];
 			$_SESSION['userFullName'] = $row['givenName'].' '.$row['familyName'];
 			$_SESSION['userID'] = $row['id'];
@@ -41,6 +41,7 @@
 <html>
 	<head>
 		<title>Tippning</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
