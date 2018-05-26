@@ -14,7 +14,7 @@ if(!$cupStarted) {
 
 <div class="container">
 	<p>
-		<span class="header">Det &aumlr nu <span class="megaHeader"><?= daysLeft() ?></span> dagar kvar tills VM 2014 b&oumlrjar!<br/></span>
+		<span class="header">Det &aumlr nu <span class="megaHeader"><?= daysLeft() ?></span> dagar kvar tills VM 2018 b&oumlrjar!<br/></span>
 		Sista datum f&oumlr tippning &aumlr <?= $last_bet_day ?>, sedan st&aumlnger vi slussen - inga konstigheter! :)<br/> 
 	</p>
 </div>
@@ -54,8 +54,8 @@ $ods['1'] = 0;
 $ods['X'] = 0;
 $ods['2'] = 0;
 $odsRes = mysqli_query($opendb, "SELECT m".$game['ID']." FROM tippning WHERE m".$game['ID']." != '' AND id != -1;") or die(mysqli_error($opendb));
-$nbrUsrs = mysqli_num_rows($opendb, $odsRes);
-while($tmp = mysqli_fetch_array($opendb, $odsRes, MYSQLI_ASSOC)) {
+$nbrUsrs = mysqli_num_rows($odsRes);
+while($tmp = mysqli_fetch_array($odsRes, MYSQLI_ASSOC)) {
 	switch($tmp['m'.$game['ID']]) {
 		case '1': $ods['1']++; break;
 		case 'X': $ods['X']++; break;
@@ -89,9 +89,9 @@ $arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,mat
 			</tr>
 			<tr>
 				<td align="right"><b>Odds:<br></b></td>
-				<td align="center"><?=round(($ods['1']/$nbrUsrs*100),2)?>%</td>
-				<td align="center"><?=round(($ods['X']/$nbrUsrs*100),2)?>%</td>
-				<td align="center"><?=round(($ods['2']/$nbrUsrs*100),2)?>%</td>
+				<td align="center"><?=round($ods['1']/(($nbrUsrs*100)+1),2)?>%</td>
+				<td align="center"><?=round($ods['X']/(($nbrUsrs*100)+1),2)?>%</td>
+				<td align="center"><?=round($ods['2']/(($nbrUsrs*100)+1),2)?>%</td>
 			</tr>
 		</table>
 		<table border="0" cellspacing="0" cellpadding="0">
