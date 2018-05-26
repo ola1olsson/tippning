@@ -1,16 +1,11 @@
-
-<?
-if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['admin']) {
-	$users = mysqli_query($opendb, "SELECT * FROM deltagare ORDER BY fornamn ASC;");
-	
-	?>
+<?php
+if(isset($_SESSION['permission']) && $_SESSION['permission'] && $_SESSION['admin']) {
+	$users = mysqli_query($opendb, "SELECT * FROM users ORDER BY givenName ASC;");
+?>
 	<table BGCOLOR="#FFFFFF" width="100%" height="100%"  bordercolor="#6C261F"  cellpadding="30" cellspacing="0">
-<tr>
-<td align="left" valign="top" frame="rhs" border="1"> 
-
-
-<center><span class="header">UserTipp</span></center>
-	
+	<tr>
+	<td align="left" valign="top" frame="rhs" border="1"> 
+	<center><span class="header">UserTipp</span></center>
 	<table style="border: 1px dotted black;">
 		<tr>
 			<td><b>ID</b></td>
@@ -18,16 +13,19 @@ if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['
 			<td><b>Tippat?</b></td>
 			<td><b>Betalt?</b></td>
 		</tr>
-	<?
+<?php
 	$nbrTipped = 0;
-	$nbrLoser = 0;
+	$nbrNotTipped = 0;
+	$nbrPaid = 0;
+	$nbrNotPaid = 0;
 	while($user = mysqli_fetch_array($users, MYSQLI_ASSOC))
 	{
-		?>
+?>
 		<tr>
 			<td><?=$user['id']?></td>
-			<td><?=$user['fornamn'].' '.$user['efternamn']?></td>
-			<td><?
+			<td><?=$user['givenName'].' '.$user['familyName']?></td>
+			<td>
+<?php
 			$tip = mysqli_query($opendb, "SELECT * FROM tippning WHERE id = '".$user['id']."';");
 			if (mysqli_num_rows($tip) != 0)
 			{
@@ -36,34 +34,39 @@ if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['
 			}
 			else
 			{
-				$nbrLosers++;
+				$nbrNotTipped++;
 				echo '<span style="color: red;">Oh noes!</span>';
 			}
-			?></td>
-			<td><?
+?>
+			</td>
+			<td>
+<?php
 			if ($user['betalt'] == 1)
 			{
-				$nbrTipped++;
+				$nbrPaid++;
 				echo '<span style="color: green;">Japps</span>';
 			}
 			else
 			{
-				$nbrLosers++;
+				$nbrNotPaid++;
 				echo '<span style="color: red;">Oh noes!</span>';
 			}
-			?></td>
+?>
+			</td>
 		</tr>
-		<?
+<?php
 	}
-	?>
+?>
 	</table>
 	<br/>
-	Antal som &aumlr duktiga: <?=$nbrTipped;?><br/>
-	Antal som suger balle: <?=$nbrLosers;?>
-	
+	Antal som tippat: <?=$nbrTipped;?><br/>
+	Antal som inte tippat: <?=$nbrNotTipped;?><br/>
+	Antal som betalt: <?=$nbrPaid;?><br/>
+	Antal som inte betalt: <?=$nbrNotPaid;?>
+
 	</td>
-</tr>
-</table>
-	<?
+	</tr>
+	</table>
+<?php
 }
 ?>
