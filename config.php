@@ -42,7 +42,6 @@ $quarter_max = $eights_max + 4;
 $semi_max = $quarter_max + 2;
 $secondFinalId = $semi_max + 1;
 $finalId = $secondFinalId + 1;
-$finalId = $semi_max + 1;
 $slutspel_max = $finalId;
 
 

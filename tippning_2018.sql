@@ -684,125 +684,44 @@ CREATE TABLE IF NOT EXISTS `tippning` (
 
   `m37` varchar(2) DEFAULT NULL,
 
-  `m37a` varchar(2) DEFAULT NULL,
-
-  `m37b` varchar(2) DEFAULT NULL,
-
   `m38` varchar(2) DEFAULT NULL,
-
-  `m38a` varchar(2) DEFAULT NULL,
-
-  `m38b` varchar(2) DEFAULT NULL,
 
   `m39` varchar(2) DEFAULT NULL,
 
-  `m39a` varchar(2) DEFAULT NULL,
-
-  `m39b` varchar(2) DEFAULT NULL,
-
   `m40` varchar(2) DEFAULT NULL,
-
-  `m40a` varchar(2) DEFAULT NULL,
-
-  `m40b` varchar(2) DEFAULT NULL,
 
   `m41` varchar(2) DEFAULT NULL,
 
-  `m41a` varchar(2) DEFAULT NULL,
-
-  `m41b` varchar(2) DEFAULT NULL,
-
   `m42` varchar(2) DEFAULT NULL,
-
-  `m42a` varchar(2) DEFAULT NULL,
-
-  `m42b` varchar(2) DEFAULT NULL,
 
   `m43` varchar(2) DEFAULT NULL,
 
-  `m43a` varchar(2) DEFAULT NULL,
-
-  `m43b` varchar(2) DEFAULT NULL,
-
   `m44` varchar(2) DEFAULT NULL,
-
-  `m44a` varchar(2) DEFAULT NULL,
-
-  `m44b` varchar(2) DEFAULT NULL,
 
   `m45` varchar(2) DEFAULT NULL,
 
-  `m45a` varchar(2) DEFAULT NULL,
-
-  `m45b` varchar(2) DEFAULT NULL,
-
   `m46` varchar(2) DEFAULT NULL,
-
-  `m46a` varchar(2) DEFAULT NULL,
-
-  `m46b` varchar(2) DEFAULT NULL,
 
   `m47` varchar(2) DEFAULT NULL,
 
-  `m47a` varchar(2) DEFAULT NULL,
-
-  `m47b` varchar(2) DEFAULT NULL,
-
   `m48` varchar(2) DEFAULT NULL,
-
-  `m48a` varchar(2) DEFAULT NULL,
-
-  `m48b` varchar(2) DEFAULT NULL,
 
   `m49` varchar(2) DEFAULT NULL,
 
-  `m49a` varchar(2) DEFAULT NULL,
-
-  `m49b` varchar(2) DEFAULT NULL,
-
   `m50` varchar(2) DEFAULT NULL,
 
-  `m50a` varchar(2) DEFAULT NULL,
-
-  `m50b` varchar(2) DEFAULT NULL,
-
   `m51` varchar(2) DEFAULT NULL,
-
-  `m51a` varchar(2) DEFAULT NULL,
-
-  `m51b` varchar(2) DEFAULT NULL,
-  `m52a` varchar(2) default NULL,
-  `m52b` varchar(2) default NULL,
+  `m52` varchar(2) DEFAULT NULL,
   `m53` varchar(2) default NULL,
-  `m53a` varchar(2) default NULL,
-  `m53b` varchar(2) default NULL,
   `m54` varchar(2) default NULL,
-  `m54a` varchar(2) default NULL,
-  `m54b` varchar(2) default NULL,
   `m55` varchar(2) default NULL,
-  `m55a` varchar(2) default NULL,
-  `m55b` varchar(2) default NULL,
   `m56` varchar(2) default NULL,
-  `m56a` varchar(2) default NULL,
-  `m56b` varchar(2) default NULL,
   `m57` varchar(2) default NULL,
-  `m57a` varchar(2) default NULL,
-  `m57b` varchar(2) default NULL,
   `m58` varchar(2) default NULL,
-  `m58a` varchar(2) default NULL,
-  `m58b` varchar(2) default NULL,
   `m59` varchar(2) default NULL,
-  `m59a` varchar(2) default NULL,
-  `m59b` varchar(2) default NULL,
   `m60` varchar(2) default NULL,
-  `m60a` varchar(2) default NULL,
-  `m60b` varchar(2) default NULL,
   `m61` varchar(2) default NULL,
-  `m61a` varchar(2) default NULL,
-  `m61b` varchar(2) default NULL,
   `m62` varchar(2) default NULL,
-  `m62a` varchar(2) default NULL,
-  `m62b` varchar(2) default NULL,
   `m63` varchar(2) default NULL,
   `m63a` varchar(2) default NULL,
   `m63b` varchar(2) default NULL,

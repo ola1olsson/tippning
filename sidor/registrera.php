@@ -147,7 +147,7 @@ if(($_POST['register'] == 'true' && ($errUser || $errPass)) || !isset($_POST['re
 		<tr>
 		<td width="150" height="25"></td><td width="25"></td><td width="150">
 		<input type="hidden" name="register" value="true">
-		<input type="submit" class="btn" value="N&aumlsta"> &nbsp;&nbsp;&nbsp;
+		<input type="submit" class="btn" value="Registrera"> &nbsp;&nbsp;&nbsp;
 		<input type="button" onClick="history.back();" class="btn" value="Avbryt"></td><td></td>
 		</tr>
 		</form>

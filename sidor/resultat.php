@@ -1,5 +1,5 @@
-<?
-if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['betalt'] == 1 && ($cupStarted || $_SESSION['admin'])) {
+<?php
+if($_SESSION['betalt'] == 1 && ($cupStarted || $_SESSION['admin'])) {
 ?>
 
 <table BGCOLOR="#FFFFFF" width="100%" height="100%"  bordercolor="#6C261F"  cellpadding="30" cellspacing="0">
@@ -8,7 +8,7 @@ if(session_is_registered('permission') && $_SESSION['permission'] && $_SESSION['
 
 <span class="header">J&aumlmf&oumlr<br></span><br>
 
-<?
+<?php
 
 
 //echo '<div style="width: 100%; height: 100%; background-color: white;" align="center">';
@@ -374,10 +374,7 @@ if(isset($_POST['check'])) {
 </td>
 </tr>
 </table>
-<?
-
+<?php
 } else
 	echo 'Permission denied!';
-	
-	
 ?>
