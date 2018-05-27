@@ -218,22 +218,22 @@ if (!(isset($_SESSION['permission']) && $_SESSION['permission']) || $cupStarted 
 		groups[i][k] -> k(0) = hemma, k(1) = borta
 */
 
-		$groups[1][0] = '2:a i grupp A';
-		$groups[1][1] = '2:a i grupp C';
-		$groups[2][0] = '1:a i grupp B';
-		$groups[2][1] = 'B&aumlsta 3:a i A/C/D';
-		$groups[3][0] = '1:a grupp D';
-		$groups[3][1] = 'B&aumlsta 3:A i B/E/F';
-		$groups[4][0] = '1:a i grupp A';
-		$groups[4][1] = 'B&aumlsta 3:e i C/D/E';
-		$groups[5][0] = '1:a i grupp C';
-		$groups[5][1] = 'B&aumlsta 3:a i A/B/F';
-		$groups[6][0] = '1:a i grupp F';
-		$groups[6][1] = '2:a i grupp E';
-		$groups[7][0] = '1:a i grupp E';
-		$groups[7][1] = '2:a i grupp D';
-		$groups[8][0] = '2:a i grupp B';
-		$groups[8][1] = '2:a i grupp F';
+		$groups[1][0] = '1:a i grupp A';
+		$groups[1][1] = '2:a i grupp B';
+		$groups[2][0] = '1:a i grupp C';
+		$groups[2][1] = '2:a i grupp D';
+		$groups[3][0] = '1B';
+		$groups[3][1] = '2A';
+		$groups[4][0] = '1D';
+		$groups[4][1] = '2C';
+		$groups[5][0] = '1E';
+		$groups[5][1] = '2F';
+		$groups[6][0] = '1G';
+		$groups[6][1] = '2H';
+		$groups[7][0] = '1F';
+		$groups[7][1] = '2E';
+		$groups[8][0] = '1H';
+		$groups[8][1] = '2G';
 
 		$match_offset = $grundspel_max; // sista matchnumret i gruppspelet
 		$err = false;
@@ -335,14 +335,14 @@ if (!(isset($_SESSION['permission']) && $_SESSION['permission']) || $cupStarted 
 			$winner[4][1] = 8;
 			$match_offset = $eights_max; // Sista matchen av &aringttondelsfinalerna + 1 = f&oumlrsta kvartsfinalen
 
-			$groups[1][0] = 'Vinnare match 37';
-			$groups[1][1] = 'Vinnare match 39';
-			$groups[2][0] = 'Vinnare match 38';
-			$groups[2][1] = 'Vinnare match 42';
-			$groups[3][0] = 'Vinnare match 41';
-			$groups[3][1] = 'Vinnare match 43';
-			$groups[4][0] = 'Vinnare match 40';
-			$groups[4][1] = 'Vinnare match 44';
+			$groups[1][0] = 'Vinnare match 49';
+			$groups[1][1] = 'Vinnare match 50';
+			$groups[2][0] = 'Vinnare match 53';
+			$groups[2][1] = 'Vinnare match 54';
+			$groups[3][0] = 'Vinnare match 55';
+			$groups[3][1] = 'Vinnare match 56';
+			$groups[4][0] = 'Vinnare match 51';
+			$groups[4][1] = 'Vinnare match 52';
 			$match_offset = $eights_max;
 			}
 
@@ -430,10 +430,11 @@ if (!(isset($_SESSION['permission']) && $_SESSION['permission']) || $cupStarted 
 			$groups[2][1][0] = 'B';
 			$groups[2][1][1] = 'D';
 		}
-		$winner[1][0] = 1;
-		$winner[1][1] = 2;
-		$winner[2][0] = 3;
-		$winner[2][1] = 4;
+		// Kommentar om vilka lag som kommer från vilken kvartsfinal
+		$winner[1][0] = 57;
+		$winner[1][1] = 58;
+		$winner[2][0] = 59;
+		$winner[2][1] = 60;
 
 		$match_offset = $quarter_max; // sista matchen i kvartarna (+ 1 = f&oumlrsta semin)
 
@@ -461,10 +462,10 @@ if (!(isset($_SESSION['permission']) && $_SESSION['permission']) || $cupStarted 
 				$err = true;
 			}
 			echo '><td align="center">'.($matchnumber).'</td>'.
-			'<td align="center"> Vinnare kvartsfinal '. $winner[$match][0] .
+			'<td align="center"> Vinnare match '. $winner[$match][0] .
 			'</td>'.
 			'<td align="center"> - </td>'.
-			'<td align="center"> Vinnare kvartsfinal '. $winner[$match][1] .
+			'<td align="center"> Vinnare match '. $winner[$match][1] .
 			'</td>'.		
 			'<td align="center"><input type="radio" class=radio name="match['.($matchnumber).'][0]" value="1"';
 			if(isset($_SESSION['match'][$matchnumber][0]) && $_SESSION['match'][$matchnumber][0] == '1') // anv&aumlnds f&oumlr att kolla med tippningen som ligger i sessionen om man tippat "etta"
