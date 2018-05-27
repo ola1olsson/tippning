@@ -58,7 +58,7 @@ if(isset($_SESSION['permission']) || !$_SESSION['permission']) {
 					<td>5p</td>
 				</tr>
 				<tr>
-					<td>Hur m&aringnga m&aringl g&oumlr Brasilien</td>
+					<td>Hur m&aringnga m&aringl g&oumlr Sverige</td>
 					<td>5p</td>
 				</tr>
 				<tr>

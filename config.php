@@ -59,4 +59,7 @@ function daysLeft() {
 $procent_ett=70;
 $procent_tva=20;
 $procent_tre=10;
+
+# Hur många personer ska ha oddsat innan vi visar procentuell fördelning på förstasidan
+$usersbeforeshowingodds=1
 ?>

@@ -64,6 +64,8 @@ while($tmp = mysqli_fetch_array($odsRes, MYSQLI_ASSOC)) {
 }
 
 $arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$game['plats']."';"), MYSQLI_ASSOC);
+// Need some users to get some nice odds...
+if ($nbrUsrs >= $usersbeforeshowingodds) {
 ?>
 <div class="container">
 	<span class="header2">N&AumlSTA MATCH<br/></span>
@@ -114,7 +116,9 @@ $arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,mat
 		</table>
 	</center>
 </div>
-
+<?php
+}
+?>
 <div class="container">
 	<span class="header2">Tidigare &aringrs vinnare av Tippningen EM & VM<br/></span>
 	<center>
