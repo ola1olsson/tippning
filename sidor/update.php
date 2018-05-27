@@ -102,7 +102,7 @@ if($_SESSION['admin']) {
 					for ($k = $quarter_max + 1; $k <= $semi_max; $k++) {
 						$points_team[$k] = 4; // Points for correct semi final team
 					}
-					$points_team[$secondFinalId] = 5; // Points for correct second final team
+					$points_team[$bronze] = 5; // Points for correct second final team
 					$points_team[$finalId] = 5; // Points for correct final team
 					
 					for($k = $grundspel_max + 1; $k <= $slutspel_max; $k++) {

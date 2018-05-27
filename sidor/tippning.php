@@ -4,7 +4,7 @@
 //include "../connect_database.php";
 
 
-if($cupStarted || (!isset($_SESSION['admin']))) {
+if (!(isset($_SESSION['permission']) && $_SESSION['permission']) || $cupStarted && (!isset($_SESSION['admin']))) {
 	echo '<span class="header2">Permission denied!</span>';
 } else {
 ?>
@@ -50,6 +50,7 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 			echo '<br><br>';
 		}
 	} else {
+		$debug = '';
 		if (isset($_SESSION['userID'])) {
 			$restip = mysqli_query($opendb, "SELECT * FROM tippning WHERE id = ".$_SESSION['userID'].";") or die(mysqli_error($opendb));
 			if($tipp = mysqli_fetch_array($restip, MYSQLI_ASSOC)) {
@@ -66,22 +67,23 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 				$_SESSION['match']['topScorer'] = $tipp['topScorer'];
 			}
 		}
-
 	}
 
 	if(isset($_POST['match']) && !$err && date('Y-m-d')<=$last_bet_day) {
 		// INSERT INTO DATABASE
 		$user_chk = mysqli_query($opendb, "SELECT id FROM tippning WHERE id = ".$_SESSION['userID'].";") or die(mysqli_error($opendb));
 		if(mysqli_num_rows($user_chk) > 0) {
-		// UPDATE TIP IN DATABASE
+			// UPDATE TIP IN DATABASE
 			$query = "UPDATE tippning SET ";
 			for($i=1; $i<=$grundspel_max; $i++) {
 				 $query .= "m".$i."='".$_SESSION['match'][$i]."', ";
 			}
 			for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
 				$query .= "m".$i."='".$_SESSION['match'][$i][0]."', ";
-				$query .= "m".$i."a='".$_SESSION['match'][$i][1]."', ";
-				$query .= "m".$i."b='".$_SESSION['match'][$i][2]."', ";
+				if ($i>=$bronze) {
+					$query .= "m".$i."a='".$_SESSION['match'][$i][1]."', ";
+					$query .= "m".$i."b='".$_SESSION['match'][$i][2]."', ";
+				}
 			}
 			$query .= "swedishGoals='" . $_SESSION['match']['swedishGoals'] . "', ";
 			$query .= "topScorer='" . $_SESSION['match']['topScorer'] . "'";
@@ -95,7 +97,7 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 			}
 			for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
 				$query .= ", m".$i;
-				if ($i>=63) {
+				if ($i>=$bronze) {
 					$query .= ', m'.$i.'a, m'.$i.'b';
 				}
 			}
@@ -114,9 +116,8 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 				$query .= ", " . $_SESSION['match']['swedishGoals'] . ",";
 			else
 				$query .= ", " . 5  . ",";
-
 			if (isset($_SESSION['match']['topScorer']))
-				$query .= "'" . $_SESSION['match']['topScorer'] . "'";
+				$query .= "'" . strtoupper($_SESSION['match']['topScorer']) . "'";
 			else
 				$query .= "'" . 'ola' . "'";
 			$query .= ');';
@@ -333,7 +334,7 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 			$winner[4][0] = 7;
 			$winner[4][1] = 8;
 			$match_offset = $eights_max; // Sista matchen av &aringttondelsfinalerna + 1 = f&oumlrsta kvartsfinalen
-			} else {
+
 			$groups[1][0] = 'Vinnare match 37';
 			$groups[1][1] = 'Vinnare match 39';
 			$groups[2][0] = 'Vinnare match 38';
@@ -353,7 +354,6 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 			} else {
 				$hamtahemma = mysqli_query($opendb, "SELECT * FROM lag WHERE lag LIKE '".$groups[$match][0]."%' ORDER BY lag;");
 				$hamtaborta = mysqli_query($opendb, "SELECT * FROM lag WHERE lag LIKE '".$groups[$match][1]."%' ORDER BY lag;");
-
 			}
 
 			$matchnumber = $match + $match_offset;
@@ -379,11 +379,11 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 				echo '></td>'.
 				'<td align="center"> - </td>'.
 				'<td align="center"><input type="radio" class=radio name="match['.($matchnumber).'][0]" value="2"';
-				if(isset($_SESSION['match'][$matchnumber][0]) && $_SESSION['match'][$matchnumber][0] == '2') // anv&aumlnds f&oumlr att kolla med tippningen som ligger i sessionen om man tippat "tv&aringa"
-					echo ' checked';
-					echo '></td>'.
-					'</tr>';
-					echo '<tr><td></td><td align="center">'.$groups[$match][0].'</td><td></td><td align="center">'.$groups[$match][1].'</td></tr>';	
+			if(isset($_SESSION['match'][$matchnumber][0]) && $_SESSION['match'][$matchnumber][0] == '2') // anv&aumlnds f&oumlr att kolla med tippningen som ligger i sessionen om man tippat "tv&aringa"
+				echo ' checked';
+				echo '></td>'.
+				'</tr>';
+				echo '<tr><td></td><td align="center">'.$groups[$match][0].'</td><td></td><td align="center">'.$groups[$match][1].'</td></tr>';	
 				echo '<tr><td colspan=7 align=center><hr align=center style="width:96%; height:1px;" color="#6C261F"></td></tr>';	
 			}
 		echo '</table><br><br><br>';
@@ -418,7 +418,7 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 			$groups[2][1][1] = 'E';
 			$groups[2][2][0] = 'D';
 			$groups[2][2][1] = 'H';
-			$groups[2][3][0]	 = 'C';
+			$groups[2][3][0] = 'C';
 			$groups[2][3][1] = 'G';
 		} else {
 			$groups[1][0][0] = 'A';
@@ -489,9 +489,11 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 			$hamtahemma = mysqli_query($opendb, "SELECT * FROM lag WHERE id <= '8' '%' ORDER BY lag;");
 			$hamtaborta = mysqli_query($opendb, "SELECT * FROM lag WHERE id >= '9' && id <= '16' '%' ORDER BY lag;");
 
-			$matchfinal = $secondFinalId;
+			$matchfinal = $bronze;
 			echo '<tr';
-			if(!empty($_SESSION['match']) && ($_SESSION['match'][$matchfinal][0]=='' || $_SESSION['match'][$matchfinal][1]=='' || $_SESSION['match'][$matchfinal][2]=='')) {
+			if (isset($_SESSION['match'][$matchfinal][0]) && ($_SESSION['match'][$matchfinal][0]=='' ||
+				isset($_SESSION['match'][$matchfinal][1]) && $_SESSION['match'][$matchfinal][1]=='' ||
+				isset($_SESSION['match'][$matchfinal][2]) && $_SESSION['match'][$matchfinal][2]=='')) {
 				echo ' style="background-color: #FF0000;"';
 				$err = true;
 			}
@@ -520,12 +522,12 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 			echo	'</select>'.
 			'</td>'.
 			'<td align="center"><input type="radio" class=radio name="match['.$matchfinal.'][0]" value="1"';
-			if(isset($_SESSION['match']) && $_SESSION['match'][$matchfinal][0] == '1')
+			if(isset($_SESSION['match'][$matchfinal][0]) && $_SESSION['match'][$matchfinal][0] == '1')
 				echo ' checked';
 			echo '></td>'.
 			'<td align="center"> - </td>'.
 			'<td align="center"><input type="radio" class=radio name="match['.$matchfinal.'][0]" value="2"';
-			if(isset($_SESSION['match']) && $_SESSION['match'][$matchfinal][0] == '2')
+			if(isset($_SESSION['match'][$matchfinal][0]) && $_SESSION['match'][$matchfinal][0] == '2')
 				echo ' checked';
 			echo '></td>'.
 			'</tr>';
@@ -600,15 +602,13 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 		echo '</table><br><br><br>';
 
 // ------------------------ FINAL ----------------------------------- SLUT
-		if (isset($_SESSION['match']['swedishGoals'])) {
+		$swegoals = isset($_SESSION['match']['swedishGoals']) ? $_SESSION['match']['swedishGoals'] : '';
 ?>
-			<h2>Extrafr&aringgor</h2>
-			<table border=0 cellspacing=0 cellpadding=2>
-			<tr><td></td><td>Hur m&aringnga m&aringl g&oumlr Sverige?:</td><td>
-			<td colspan="2"><input type="text" size="3" maxlength="3" name="match[swedishGoals]" value="<?=$_SESSION['match']['swedishGoals'];?>"
+		<h2>Extrafr&aringgor</h2>
+		<table border=0 cellspacing=0 cellpadding=2>
+		<tr><td></td><td>Hur m&aringnga m&aringl g&oumlr Sverige?:</td><td>
+		<td colspan="2"><input type="text" size="3" maxlength="3" name="match[swedishGoals]" value="<?=$swegoals;?>"
 <?php
-		}
-
 		if (isset($_SESSION['match'])) {
 			if(!empty($_SESSION['match']['swedishGoals']) && $_SESSION['match']['swedishGoals'] == '') {
 				echo ' style="background-color: #FF0000;"';
@@ -616,13 +616,12 @@ if($cupStarted || (!isset($_SESSION['admin']))) {
 			}
 		}
 
-		if (isset($_SESSION['match']['topScorer'])) {
+		$topscorer = isset($_SESSION['match']['topScorer']) ? $_SESSION['match']['topScorer'] : '';
 ?>
-			</td></tr>
-			<tr><td></td><td>Vilken spelare, f&oumlr- och efternamn, g&oumlr flest m&aringl i turneringen:</td><td>
-			<td colspan="2"><input type="text" size="30" maxlength="30" name="match[topScorer]" value="<?=$_SESSION['match']['topScorer'];?>"
+		</td></tr>
+		<tr><td></td><td>Vilken spelare, f&oumlr- och efternamn, g&oumlr flest m&aringl i turneringen:</td><td>
+		<td colspan="2"><input type="text" size="30" maxlength="30" name="match[topScorer]" value="<?=$topscorer;?>"
 <?php
-		}
 
 		if(!empty($_SESSION['match']['topScorer']) && $_SESSION['match']['topScorer'] == '') {
 			echo ' style="background-color: #FF0000;"';

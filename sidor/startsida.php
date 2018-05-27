@@ -89,9 +89,9 @@ $arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,mat
 			</tr>
 			<tr>
 				<td align="right"><b>Odds:<br></b></td>
-				<td align="center"><?=round($ods['1']/(($nbrUsrs*100)+1),2)?>%</td>
-				<td align="center"><?=round($ods['X']/(($nbrUsrs*100)+1),2)?>%</td>
-				<td align="center"><?=round($ods['2']/(($nbrUsrs*100)+1),2)?>%</td>
+				<td align="center"><?=round(100*$ods['1']/($nbrUsrs),2)?>%</td>
+				<td align="center"><?=round(100*$ods['X']/($nbrUsrs),2)?>%</td>
+				<td align="center"><?=round(100*$ods['2']/($nbrUsrs),2)?>%</td>
 			</tr>
 		</table>
 		<table border="0" cellspacing="0" cellpadding="0">
@@ -122,18 +122,20 @@ $arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,mat
 			<tr class="header">
 				<td>Cup</td>
 				<td>Vinnare</td>
-				<td>Vinstsumma</td>
 			</tr>
 			<tr>
 				<td>VM 2010</td>
-				<td>Martin Sundstrom</td>
-				<td>X:-</td>
+				<td>Martin Sundstr&oumlm</td>
 			</tr>
 			<tr>
 				<td>EM 2012</td>
-				<td>Martin Sundstrom</td>
-				<td>X:-</td>
+				<td>Martin Sundstr&oumlm</td>
 			</tr>
+			<tr>
+				<td>VM 2014</td>
+				<td>Johan Thufvesson</td>
+			</tr>
+
 		</table>
 	</center>
 </div>

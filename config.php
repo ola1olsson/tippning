@@ -15,13 +15,17 @@ $dbname = "tippning";
 $firstGameStartY = 2018;
 $firstGameStartM = 6;
 $firstGameStartD = 14;
-$firstGameDate = "2018-06-14";
+$firstGameDate = mktime(0,0,0, $firstGameStartM, $firstGameStartD, $firstGameStartY);
+
 // Last day to place bet
-$last_bet_day = "2018-06-14";
+$last_bet_day = "2018-06-13";
+
 // Last day to pay
-$last_pay_day = "2018-06-14";
+$last_pay_day = $last_bet_day;
+
 // Price in SEK
 $price = 100;
+
 // Boolean - Has cup started?
 $cupStarted = date('Y-m-d') >= $firstGameDate;
 
@@ -34,16 +38,16 @@ $contactEmail = "ola.olsson@acconeer.com";
 $grundspel_max = 48;
 $grundspel = Array('A','B','C','D','E','F','G','H');
 
+//EM
 //$grundspel_max = 36;
 //$grundspel = Array('A','B','C','D','E','F');
 
 $eights_max = $grundspel_max + 8;
 $quarter_max = $eights_max + 4;
 $semi_max = $quarter_max + 2;
-$secondFinalId = $semi_max + 1;
-$finalId = $secondFinalId + 1;
+$bronze = $semi_max + 1;
+$finalId = $bronze + 1;
 $slutspel_max = $finalId;
-
 
 function daysLeft() {
 	$now = mktime();
@@ -51,6 +55,7 @@ function daysLeft() {
 	return floor(($cupStart - $now) / (60 * 60 * 24)) + 1;	
 }
 
+# Procent for the winner, runner up and third place.
 $procent_ett=70;
 $procent_tva=20;
 $procent_tre=10;

@@ -63,7 +63,7 @@ if (1)
 $eights = mysqli_query($opendb, "SELECT * FROM matcher WHERE ID > ".$grundspel_max." AND ID <= ".$eights_max." ORDER BY ID ASC;") or die(mysqli_error($opendb));
 $kvarts = mysqli_query($opendb, "SELECT * FROM matcher WHERE ID > ".$eights_max." AND ID <= ".$quarter_max." ORDER BY ID ASC;") or die(mysqli_error($opendb));
 $semis = mysqli_query($opendb, "SELECT * FROM matcher WHERE ID > ".$quarter_max." AND ID <= ".$semi_max." ORDER BY ID ASC;") or die(mysqli_error($opendb));
-$thirdPlaceFinal = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM matcher WHERE ID = ".$secondFinalId.";"));
+$thirdPlaceFinal = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM matcher WHERE ID = ".$bronze.";"));
 $final = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM matcher WHERE ID = ".$finalId.";"));
 
 ?>

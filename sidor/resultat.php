@@ -1,109 +1,111 @@
 <?php
-if($_SESSION['betalt'] == 1 && ($cupStarted || $_SESSION['admin'])) {
+if((isset($_SESSION['betalt']) && $_SESSION['betalt'] == 1 && $cupStarted) || $_SESSION['admin']) {
 ?>
 
-<table BGCOLOR="#FFFFFF" width="100%" height="100%"  bordercolor="#6C261F"  cellpadding="30" cellspacing="0">
-<tr>
-<td align="left" valign="top" frame="rhs" border="1"> 
+	<table BGCOLOR="#FFFFFF" width="100%" height="100%"  bordercolor="#6C261F"  cellpadding="30" cellspacing="0">
+	<tr>
+	<td align="left" valign="top" frame="rhs" border="1"> 
 
-<span class="header">J&aumlmf&oumlr<br></span><br>
+	<span class="header">J&aumlmf&oumlr<br></span><br>
+
 
 <?php
+	if(isset($_POST['check'])) {
+		if(isset($_REQUEST['cmd']) && $_REQUEST['cmd'] == 'allusers') {
+			$allusers = mysqli_query($opendb, "SELECT tippning.id FROM users, tippning WHERE users.id != ".$_SESSION['userID']." AND users.id = tippning.id ORDER BY givenName ASC;") or die(mysqli_error($opendb));
+			$k_usr = -1;
+			unset($_POST['users']);
+			while($usr = mysqli_fetch_array($allusers, MYSQLI_ASSOC))
+				$_POST['users'][$k_usr++] = $usr['id'];	
+		}
+		echo '<a href="index.php?sida=resultat">Klicka h&aumlr f&oumlr att g&oumlra en ny j&aumlmf&oumlrelse</a><br><br>';
 
+		$users[0] = -1;
+		$users[1] = $_SESSION['userID'];
+		$i_user = 2;
+		if (isset($_REQUEST['users'])) { 
+			foreach($_POST['users'] as $user) {
+				$users[$i_user] = $user;
+				$i_user++;
+			}
+		}
 
-//echo '<div style="width: 100%; height: 100%; background-color: white;" align="center">';
-// <div style="width: 100%; height: 100%; left: 0px; top: 0px; position: absolute; z-index: 0;"></div> -->
-if(isset($_POST['check'])) {
-	if($_REQUEST['cmd'] == 'allusers') {
-	$allusers = mysqli_query($opendb, "SELECT tippning.id FROM users, tippning WHERE users.id != ".$_SESSION['userID']." AND users.id = tippning.id ORDER BY givenName ASC;") or die(mysqli_error($opendb));
-	$k_usr = -1;
-	unset($_POST['users']);
-	while($usr = mysqli_fetch_array($allusers, MYSQLI_ASSOC))
-		$_POST['users'][$k_usr++] = $usr['id'];	
-	} 
-	echo '<a href="index.php?sida=resultat">Klicka h&aumlr f&oumlr att g&oumlra en ny j&aumlmf&oumlrelse</a><br><br>';
-	
-	$users[0] = -1;
-	$users[1] = $_SESSION['userID'];
-	$i_user = 2;
-	foreach($_POST['users'] as $user) {
-		$users[$i_user] = $user;
-		$i_user++;
-	}
-	// DATABASE CONNECTION ESTABLISHMENT
-	$query = "SELECT * FROM tippning WHERE ";
-	for($i=0; $i<sizeof($users); $i++) {
-		$query .= "id = ".$users[$i];
-		if ($i < sizeof($users) - 1) {
-			$query .= " OR ";
+		// DATABASE CONNECTION ESTABLISHMENT
+		$query = "SELECT * FROM tippning WHERE ";
+		for($i=0; $i<sizeof($users); $i++) {
+			$query .= "id = ".$users[$i];
+			if ($i < sizeof($users) - 1) {
+				$query .= " OR ";
+			}
 		}
-	}
-	$query .= ";";
-	$db_result = mysqli_query($opendb, $query) or die(mysqli_error($opendb));
-	while($db_res = mysqli_fetch_array($db_result,MYSQLI_ASSOC)) {
-		for($i=1; $i<=$grundspel_max; $i++) {
-			$result[$db_res['id']][$i] = $db_res['m'.$i];	
-		}
-		for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
-			$result[$db_res['id']][$i][0] = $db_res['m'.$i];
-			$result[$db_res['id']][$i][1] = $db_res['m'.$i.'a'];
-			$result[$db_res['id']][$i][2] = $db_res['m'.$i.'b'];
-		}
-		$result[$db_res['id']]['topScorer'] = $db_res['topScorer'];
-		$result[$db_res['id']]['swedishGoals'] = $db_res['swedishGoals'];
+
+		$query .= ";";
+		$db_result = mysqli_query($opendb, $query) or die(mysqli_error($opendb));
+		while($db_res = mysqli_fetch_array($db_result,MYSQLI_ASSOC)) {
+			for($i=1; $i<=$grundspel_max; $i++) {
+			$result[$db_res['id']][$i] = $db_res['m'.$i];
+			}
+			if (isset($_db_res['id'][$i][0]) && isset($_db_res['id'][$i][1]) && isset($_db_res['id'][$i][2])) {
+				for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
+					$result[$db_res['id']][$i][0] = $db_res['m'.$i];
+					$result[$db_res['id']][$i][1] = $db_res['m'.$i.'a'];
+					$result[$db_res['id']][$i][2] = $db_res['m'.$i.'b'];
+				}
+			}
+			$result[$db_res['id']]['topScorer'] = $db_res['topScorer'];
+			$result[$db_res['id']]['swedishGoals'] = $db_res['swedishGoals'];
         
-	}
-	$rowspan = (8*7)+3;
-	echo '<table border=0 bordercolor=black cellspacing=5 cellpadding=0>';
-	
-	echo '<tr>
+		}
+		$rowspan = (8*7)+3;
+		echo '<table border=0 bordercolor=black cellspacing=5 cellpadding=0>';
+		echo '<tr>
 			<td align=left valign=bottom colspan=4></td>
 			<td align=center valign=bottom><span class=vertical>Resultat</span></td>';
-	for($i=1; $i<sizeof($users); $i++) 
-	{	
-		$user_name = mysqli_fetch_array(mysqli_query($opendb, "SELECT givenName, familyName FROM users WHERE id = ".$users[$i].";"), MYSQLI_ASSOC);
-		$givenName = $user_name['givenName'];
-		$vertUserName = '';
-		for ($k = 0; $k < strlen($givenName); $k++) {
-			$vertUserName .= $givenName{$k}.'<br/>';
+		for($i=1; $i<sizeof($users); $i++) 
+		{	
+			$user_name = mysqli_fetch_array(mysqli_query($opendb, "SELECT givenName, familyName FROM users WHERE id = ".$users[$i].";"), MYSQLI_ASSOC);
+			$givenName = $user_name['givenName'];
+			$vertUserName = '';
+			for ($k = 0; $k < strlen($givenName); $k++) {
+				$vertUserName .= $givenName{$k}.'<br/>';
+			}
+			$vertUserName .= '<br/>'.$user_name['familyName']{0};
+			echo '<td align=left valign=top><span class=vertical>'.$vertUserName.'</span></td>';
+			echo '<td style="width:1px;" bgcolor="#550000" rowspan='.$rowspan.'><img src="./pics/spacer.gif" style="width:1px;" border=0></td>';
 		}
-		$vertUserName .= '<br/>'.$user_name['familyName']{0};
-		echo '<td align=left valign=top><span class=vertical>'.$vertUserName.'</span></td>';
-		echo '<td style="width:1px;" bgcolor="#550000" rowspan='.$rowspan.'><img src="./pics/spacer.gif" style="width:1px;" border=0></td>';
-	}
-	echo '</tr>';
-	echo '<tr style="font-weight:bold;">
+		echo '</tr>';
+		echo '<tr style="font-weight:bold;">
 			<td align=left valign=bottom colspan=5>Antal po&aumlng:</td>';
-	for($i=1; $i<sizeof($users); $i++) 
-	{
-		$user_points = mysqli_fetch_array(mysqli_query($opendb, "SELECT points FROM users WHERE id = ".$users[$i].";"), MYSQLI_ASSOC);
-		echo '<td align=center valign=bottom>'.$user_points['points'].'p</td>';
-	}
-	echo '</tr>';
-	$colspans = 4+(sizeof($users)+1);
-	
-	// GRUPPSPEL
-	echo '<tr><td colspan='.$colspans.' align=left><span class="header4">Gruppspel</span></td></tr>';
-	$grundspel = Array('A','B','C','D','E','F','G','H');
-	foreach($grundspel AS $grupp) {
+		for($i=1; $i<sizeof($users); $i++) 
+		{
+			$user_points = mysqli_fetch_array(mysqli_query($opendb, "SELECT points FROM users WHERE id = ".$users[$i].";"), MYSQLI_ASSOC);
+			echo '<td align=center valign=bottom>'.$user_points['points'].'p</td>';
+		}
+		echo '</tr>';
+		$colspans = 4+(sizeof($users)+1);
+
+		// GRUPPSPEL
+		echo '<tr><td colspan='.$colspans.' align=left><span class="header4">Gruppspel</span></td></tr>';
+		$grundspel = Array('A','B','C','D','E','F','G','H');
+		foreach($grundspel AS $grupp) {
 		$matcher = mysqli_query($opendb, "SELECT * FROM matcher WHERE hemma LIKE '".$grupp."%' AND borta LIKE '".$grupp."%' ORDER BY id ASC;");
 		echo '<tr><td colspan='.$colspans.' align=left><span class="header5">Grupp '.$grupp.'</span></td></tr>';
 		
 		while($match = mysqli_fetch_array($matcher, MYSQLI_ASSOC)) {
 			$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"),MYSQLI_ASSOC);
 			$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"),MYSQLI_ASSOC);
-			?>
+?>
 			<tr>
-				<td align=left><?=$match['ID']?>. </td>
-				<td align=center>
-					<img src="./pic/flaggor/<?=$hemma['flagImage']?>" title="<?=$hemma['countryName_sv']?>">
-				</td>
-				<td align=center> - </td>
-				<td align=center>
-					<img src="./pic/flaggor/<?=$borta['flagImage']?>" title="<?=$borta['countryName_sv']?>">&nbsp;&nbsp;
-				</td>
-				<td align=center bgcolor="#AAFFAA"><?=$result[-1][$match['ID']]?></td>
-			<?
+			<td align=left><?=$match['ID']?>. </td>
+			<td align=center>
+			<img src="./pic/flaggor/<?=$hemma['flagImage']?>" title="<?=$hemma['countryName_sv']?>">
+			</td>
+			<td align=center> - </td>
+			<td align=center>
+			<img src="./pic/flaggor/<?=$borta['flagImage']?>" title="<?=$borta['countryName_sv']?>">&nbsp;&nbsp;
+			</td>
+			<td align=center bgcolor="#AAFFAA"><?=$result[-1][$match['ID']]?></td>
+<?php
 			for($i=1; $i<sizeof($users); $i++) {
 				echo '<td align=center style="background-color: ';
 				if($result[-1][$match['ID']] != '') {
@@ -112,7 +114,7 @@ if(isset($_POST['check'])) {
 					else
 						echo '#FFAAAA';
 				} else {
-					echo 'none';
+				echo 'none';
 				}
 				echo ';">'.$result[$users[$i]][$match['ID']].'</td>';
 			}
@@ -138,85 +140,83 @@ if(isset($_POST['check'])) {
 		echo '<td colspan=4 align=center><span style="font-weight:bold;">'.$i.'</span></td>'.
 			'<td style="width:1px;" bgcolor="#550000" rowspan='.$rowspan.'><img src="./pics/spacer.gif" style="width:1px;" border=0></td>';
 	}
-		echo '<td colspan=4 align=center><span style="font-weight:bold;">TopScorer and Goals</span></td>'.
-			'<td style="width:1px;" bgcolor="#550000" rowspan='.$rowspan.'><img src="./pics/spacer.gif" style="width:1px;" border=0></td>';
-	
-	
+	echo '<td colspan=4 align=center><span style="font-weight:bold;">TopScorer and Goals</span></td>'.
+		'<td style="width:1px;" bgcolor="#550000" rowspan='.$rowspan.'><img src="./pics/spacer.gif" style="width:1px;" border=0></td>';
 	echo '</tr>';
-	
 	echo '<tr bgcolor="#AAFFAA"><td><span class="header5">Resultat</span></td>';
+
 	for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
 		echo '<td align=center>';
-		if($result[-1][$i][1] != '')
-			echo '<img src="./pic/flaggor/'.$teams[$result[-1][$i][1]]['flag'].'" border=0><br>'.$teams[$result[-1][$i][1]]['land'];	
-		else 
-			echo '&nbsp';
-		echo '</td><td align=center>&nbsp;-&nbsp;</td><td align=center>';
-		if($result[-1][$i][2] != '')
-			echo '<img src="./pic/flaggor/'.$teams[$result[-1][$i][2]]['flag'].'" border=0><br>'.$teams[$result[-1][$i][2]]['land'];	
-		echo '</td><td align=center><span style="font-size:18px;">';
-		if($result[-1][$i][0] != '')
-			echo $result[-1][$i][0];
-		else
-			echo '&nbsp;';
-		echo '</span></td>';
+		if (isset($result[-1][$i][1]) && isset($result[-1][$i][2])) {
+			if($result[-1][$i][1] != '')
+				echo '<img src="./pic/flaggor/'.$teams[$result[-1][$i][1]]['flag'].'" border=0><br>'.$teams[$result[-1][$i][1]]['land'];
+			else 
+				echo '&nbsp';
+			echo '</td><td align=center>&nbsp;-&nbsp;</td><td align=center>';
+			if($result[-1][$i][2] != '')
+				echo '<img src="./pic/flaggor/'.$teams[$result[-1][$i][2]]['flag'].'" border=0><br>'.$teams[$result[-1][$i][2]]['land'];
+			echo '</td><td align=center><span style="font-size:18px;">';
+			if($result[-1][$i][0] != '')
+				echo $result[-1][$i][0];
+			else
+				echo '&nbsp;';
+			echo '</span></td>';
+		}
 	}
+
 	echo '</tr>';
 	for($k=1; $k<sizeof($users); $k++) {
 		$user_name = mysqli_fetch_array(mysqli_query($opendb, "SELECT givenName, familyName FROM users WHERE id = ".$users[$k].";"), MYSQLI_ASSOC);
-		
 		echo 	'<tr>'.
-				'<td align=left>'.$user_name['givenName'].' '.$user_name['familyName']{0}.'</td>';
-		for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
-			echo '<td align=center';
-			if($result[-1][$i][1] != '') {
-				if($result[$users[$k]][$i][1] == $result[-1][$i][1])
-					echo ' bgcolor="#00FF00"';
-				else
-					echo ' bgcolor="#FFAAAA"';
+			'<td align=left>'.$user_name['givenName'].' '.$user_name['familyName']{0}.'</td>';
+		if (isset($result[-1][$i][0]) && isset($result[-1][$i][1]) && isset($result[-1][$i][2])) {
+			for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
+				echo '<td align=center';
+				if($result[-1][$i][1] != '') {
+					if($result[$users[$k]][$i][1] == $result[-1][$i][1])
+						echo ' bgcolor="#00FF00"';
+					else
+						echo ' bgcolor="#FFAAAA"';
+				}
+				echo '>'.
+					'<img src="./pic/flaggor/'.$teams[$result[$users[$k]][$i][1]]['flag'].'" border=0><br>'.$teams[$result[$users[$k]][$i][1]]['land'].
+					'</td><td align=center>&nbsp;-&nbsp;</td><td align=center';
+				if($result[-1][$i][2] != '') {
+					if($result[$users[$k]][$i][2] == $result[-1][$i][2])
+						echo ' bgcolor="#00FF00"';
+					else
+						echo ' bgcolor="#FFAAAA"';
+				}
+				echo '>'.
+					'<img src="./pic/flaggor/'.$teams[$result[$users[$k]][$i][2]]['flag'].'" border=0><br>'.$teams[$result[$users[$k]][$i][2]]['land'].
+					'</td><td align=center';
+				if($result[-1][$i][0] != '') {
+					if($result[$users[$k]][$i][0] == $result[-1][$i][0])
+						echo ' bgcolor="#00FF00"';
+					else
+						echo ' bgcolor="#FFAAAA"';
+				}
+				echo '><span style="font-size:18px;">'.$result[$users[$k]][$i][0].'</span></td>';
 			}
-			echo '>'.
-				'<img src="./pic/flaggor/'.$teams[$result[$users[$k]][$i][1]]['flag'].'" border=0><br>'.$teams[$result[$users[$k]][$i][1]]['land'].
-				'</td><td align=center>&nbsp;-&nbsp;</td><td align=center';
-			if($result[-1][$i][2] != '') {
-				if($result[$users[$k]][$i][2] == $result[-1][$i][2])
-					echo ' bgcolor="#00FF00"';
-				else
-					echo ' bgcolor="#FFAAAA"';
-			}
-			echo '>'.
-				'<img src="./pic/flaggor/'.$teams[$result[$users[$k]][$i][2]]['flag'].'" border=0><br>'.$teams[$result[$users[$k]][$i][2]]['land'].
-				'</td><td align=center';
-			if($result[-1][$i][0] != '') {
-				if($result[$users[$k]][$i][0] == $result[-1][$i][0])
-					echo ' bgcolor="#00FF00"';
-				else
-					echo ' bgcolor="#FFAAAA"';
-			}
-			echo '><span style="font-size:18px;">'.$result[$users[$k]][$i][0].'</span></td>';
-
-	    }
+		}
 		echo	'</td><td align=center';
-        if($result[-1]['topScorer'] != '') {
-           if(strcmp($result[$users[$k]]['topScorer'],$result[-1]['topScorer']) == 0)
-               echo ' bgcolor="#00FF00"';
-            else
-               echo ' bgcolor="#FFAAAA"';
-        }
-        echo '><span style="font-size:18px;">' . $result[$users[$k]]['topScorer'] . '</span></td>';
-
+	if($result[-1]['topScorer'] != '') {
+		if(strcmp($result[$users[$k]]['topScorer'],$result[-1]['topScorer']) == 0)
+			echo ' bgcolor="#00FF00"';
+		} else {
+			echo ' bgcolor="#FFAAAA"';
+		}
+		echo '><span style="font-size:18px;">' . $result[$users[$k]]['topScorer'] . '</span></td>';
 		echo	'<td align=center';
-        if($result[-1]['swedishGoals'] != '') {
-           if($result[$users[$k]]['swedishGoals'] == $result[-1]['swedishGoals'])
-               echo ' bgcolor="#00FF00"';
-            else
-               echo ' bgcolor="#FFAAAA"';
-        }
-        echo '><span style="font-size:18px;">' . $result[$users[$k]]['swedishGoals'] . '</span></td>';
-		echo 	'</td></tr>';
-
+	if($result[-1]['swedishGoals'] != '') {
+		if($result[$users[$k]]['swedishGoals'] == $result[-1]['swedishGoals'])
+		echo ' bgcolor="#00FF00"';
+		} else {
+			echo ' bgcolor="#FFAAAA"';
+		}
+		echo '><span style="font-size:18px;">' . $result[$users[$k]]['swedishGoals'] . '</span></td>';
+		echo	'</td></tr>';
 	}
-	
 	echo '</table></div>';
 		
 		/**
@@ -354,18 +354,17 @@ if(isset($_POST['check'])) {
 	*/
 	
 } else {
-
 	if(mysqli_num_rows(mysqli_query($opendb, "SELECT id FROM tippning WHERE id = ".$_SESSION['userID'].";"))) {
 		echo '<span class="header4">Kryssa f&oumlr de personer vilka Du vill j&aumlmf&oumlra Ditt resultat med.<br></span>Obs! Endast de personer som har tippat visas i listan.<br><br>';
-		echo '<input type=button class=btn value="J&aumlmf&oumlr alla" onClick="this.form.action=\'index.php?sida=resultat&cmd=allusers\'; this.form.submit();"><br><br>';
+		echo '<input type=button class=btn value="Jämför alla" onClick="this.form.action=\'index.php?sida=resultat&cmd=allusers\'; this.form.submit();"><br><br>';
 		echo '<input type=hidden name=check value=true>';
 		$users = mysqli_query($opendb, "SELECT users.id, users.givenName, users.familyName FROM users, tippning WHERE users.id != ".$_SESSION['userID']." AND users.id = tippning.id ORDER BY givenName ASC;") or die(mysqli_error($opendb));
 		echo '<table border=0 cellspacing=0 cellpadding=2>';
 		$i_user = 0;
 		while($user = mysqli_fetch_array($users, MYSQLI_ASSOC)) {
-			echo '<tr><td>'.$user['givenName'].' '.$user['familyName'].'</td><td><input type=checkbox name=users['.($i_users++).'] value="'.$user['id'].'"></td></tr>';
+			echo '<tr><td>'.$user['givenName'].' '.$user['familyName'].'</td><td><input type=checkbox name=users['.($i_user++).'] value="'.$user['id'].'"></td></tr>';
 		}
-		echo '</tr><tr><td colspan=2 align=right><input type=button class=btn value="J&aumlmf&oumlr!" onClick="this.form.action=\'index.php?sida=resultat\'; this.form.submit();"></td></tr></table>';
+		echo '</tr><tr><td colspan=2 align=right><input type=button class=btn value="Jämför!" onClick="this.form.action=\'index.php?sida=resultat\'; this.form.submit();"></td></tr></table>';
 	} else {
 		echo '<span class="header2">Du m&aringste tippa innan du kan j&aumlmf&oumlra ditt resultat med n&aringgon annans.<br></span>';
 	}
@@ -375,6 +374,7 @@ if(isset($_POST['check'])) {
 </tr>
 </table>
 <?php
-} else
+} else {
 	echo 'Permission denied!';
+}
 ?>
