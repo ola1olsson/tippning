@@ -262,7 +262,9 @@ INSERT INTO `emwinner` (`id`, `year`, `winner_swe`, `winner_eng`, `flagpic`, `ho
 
 CREATE TABLE IF NOT EXISTS `forum_entries` (
 
-  `forumID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+
+  `forumID` int(11) NOT NULL,
 
   `user` int(11) DEFAULT NULL,
 
@@ -274,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `forum_entries` (
 
   `contribution` varchar(45) DEFAULT NULL,
 
-  PRIMARY KEY (`forumID`),
+  PRIMARY KEY (`ID`),
 
   KEY `fk_user_to_userid` (`user`)
 
@@ -287,12 +289,6 @@ CREATE TABLE IF NOT EXISTS `forum_entries` (
 -- Dumping data for table `forum_entries`
 
 --
-
-
-
-INSERT INTO `forum_entries` (`forumID`, `user`, `date`, `time`, `title`, `contribution`) VALUES
-
-(1, 44, '2016-04-26', '08:33', 'Test', 'Test');
 
 
 
@@ -333,12 +329,6 @@ CREATE TABLE IF NOT EXISTS `forum_titles` (
 -- Dumping data for table `forum_titles`
 
 --
-
-
-
-INSERT INTO `forum_titles` (`id`, `title`, `date`, `time`, `owner`) VALUES
-
-(1, 'Test', '2016-04-26', '08:33', 44);
 
 
 
@@ -877,18 +867,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 
 --
-
-
-
-INSERT INTO `users` (`id`, `givenName`, `familyName`, `street`, `city`, `phoneNumber`, `Company`, `emailAddress`, `username`, `password`, `foto`, `betalt`, `admin`, `points`, `nbrOfLogins`) VALUES
-
-(44, 'Johan', 'Widholm', NULL, 'Tomelilla', '070', '', 'johan@widholm.se', 'johan@widholm.se', 'e157b7e125613bfbfd7c09192e25ab0a', NULL, '1', NULL, NULL, 33),
-
-(55, 'Kaveh Rahimi', 'SEOdob', NULL, 'SEOdob', '83883871288', 'Stoua la brute P', 'esgruffunchee1997@seocdvig.ru', 'SEOdob', 'c5048d6244f3c1ea3fe5f44b4ef18fd3', NULL, NULL, NULL, NULL, 1),
-
-(54, 'Sean Peter Fox', 'JamesWew', NULL, 'JamesWew', '85659982935', 'Que dalle', 'sweden@cheapscript.net', 'JamesWew', '40eed085afd6d3354ffc056890a2f21a', NULL, NULL, NULL, NULL, 1),
-
-(56, 'Johan', 'Widholm', NULL, 'Tomelilla', '', '', 'johan@bo-ohlsson.se', 'johan@bo-ohlsson.se', 'e157b7e125613bfbfd7c09192e25ab0a', NULL, NULL, NULL, NULL, 1);
 
 
 

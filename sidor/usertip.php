@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['permission']) && $_SESSION['permission'] && $_SESSION['admin']) {
+if(activeSession() && $_SESSION['admin']) {
 	$users = mysqli_query($opendb, "SELECT * FROM users ORDER BY givenName ASC;");
 ?>
 	<table BGCOLOR="#FFFFFF" width="100%" height="100%"  bordercolor="#6C261F"  cellpadding="30" cellspacing="0">

@@ -4,8 +4,8 @@
 <br>
 <?php
 
-#if(isset($_SESSION['permission']) && $_SESSION['permission']) {
-if (1) {
+if (activeSession()) {
+
 echo '<span class="header">Min profil<br><br></span>';
 
 if(isset($cmd) && $cmd == 'passwd') {

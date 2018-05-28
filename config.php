@@ -52,7 +52,7 @@ $slutspel_max = $finalId;
 function daysLeft() {
 	$now = mktime();
 	$cupStart = mktime(0, 0, 0, 06, 14, 2018);
-	return floor(($cupStart - $now) / (60 * 60 * 24)) + 1;	
+	return floor(($cupStart - $now) / (60 * 60 * 24)) + 1;
 }
 
 # Procent for the winner, runner up and third place.
@@ -61,5 +61,8 @@ $procent_tva=20;
 $procent_tre=10;
 
 # Hur många personer ska ha oddsat innan vi visar procentuell fördelning på förstasidan
-$usersbeforeshowingodds=1
+$usersbeforeshowingodds=1;
+# Ska föregående VM/EM-tipp-vinnare visas?
+$showprevwinner=1;
+
 ?>

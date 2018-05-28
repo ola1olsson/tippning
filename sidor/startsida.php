@@ -118,6 +118,7 @@ if ($nbrUsrs >= $usersbeforeshowingodds) {
 </div>
 <?php
 }
+if ($showprevwinner==1) {
 ?>
 <div class="container">
 	<span class="header2">Tidigare &aringrs vinnare av Tippningen EM & VM<br/></span>
@@ -143,3 +144,6 @@ if ($nbrUsrs >= $usersbeforeshowingodds) {
 		</table>
 	</center>
 </div>
+<?php
+}
+?>

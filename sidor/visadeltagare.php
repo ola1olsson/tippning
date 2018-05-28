@@ -56,12 +56,15 @@ if($_REQUEST['id'] != '')
 	
 <span class="header3">
 <?php
+	$done_betting = false;
+
 	$result = mysqli_query($opendb, "SELECT * FROM tippning WHERE ID = ".$row['id'].";"); // H&aumlmtar deltagarens tippning fr¨n databasen.
 	if(mysqli_num_rows($result) > 0) {
 		echo $row['username'].' har en registrerad tippning!';
 		$correct = mysqli_query($opendb, "SELECT * FROM tippning WHERE ID = -1;"); 	// H&aumlmtar den r&aumltta raden i tippningen
 		$corr = mysqli_fetch_array($correct, MYSQLI_ASSOC);					// L&aumlgger in den r&aumltta raden i en Array
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);						// L&aumlgger in deltagarens tippnings rad i en Array
+		$done_betting = true;
 	} else {
 		echo $row['username'].' har inte tippat &aumlnnu!';
 	}	
@@ -74,7 +77,7 @@ if($_REQUEST['id'] != '')
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Display users bet
-if((isset($_SESSION['permission']) && $_SESSION['permission'] && $_SESSION['betalt'] == 1 && $cupStarted) || $_SESSION['admin']) {
+if ((activeSession() && $_SESSION['betalt'] == 1 && $cupStarted) || $_SESSION['admin']) {
 ?>
 	<table border="0" cellspacing="0" cellpadding="0">
 	<tr class="header">
@@ -101,6 +104,8 @@ foreach($grundspel AS $grupp) {
 		<tr><td colspan=7><span class="header2">Grupp <?echo $grupp;?></span></td></tr>
 <?php
 		while($match = mysqli_fetch_array($matcher)) {
+			$tmp_c = "";
+			$tmp_r = "";
 			$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
 			$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
 ?>
@@ -113,34 +118,36 @@ foreach($grundspel AS $grupp) {
 				<table border="0" bordercolor="black" cellspacing="0" cellpadding="0">
 				<tr>
 <?php
-				$tmp_c = $corr['m'.$match['ID']];
-				$tmp_r = $row['m'.$match['ID']];
+				if (isset($corr['m'.$match['ID']]) && isset($row['m'.$match['ID']])) {
+					$tmp_c = $corr['m'.$match['ID']];
+					$tmp_r = $row['m'.$match['ID']];
 ?>
-				<td align="center" width="20" height="20"
+					<td align="center" width="20" height="20"
 <?php
-				if($tmp_r == '1') { if($tmp_c == '1') echo 'bgcolor=#00ff00;'; else echo 'bgcolor=#ff0000;'; }
+					if($tmp_r == '1') { if($tmp_c == '1') echo 'bgcolor=#00ff00;'; else echo 'bgcolor=#ff0000;'; }
 ?>
-				>
+					>
 <?php
-				if($tmp_r == '1') echo '1';
+					if($tmp_r == '1') echo '1';
 ?>
-				</td>
-				<td align="center" width="20" height="20"
+					</td>
+					<td align="center" width="20" height="20"
 <?php
-				if($tmp_r == 'X') { if($tmp_c == 'X') echo 'bgcolor=#00ff00;'; else echo 'bgcolor=#ff0000;'; }
+					if($tmp_r == 'X') { if($tmp_c == 'X') echo 'bgcolor=#00ff00;'; else echo 'bgcolor=#ff0000;'; }
 ?>
-				>
+					>
 <?php
-				if($tmp_r == 'X') echo 'X';
+					if($tmp_r == 'X') echo 'X';
 ?>
-				</td>
-				<td align="center" width="20" height="20"
+					</td>
+					<td align="center" width="20" height="20"
 <?php
-				if($tmp_r == '2') { if($tmp_c == '2') echo 'bgcolor=#00ff00;'; else echo 'bgcolor=#ff0000;'; }
+					if($tmp_r == '2') { if($tmp_c == '2') echo 'bgcolor=#00ff00;'; else echo 'bgcolor=#ff0000;'; }
 ?>
-				>
+					>
 <?php
-				if($tmp_r == '2') echo '2';
+					if($tmp_r == '2') echo '2';
+				}
 ?>
 				</td>
 				</tr>
@@ -163,17 +170,16 @@ foreach($grundspel AS $grupp) {
 ?>
 	<span class="header4">
 <?php 
-	if ($_SESSION['betalt'] != 1 && $_SESSION['admin'] == 0 ) {
+	if (!$_SESSION['betalt'] && $_SESSION['admin'] == 0 && $done_betting) {
 ?>
 		Du har &aumlnnu inte betalt och f&aringr d&aumlrmed inte se denna persons tippning.
 <?php
-		} else if (!$cupStarted) {
+		} else if (!$cupStarted && $done_betting) {
 ?>
 			Fr&aringn och med <?=$last_bet_day ?> kommer du att kunna se deltagarens tippning.
 <?php
-		} else {
+		} else if (!$done_betting) {
 ?>
-		Du &aumlr inte ber&aumlttigad att se denna persons tippning.
 <?php
 		}
 ?>

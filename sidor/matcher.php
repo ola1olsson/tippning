@@ -56,8 +56,7 @@ function printDivider() {
 		</tr>';
 }
 
-#if(isset($_SESSION['permission']) && $_SESSION['permission'] == 1)
-if (1)
+if (activeSession())
 {
 	
 $eights = mysqli_query($opendb, "SELECT * FROM matcher WHERE ID > ".$grundspel_max." AND ID <= ".$eights_max." ORDER BY ID ASC;") or die(mysqli_error($opendb));
@@ -119,14 +118,14 @@ while($match = mysqli_fetch_array($semis, MYSQLI_ASSOC)) {
 printDivider();
 
 //---------------------------------------------------------- THIRD PLACE FINAL ----------------------------------------------------
-//printTitle('Match om tredjeplats');
-//printHeaders();
-//$match = $thirdPlaceFinal;
-//$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
-//$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
-//$arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQLI_ASSOC);
-//printGame($match, $hemma, $borta, $arena);
-//printDivider();
+printTitle('Match om tredjeplats');
+printHeaders();
+$match = $thirdPlaceFinal;
+$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
+$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
+$arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQLI_ASSOC);
+printGame($match, $hemma, $borta, $arena);
+printDivider();
 
 //---------------------------------------------------------- FINAL ----------------------------------------------------
 printTitle('Final');

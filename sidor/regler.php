@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_SESSION['permission']) || !$_SESSION['permission']) {
+if(activeSession()) {
 ?>
 
 

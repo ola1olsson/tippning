@@ -5,6 +5,7 @@
 	
 	include "config.php";
 	include "connect_database.php";
+	include "utils.php";
 
 	// Register
 	if(isset($_POST['register']) && isset($_POST['username']) && isset($_POST['password'])) {
@@ -46,7 +47,7 @@
 	</head>
 	<body>
 		<?php
-		if(isset($_SESSION['permission']) && $_SESSION['permission'] == 1) {
+		if(activeSession()) {
 			$menu[0]['token'] 	= 'startsida';
 			$menu[0]['text']	= 'Start';
 			$menu[0]['access']	= true;
@@ -70,11 +71,10 @@
 			$menu[5]['token'] 	= 'regler';
 			$menu[5]['text']	= 'Regler';
 			$menu[5]['access']	= true;
-			
-//			$menu[6]['token'] 	= 'forum';
-//			$menu[6]['text']	= 'Forum';
-//			$menu[6]['access']	= true;
-			
+
+			$menu[6]['token'] 	= 'forum';
+			$menu[6]['text']	= 'Forum';
+			$menu[6]['access']	= true;
 		?>
 		<center>
 			<table id="mainContainer" border="0" cellspacing="0" cellpadding="0">

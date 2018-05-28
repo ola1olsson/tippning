@@ -4,9 +4,7 @@
 //include "../connect_database.php";
 
 
-if (!(isset($_SESSION['permission']) && $_SESSION['permission']) || $cupStarted && (!isset($_SESSION['admin']))) {
-	echo '<span class="header2">Permission denied!</span>';
-} else {
+if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 ?>
 
 	<table BGCOLOR="#FFFFFF" border="0" width="100%" height="100%">
@@ -647,5 +645,7 @@ if (!(isset($_SESSION['permission']) && $_SESSION['permission']) || $cupStarted 
 		</tr>
 		</table>
 <?php
-		}
+} else {
+	echo '<span class="header2">Permission denied!</span>';
+}
 ?>

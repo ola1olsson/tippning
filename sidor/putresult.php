@@ -74,7 +74,7 @@ if($_SESSION['admin']) {
 	} else if (isset($_POST['gameId']) && isset($_POST['result'])){
 		$gameId = $_POST['gameId'];
 		$result = $_POST['result'];
-		mysqli_query($opendb, "UPDATE tippning SET m".$gameId."='".$result."' WHERE id = -1;") or die(mysqli_error($opendb));
+		mysqli_query($opendb, "UPDATE tippning SET m".$gameId."='". strtoupper($result) ."' WHERE id = -1;") or die(mysqli_error($opendb));
 		if ($gameId > $grundspel_max) {
 			$newHome = $_POST['home'];
 			$newGone = $_POST['gone'];

@@ -163,7 +163,7 @@ if($_SESSION['admin']) {
 					<td colspan="4"></td>
 				</tr>
 <?php
-				mysqli_query("UPDATE users SET points = '".$points."' WHERE id = ".$userTip['id'].";") or die(mysqli_error($opendb));
+				mysqli_query($opendb, "UPDATE users SET points = '".$points."' WHERE id = ".$userTip['id'].";") or die(mysqli_error($opendb));
 				}
 ?>
 			<table>
