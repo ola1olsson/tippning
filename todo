@@ -1,0 +1,31 @@
+dubbelkolla tv-tiderna.
+test all without admin, before and after cupstarted
+test all with admin, after cupstarted
+arena
+
+Fixa uppdatering av betalning i UI:t
+
+Bra saker att veta
+
+Följande i index.html ger bra errors:
+ini_set('display_errors', 'On');
+
+mysql -u root -p < tippning_2018.sql
+// mysql> update users set admin=1 where username='ola';
+
+use tippning;
+show databases;
+show tables;
+select * from users;
+describe forum_entries;
+
+drop database tippning;
+inside mysql, type "source tippning_2018.sql".
+
+
+%s/ä/\&auml/g
+%s/Ä/\&Auml/g
+%s/å/\&aring/g
+%s/Å/\&Aring/g
+%s/ö/\&ouml/g
+%s/Ö/\&Ouml/g
