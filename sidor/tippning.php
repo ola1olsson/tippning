@@ -35,13 +35,14 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 	if(isset($_POST['match'])) { 
 		$_SESSION['match'] = $_POST['match'];
 		for($i=1; $i<=$grundspel_max; $i++) {
-			if(isset($_SESSION['match'][$i]) && $_SESSION['match'][$i] == '') 
-			$err = true;
+			if (!isset($_SESSION['match'][$i]) || $_SESSION['match'][$i] == '') { 
+				$err = true;
+			}
 		}
 		for($i= $slutspel_max; $i<=$slutspel_max; $i++) {
-			if (isset($_SESSION['match'][$i][0]) && $_SESSION['match'][$i][0]==''
-			|| isset($_SESSION['match'][$i][1])  && $_SESSION['match'][$i][1]==''
-			|| isset($_SESSION['match'][$i][2])  && $_SESSION['match'][$i][2]=='')
+			if (!isset($_SESSION['match'][$i][0]) || $_SESSION['match'][$i][0]==''
+			|| !isset($_SESSION['match'][$i][1])  || $_SESSION['match'][$i][1]==''
+			|| !isset($_SESSION['match'][$i][2])  || $_SESSION['match'][$i][2]=='')
 				$err = true;
 			if(isset($_SESSION['match']['swedishGoals']) && $_SESSION['match']['swedishGoals']=='' || isset($_SESSION['match']['topScorer']) &&$_SESSION['match']['topScorer']=='')
 				$err = true;
@@ -149,7 +150,7 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 				if (isset($match) && isset($match['ID'])) {
 					$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
 					$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
-					if(!isset($_SESSION['match'][$match['ID']]) || $_SESSION['match'][$match['ID']] == '') { 
+					if (isset($_POST['match']) && (!isset($_SESSION['match'][$match['ID']]) || $_SESSION['match'][$match['ID']] == '')) { 
 						echo '<tr style="background-color: #FF0000;">';
 						$err = true;
 					} else {
@@ -249,7 +250,7 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 			<tr
 <?php
 			// kollar s&aring att just denna match blivit tippad, annars f&aumlrgar vi hela TR'n r&ouml&ouml&ouml&ouml&ouml&ouml&oumld
-			if(!isset($_SESSION['match'][$matchnumber][0]) || ($_SESSION['match'][$matchnumber][0] == '')) {
+			if(isset($_POST['match']) && (!isset($_SESSION['match'][$matchnumber][0]) || ($_SESSION['match'][$matchnumber][0] == ''))) {
 				echo '  style="background-color: #FF0000;"';
 				$err = true;
 			}
@@ -364,7 +365,7 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 			echo '<tr';
 			// Anv&aumlnds f&oumlr att kolla om man "gl&oumlmt" tippa p&aring n&aringn match, i s&aring fall skall hela den TR'n bli r&oumld. 
 			//(err=true s&aumlger &aringt dig att n&aringgot inte har tippats, anv&aumlnds s&aumlkert senare..... 2014? Nu t&aumlnker du - "Ja!"
-			if(!isset($_SESSION['match'][$matchnumber][0]) || ($_SESSION['match'][$matchnumber][0] == '')) 
+			if(isset($_POST['match']) && (!isset($_SESSION['match'][$matchnumber][0]) || ($_SESSION['match'][$matchnumber][0] == ''))) 
 			{
 				echo ' style="background-color: #FF0000;"';
 				$err = true;
@@ -453,9 +454,7 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 			</tr>
 <?php
 			echo '<tr';
-			// Anv&aumlnds f&oumlr att kolla om man "gl&oumlmt" tippa p&aring n&aringn match, i s&aring fall skall hela den TR'n bli r&oumld. 
-			//(err=true s&aumlger &aringt dig att n&aringgot inte har tippats, anv&aumlnds s&aumlkert senare.....
-			if(!isset($_SESSION['match'][$matchnumber][0]) || ($_SESSION['match'][$matchnumber][0] == '')) {
+			if(isset($_POST['match']) && (!isset($_SESSION['match'][$matchnumber][0]) || ($_SESSION['match'][$matchnumber][0] == ''))) {
 				echo ' style="background-color: #FF0000;"';
 				$err = true;
 			}
@@ -464,7 +463,7 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 			'</td>'.
 			'<td align="center"> - </td>'.
 			'<td align="center"> Vinnare match '. $winner[$match][1] .
-			'</td>'.		
+			'</td>'.
 			'<td align="center"><input type="radio" class=radio name="match['.($matchnumber).'][0]" value="1"';
 			if(isset($_SESSION['match'][$matchnumber][0]) && $_SESSION['match'][$matchnumber][0] == '1') // anv&aumlnds f&oumlr att kolla med tippningen som ligger i sessionen om man tippat "etta"
 				echo ' checked';
@@ -475,7 +474,7 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 				echo ' checked';
 			echo '></td>'.
 			'</tr>';
-			echo '<tr><td colspan=7 align=center><hr align=center style="width:96%; height:1px;" color="#6C261F"></td></tr>';	
+			echo '<tr><td colspan=7 align=center><hr align=center style="width:96%; height:1px;" color="#6C261F"></td></tr>';
 		}
 		echo '</table><br><br><br>';
 // -------------------------------------------------------- SEMI SLUT ----------------------------
@@ -483,6 +482,7 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 // ------------------------ SECOND FINAL -----------------------------------
 		if (1)	{
 			echo '<h3>Match om tredjeplats</h3>';
+
 			echo '<table border=0 cellspacing=0 cellpadding=2>';
 			echo '<tr class="header"><td align=right>Match</td><td width=150 align=center>Hemma</td><td>-</td><td width=150 align=center>Borta</td><td align=center>1</td><td align=center>-</td><td align=center>2</td></tr>';
 			$hamtahemma = mysqli_query($opendb, "SELECT * FROM lag WHERE id <= '8' '%' ORDER BY lag;");
@@ -490,9 +490,9 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 
 			$matchfinal = $bronze;
 			echo '<tr';
-			if (isset($_SESSION['match'][$matchfinal][0]) && ($_SESSION['match'][$matchfinal][0]=='' ||
-				isset($_SESSION['match'][$matchfinal][1]) && $_SESSION['match'][$matchfinal][1]=='' ||
-				isset($_SESSION['match'][$matchfinal][2]) && $_SESSION['match'][$matchfinal][2]=='')) {
+			if (isset($_POST['match']) && (!isset($_SESSION['match'][$matchfinal][0]) || ($_SESSION['match'][$matchfinal][0]=='' ||
+				!isset($_SESSION['match'][$matchfinal][1]) || $_SESSION['match'][$matchfinal][1]=='' ||
+				!isset($_SESSION['match'][$matchfinal][2]) || $_SESSION['match'][$matchfinal][2]==''))) {
 				echo ' style="background-color: #FF0000;"';
 				$err = true;
 			}
@@ -556,9 +556,9 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 
 		$matchfinal = $finalId;
 		echo '<tr';
-		if(isset($_SESSION['match'][$matchfinal][0]) && ($_SESSION['match'][$matchfinal][0]=='' ||
-			isset($_SESSION['match'][$matchfinal][1]) && $_SESSION['match'][$matchfinal][1]=='' ||
-			isset($_SESSION['match'][$matchfinal][0]) && $_SESSION['match'][$matchfinal][2]=='')) {
+		if	(isset($_POST['match']) && (!isset($_SESSION['match'][$matchfinal][0]) || ($_SESSION['match'][$matchfinal][0]=='' ||
+			!isset($_SESSION['match'][$matchfinal][1]) || $_SESSION['match'][$matchfinal][1]=='' ||
+			!isset($_SESSION['match'][$matchfinal][0]) || $_SESSION['match'][$matchfinal][2]==''))) {
 			echo ' style="background-color: #FF0000;"';
 			$err = true;
 		}
@@ -609,7 +609,7 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 		<td colspan="2"><input type="text" size="3" maxlength="3" name="match[swedishGoals]" value="<?=$swegoals;?>"
 <?php
 		if (isset($_SESSION['match'])) {
-			if(!empty($_SESSION['match']['swedishGoals']) && $_SESSION['match']['swedishGoals'] == '') {
+			if (isset($_POST['match']) && $swegoals == '') {
 				echo ' style="background-color: #FF0000;"';
 				$err = true;
 			}
@@ -622,7 +622,7 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 		<td colspan="2"><input type="text" size="30" maxlength="30" name="match[topScorer]" value="<?=$topscorer;?>"
 <?php
 
-		if(!empty($_SESSION['match']['topScorer']) && $_SESSION['match']['topScorer'] == '') {
+		if (isset($_POST['match']) && ($topscorer == '')) {
 			echo ' style="background-color: #FF0000;"';
 			$err = true;    
 		}       

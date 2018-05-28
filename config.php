@@ -12,11 +12,6 @@ $dbpass = "ziptac135";
 $dbname = "tippning";
 
 // Date of first game
-#$firstGameStartY = 2018;
-#$firstGameStartM = 5;
-#$firstGameStartD = 27;
-#$firstGameDate = mktime(0,0,0, $firstGameStartM, $firstGameStartD, $firstGameStartY);
-
 $firstGameDate = '2018-05-14';
 // Last day to place bet
 $last_bet_day = "2018-05-14";

@@ -159,7 +159,7 @@ if(activeSession() && (($_SESSION['betalt'] || $_SESSION['admin']))) {
 		echo 'Woops! CMD='.$cmd;
 	}
 } else {
-	echo 'Permission denied!';
+	echo 'Varken betalt eller admin-access? Too bad fellow.';
 }
 ?>
 </td>
