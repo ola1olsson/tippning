@@ -44,12 +44,12 @@ if(activeSession() && $_SESSION['admin']) {
 			if ($user['betalt'] == 1)
 			{
 				$nbrPaid++;
-				echo '<span style="color: green;">Japps</span>';
+				echo '<a href="index.php?sida=putpaid&userId='. $user['id'].' ">Yes</span>';
 			}
 			else
 			{
 				$nbrNotPaid++;
-				echo '<span style="color: red;">Oh noes!</span>';
+				echo '<a href="index.php?sida=putpaid&userId='. $user['id']. ' ">No</span>';
 			}
 ?>
 			</td>
