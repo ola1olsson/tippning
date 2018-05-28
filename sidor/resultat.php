@@ -172,37 +172,41 @@ if((isset($_SESSION['betalt']) && $_SESSION['betalt'] == 1 && $cupStarted) || $_
 	for($k=1; $k<sizeof($users); $k++) {
 		$user_name = mysqli_fetch_array(mysqli_query($opendb, "SELECT givenName, familyName FROM users WHERE id = ".$users[$k].";"), MYSQLI_ASSOC);
 		echo 	'<tr>'.
-			'<td align=left>'.$user_name['givenName'].' '.$user_name['familyName']{0}.'</td>';
-		if (isset($result[-1][$i][0]) && isset($result[-1][$i][1]) && isset($result[-1][$i][2])) {
-			for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
-				echo '<td align=center';
-				if($result[-1][$i][1] != '') {
-					if($result[$users[$k]][$i][1] == $result[-1][$i][1])
-						echo ' bgcolor="#00FF00"';
-					else
-						echo ' bgcolor="#FFAAAA"';
+		'<td align=left>'.$user_name['givenName'].' '.$user_name['familyName']{0}.'</td>';
+		for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
+                               echo '<td align=center';
+                               if(isset($result[-1][$i][1]) && $result[-1][$i][1] != '') {
+                                       if(isset($result[$users[$k]][$i][1]) && $result[$users[$k]][$i][1] == $result[-1][$i][1])
+                                               echo ' bgcolor="#00FF00"';
+                                       else
+                                               echo ' bgcolor="#FFAAAA"';
 				}
-				echo '>'.
-					'<img src="./pic/flaggor/'.$teams[$result[$users[$k]][$i][1]]['flag'].'" border=0><br>'.$teams[$result[$users[$k]][$i][1]]['land'].
-					'</td><td align=center>&nbsp;-&nbsp;</td><td align=center';
-				if($result[-1][$i][2] != '') {
-					if($result[$users[$k]][$i][2] == $result[-1][$i][2])
-						echo ' bgcolor="#00FF00"';
-					else
-						echo ' bgcolor="#FFAAAA"';
+	                               echo '>';
+					if (isset($result[$users[$k]][$i][1])) {
+	                                       echo '<img src="./pic/flaggor/'.$teams[$result[$users[$k]][$i][1]]['flag'].'" border=0><br>'.$teams[$result[$users[$k]][$i][1]]['land'];
+					}
+                                       echo '</td><td align=center>&nbsp;-&nbsp;</td><td align=center';
+                               if(isset($result[-1][$i][2]) && $result[-1][$i][2] != '') {
+                                       if(isset($result[$users[$k]][$i][2]) && $result[$users[$k]][$i][2] == $result[-1][$i][2])
+                                               echo ' bgcolor="#00FF00"';
+                                       else
+                                               echo ' bgcolor="#FFAAAA"';
 				}
-				echo '>'.
-					'<img src="./pic/flaggor/'.$teams[$result[$users[$k]][$i][2]]['flag'].'" border=0><br>'.$teams[$result[$users[$k]][$i][2]]['land'].
-					'</td><td align=center';
-				if($result[-1][$i][0] != '') {
-					if($result[$users[$k]][$i][0] == $result[-1][$i][0])
-						echo ' bgcolor="#00FF00"';
-					else
-						echo ' bgcolor="#FFAAAA"';
+	                               echo '>';
+					if (isset($result[$users[$k]][$i][2])) {
+	                                       echo '<img src="./pic/flaggor/'.$teams[$result[$users[$k]][$i][2]]['flag'].'" border=0><br>'.$teams[$result[$users[$k]][$i][2]]['land'];
+					}
+                                       echo '</td><td align=center';
+                               if(isset($result[-1][$i][0]) && $result[-1][$i][0] != '') {
+                                       if(isset($result[$users[$k]][$i][0]) && $result[$users[$k]][$i][0] == $result[-1][$i][0])
+                                               echo ' bgcolor="#00FF00"';
+                                       else
+                                               echo ' bgcolor="#FFAAAA"';
+
 				}
 				echo '><span style="font-size:18px;">'.$result[$users[$k]][$i][0].'</span></td>';
+
 			}
-		}
 		echo	'</td><td align=center';
 	if($result[-1]['topScorer'] != '') {
 		if(strcmp($result[$users[$k]]['topScorer'],$result[-1]['topScorer']) == 0)
