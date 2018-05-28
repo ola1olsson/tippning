@@ -66,4 +66,5 @@ $usersbeforeshowingodds=1;
 # Ska föregående VM/EM-tipp-vinnare visas?
 $showprevwinner=1;
 
+$useforum=1;
 ?>

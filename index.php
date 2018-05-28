@@ -72,9 +72,11 @@
 			$menu[5]['text']	= 'Regler';
 			$menu[5]['access']	= true;
 
-			$menu[6]['token'] 	= 'forum';
-			$menu[6]['text']	= 'Forum';
-			$menu[6]['access']	= true;
+			if ($useforum) {
+				$menu[6]['token'] 	= 'forum';
+				$menu[6]['text']	= 'Forum';
+				$menu[6]['access']	= true;
+			}
 		?>
 		<center>
 			<table id="mainContainer" border="0" cellspacing="0" cellpadding="0">
