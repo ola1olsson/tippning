@@ -4,10 +4,6 @@
 <br/>
 <table border=0 cellspacing=0 cellpadding=1 style="width:100%;">
 <?php
-	include "config.php";
-	include "connect_database.php";
-
-  
 	$top10 = mysqli_query($opendb, "SELECT * FROM users ORDER BY points DESC, givenName ASC;") or die(mysqli_error($opendb));
 	$placering = 1;
 	$points = -1;
@@ -21,11 +17,15 @@
 		<tr>
 			<td align="right"><?=isset($placering) ? $placering : '0';?></td>
 			<td style="width:100%;" style="white-space: nowrap;">
-			<? if (isset($user)) { ?>
+<?php
+if (isset($user)) {
+?>
 				<a href="index.php?sida=visadeltagare&id=<?=isset($user['id']) ? $user['id'] : '0';?>"><?=isset($user['givenName']) ? $user['givenName'] : '0';?></a>
-			<? } ?>
+<?php
+}
+?>
 			</td>
-			<td align="right"><?=isset($_user['points']) ? $_user['points'] : '0';?>p</td>
+			<td align="right"><?=isset($user['points']) ? $user['points'] : '0';?>p</td>
 		</tr>
 <?php
 	}

@@ -12,13 +12,14 @@ $dbpass = "ziptac135";
 $dbname = "tippning";
 
 // Date of first game
-$firstGameStartY = 2018;
-$firstGameStartM = 6;
-$firstGameStartD = 14;
-$firstGameDate = mktime(0,0,0, $firstGameStartM, $firstGameStartD, $firstGameStartY);
+#$firstGameStartY = 2018;
+#$firstGameStartM = 5;
+#$firstGameStartD = 27;
+#$firstGameDate = mktime(0,0,0, $firstGameStartM, $firstGameStartD, $firstGameStartY);
 
+$firstGameDate = '2018-05-14';
 // Last day to place bet
-$last_bet_day = "2018-06-13";
+$last_bet_day = "2018-05-14";
 
 // Last day to pay
 $last_pay_day = $last_bet_day;
@@ -51,7 +52,7 @@ $slutspel_max = $finalId;
 
 function daysLeft() {
 	$now = mktime();
-	$cupStart = mktime(0, 0, 0, 06, 14, 2018);
+	$cupStart = mktime(0, 0, 0, 5, 14, 2018);
 	return floor(($cupStart - $now) / (60 * 60 * 24)) + 1;
 }
 

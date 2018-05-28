@@ -113,14 +113,14 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 			if (isset($_SESSION['match']['swedishGoals']))
 				$query .= ", " . $_SESSION['match']['swedishGoals'] . ",";
 			else
-				$query .= ", " . 5  . ",";
+				$query .= ", " . 0  . ",";
 			if (isset($_SESSION['match']['topScorer']))
 				$query .= "'" . strtoupper($_SESSION['match']['topScorer']) . "'";
 			else
-				$query .= "'" . 'ola' . "'";
+				$query .= "'" . '' . "'";
 			$query .= ');';
 		}
-		echo $query;
+		#echo $query;
 		mysqli_query($opendb, $query) or die(mysqli_error($opendb));
 		echo '<span class="header2">Tippning registrerad!<br></span><br><input type=button class=btn value="Ok!" onClick="document.location=\'index.php?sida=tippning\';">';
 	} else {

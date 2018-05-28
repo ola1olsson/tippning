@@ -23,7 +23,7 @@ if((isset($_SESSION['betalt']) && $_SESSION['betalt'] == 1 && $cupStarted) || $_
 		$users[0] = -1;
 		$users[1] = $_SESSION['userID'];
 		$i_user = 2;
-		if (isset($_REQUEST['users'])) { 
+		if (isset($_POST['users'])) { 
 			foreach($_POST['users'] as $user) {
 				$users[$i_user] = $user;
 				$i_user++;
@@ -43,15 +43,21 @@ if((isset($_SESSION['betalt']) && $_SESSION['betalt'] == 1 && $cupStarted) || $_
 		$db_result = mysqli_query($opendb, $query) or die(mysqli_error($opendb));
 		while($db_res = mysqli_fetch_array($db_result,MYSQLI_ASSOC)) {
 			for($i=1; $i<=$grundspel_max; $i++) {
-			$result[$db_res['id']][$i] = $db_res['m'.$i];
+				$result[$db_res['id']][$i] = $db_res['m'.$i];
 			}
-			if (isset($_db_res['id'][$i][0]) && isset($_db_res['id'][$i][1]) && isset($_db_res['id'][$i][2])) {
-				for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
+
+			for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
+				if (isset($db_res['m'.$i])) {
 					$result[$db_res['id']][$i][0] = $db_res['m'.$i];
+				}
+				if (isset($db_res['m'.$i.'a'])) {
 					$result[$db_res['id']][$i][1] = $db_res['m'.$i.'a'];
+				}
+				if (isset($db_res['m'.$i.'b'])) {
 					$result[$db_res['id']][$i][2] = $db_res['m'.$i.'b'];
 				}
 			}
+
 			$result[$db_res['id']]['topScorer'] = $db_res['topScorer'];
 			$result[$db_res['id']]['swedishGoals'] = $db_res['swedishGoals'];
         
@@ -147,21 +153,19 @@ if((isset($_SESSION['betalt']) && $_SESSION['betalt'] == 1 && $cupStarted) || $_
 
 	for($i=$grundspel_max + 1; $i<=$slutspel_max; $i++) {
 		echo '<td align=center>';
-		if (isset($result[-1][$i][1]) && isset($result[-1][$i][2])) {
-			if($result[-1][$i][1] != '')
-				echo '<img src="./pic/flaggor/'.$teams[$result[-1][$i][1]]['flag'].'" border=0><br>'.$teams[$result[-1][$i][1]]['land'];
-			else 
-				echo '&nbsp';
-			echo '</td><td align=center>&nbsp;-&nbsp;</td><td align=center>';
-			if($result[-1][$i][2] != '')
-				echo '<img src="./pic/flaggor/'.$teams[$result[-1][$i][2]]['flag'].'" border=0><br>'.$teams[$result[-1][$i][2]]['land'];
-			echo '</td><td align=center><span style="font-size:18px;">';
-			if($result[-1][$i][0] != '')
-				echo $result[-1][$i][0];
-			else
-				echo '&nbsp;';
-			echo '</span></td>';
-		}
+		if(isset($result[-1][$i][1]) && $result[-1][$i][1] != '')
+			echo '<img src="./pic/flaggor/'.$teams[$result[-1][$i][1]]['flag'].'" border=0><br>'.$teams[$result[-1][$i][1]]['land'];
+		else 
+			echo '&nbsp';
+		echo '</td><td align=center>&nbsp;-&nbsp;</td><td align=center>';
+		if(isset($result[-1][$i][2]) && $result[-1][$i][2] != '')
+			echo '<img src="./pic/flaggor/'.$teams[$result[-1][$i][2]]['flag'].'" border=0><br>'.$teams[$result[-1][$i][2]]['land'];
+		echo '</td><td align=center><span style="font-size:18px;">';
+		if(isset($result[-1][$i][0]) && $result[-1][$i][0] != '')
+			echo $result[-1][$i][0];
+		else
+			echo '&nbsp;';
+		echo '</span></td>';
 	}
 
 	echo '</tr>';

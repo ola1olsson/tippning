@@ -1,9 +1,12 @@
-dubbelkolla tv-tiderna.
 test all without admin, before and after cupstarted
-test all with admin, after cupstarted
+"Jämför alla" funkar inte
+dubbelkolla tv-tiderna.
 arena
+Grafiken
 
-Fixa uppdatering av betalning i UI:t
+
+
+Se hur snabbt det går att porta till EM
 
 Bra saker att veta
 
@@ -18,6 +21,10 @@ show databases;
 show tables;
 select * from users;
 describe forum_entries;
+
+update tippning set swedishGoals=100 where id=-1;
+update tippning set topscorer='ZLATAN' where id=-1;
+
 
 drop database tippning;
 inside mysql, type "source tippning_2018.sql".

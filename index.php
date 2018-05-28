@@ -51,11 +51,11 @@
 			$menu[0]['token'] 	= 'startsida';
 			$menu[0]['text']	= 'Start';
 			$menu[0]['access']	= true;
-			
+
 			$menu[1]['token'] 	= 'matcher';
 			$menu[1]['text']	= 'Matcher';
 			$menu[1]['access']	= true;
-			
+
 			$menu[2]['token'] 	= 'deltagare';
 			$menu[2]['text']	= 'Deltagare';
 			$menu[2]['access']	= true;
@@ -63,11 +63,11 @@
 			$menu[3]['token'] 	= 'tippning';
 			$menu[3]['text']	= 'Tippning';
 			$menu[3]['access']	= !$cupStarted || $_SESSION['admin'];
-			
+
 			$menu[4]['token'] 	= 'resultat';
 			$menu[4]['text']	= 'Resultat';
 			$menu[4]['access']	= $cupStarted || $_SESSION['admin'];
-			
+
 			$menu[5]['token'] 	= 'regler';
 			$menu[5]['text']	= 'Regler';
 			$menu[5]['access']	= true;

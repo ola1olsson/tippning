@@ -9,7 +9,7 @@ if (isset($_SESSION['user']) && $_SESSION['user'] == 'slass') {
 $nbrPayedUsers = mysqli_fetch_assoc(mysqli_query($opendb, "SELECT COUNT(*) as total FROM users WHERE betalt = '1';"))['total'];
 $nbrUsers = mysqli_fetch_assoc(mysqli_query($opendb, "SELECT COUNT(*) as total FROM users;"))['total'];
 $totalPrice = $nbrPayedUsers * $price;
-if(!$cupStarted) { 	
+if(!$cupStarted) {
 ?>
 
 <div class="container">
@@ -19,7 +19,9 @@ if(!$cupStarted) {
 	</p>
 </div>
 
-<?php } ?>
+<?php
+}
+?>
 <center>
 <p>
 	<span class="header2">
