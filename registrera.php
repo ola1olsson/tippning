@@ -156,13 +156,13 @@ if($current_date > $last_bet_day) {
 			<tr>
 				<td width="30" height="180"></td>
 				<td>
-				Jag godk&aumlnner att mina personuppgifter lagras av waldis.se<br><br>
+				Jag godk&aumlnner att mina personuppgifter lagras.<br><br>
 				Jag &aumlr inf&oumlrst&aringdd med att jag kan bli utest&aumlngd fr&aringn systemet <br>
 				f&oumlr oacceptabelt upptr&aumldande eller fuskande och d&aumlr igenom g&aring<br>
-				miste om min insats och mitt livs st&oumlrta upplevelse.<br><br>
+				miste om min insats och mitt livs st&oumlrsta upplevelse.<br><br>
 				Jag fattar ocks&aring att mina eventuellt inbetalda pengar kan g&aring<br>
 				f&oumlrlorade pga min usla tippning.<br><br>
-				Jag kommer att godtaga arrag&oumlrensbeslut oavsett min egen vilja,<br>
+				Jag kommer att godtaga arrag&oumlrens beslut oavsett min egen vilja,<br>
 				samt erk&aumlnna att jag &aumlr d&aringlig p&aring att tippa.<br><br>
 				Jag vet att detta &aumlr en sida f&oumlr ett slutet s&aumlllskap och att <br>
 				jag inte kan bjuda in vem som helst.<br><br> 
