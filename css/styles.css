@@ -56,7 +56,7 @@ a.mainmenu:hover {
 /** TOP CONTAINER */
 #topContainer {
 	height: 120px;
-	background-color: #d95e1a;
+	background-color: #b6302a;
 }
 #topContainer #topInnerContainer {
 	width: 100%;
@@ -112,7 +112,7 @@ a.mainmenu:hover {
 #westContainer {
 	width: 140px;
 	text-align: center;
-	background-color: #fbddcc;
+	background-color: #ffffff;
 }
 #westContainer .westPanel {
 	margin: 10px;

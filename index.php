@@ -147,8 +147,8 @@
 		<form action="index.php" method="POST">
 			<table border="0" align="center">
 				<tr> 
-					<td colspan="2">
-						<img src="pic/banner.jpg" />
+				<td colspan="2">
+						<img src="pic/banner_2018.jpg" />
 					</td>
 				</tr>
 				<tr>
