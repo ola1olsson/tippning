@@ -3,8 +3,9 @@
 //include "../config.php";
 //include "../connect_database.php";
 
+$current_date = date('Y-m-d');
 
-if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
+if ((activeSession() && !$cupStarted && $current_date < $last_bet_day) || isset($_SESSION['admin'])) {
 ?>
 
 	<table BGCOLOR="#FFFFFF" border="0" width="100%" height="100%">
@@ -646,6 +647,6 @@ if ((activeSession() && !$cupStarted) || isset($_SESSION['admin'])) {
 		</table>
 <?php
 } else {
-	echo '<span class="header2">Permission denied!</span>';
+	echo '<span class="header2">Sorry, too late (or no admin)! Better luck next championship</span>';
 }
 ?>

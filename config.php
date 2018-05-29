@@ -14,7 +14,7 @@ $dbname = "tippning";
 // Date of first game
 $firstGameDate = '2018-06-14';
 // Last day to place bet
-$last_bet_day = "2018-06-14";
+$last_bet_day = "2018-06-13";
 
 // Last day to pay
 $last_pay_day = $last_bet_day;

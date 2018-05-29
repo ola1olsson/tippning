@@ -18,6 +18,7 @@ show databases;
 show tables;
 select * from users;
 describe forum_entries;
+mysql> delete from users where id=59;
 
 update tippning set swedishGoals=100 where id=-1;
 update tippning set topscorer='ZLATAN' where id=-1;
