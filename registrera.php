@@ -17,29 +17,29 @@ if($current_date > $last_bet_day) {
 
 	if(isset($_REQUEST['register']) && $_REQUEST['register'] == 'true') {
 
+		$escaped_name       = mysqli_escape_string($opendb, isset($_POST['fornamn']) ? $_POST['fornamn'] : '');
+		$escaped_surname    = mysqli_escape_string($opendb, $_POST['efternamn']);
+		$escaped_company    = mysqli_escape_string($opendb, $_POST['foretag']);
+		$escaped_email      = mysqli_escape_string($opendb, $_POST['email']);
+		$escaped_phone      = mysqli_escape_string($opendb, $_POST['telefon']);
+		$escaped_city       = mysqli_escape_string($opendb, $_POST['ort']);
+		$escaped_user       = mysqli_escape_string($opendb, $_POST['user']);
+		$escaped_password   = mysqli_escape_string($opendb, $_POST['password1']);
 
-		// REGISTRERA ANV&AumlNDAREN
-		$result = mysqli_query($opendb, "SELECT user FROM users WHERE user='".addslashes($_POST['user'])."';");
+		$result = mysqli_query($opendb, "SELECT count(*) FROM users WHERE username='".addslashes($escaped_user)."';");
+		$count = $result->fetch_row();
 
-		if(mysqli_num_rows($result)>0 || $_POST['user'] == '') {
+		if($count[0] > 0 || $_POST['user'] == '') {
 			$errUser = true;
-		} else $errUser = false;
+			echo $count[0];
+		}
 
-		// Kontroll om l&oumlsenordet st&aumlmmer, Kontrollerar s&aring att man skrivit in samma l&oumlsenord tv&aring g&aringnger.
 		if($_POST['password1'] != $_POST['password2'] || empty($_POST['password1']) || empty($_POST['password2'])) {
 			$errPass = true;
-		} else $errPass = false;
+		}
 
 		// Om User och Password &aumlr ok, forts&aumltt 
 		if(!$errUser && !$errPass) {
-			$escaped_name       = mysqli_escape_string($opendb, isset($_POST['fornamn']) ? $_POST['fornamn'] : '');
-			$escaped_surname    = mysqli_escape_string($opendb, $_POST['efternamn']);
-			$escaped_company    = mysqli_escape_string($opendb, $_POST['foretag']);
-			$escaped_email      = mysqli_escape_string($opendb, $_POST['email']);
-			$escaped_phone      = mysqli_escape_string($opendb, $_POST['telefon']);
-			$escaped_city       = mysqli_escape_string($opendb, $_POST['ort']);
-			$escaped_user       = mysqli_escape_string($opendb, $_POST['user']);
-			$escaped_password   = mysqli_escape_string($opendb, $_POST['password1']);
 
 			mysqli_query($opendb, "INSERT INTO users (givenName, familyName, Company, emailAddress, phoneNumber, city, username, password) 
 						VALUES ('".addslashes($escaped_name)."', '".addslashes($escaped_surname)."', '".addslashes($escaped_company)."', '".addslashes($escaped_email)."', '".addslashes($escaped_phone)."', '".addslashes($escaped_city)."', '".addslashes($escaped_user)."', '".md5(addslashes($escaped_password))."');") or die(mysqli_error($opendb));
