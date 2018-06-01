@@ -7,7 +7,7 @@ $dbhost = "localhost";
 // Database username
 $dbuser = "root";
 // Database password
-$dbpass = "ziptac135";
+$dbpass = "";
 // Database name
 $dbname = "tippning";
 
