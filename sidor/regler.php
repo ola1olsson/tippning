@@ -38,18 +38,6 @@ if(activeSession()) {
 					<td>1p</td>
 				</tr>
 				<tr>
-					<td>R&aumltt &aringttondelsfinallag</td>
-					<td>2p</td>
-				</tr>
-				<tr>
-					<td>R&aumltt kvartsfinallag</td>
-					<td>3p</td>
-				</tr>
-				<tr>
-					<td>R&aumltt semifinallag</td>
-					<td>4p</td>
-				</tr>
-				<tr>
 					<td>R&aumltt tredjeplatsfinallag</td>
 					<td>5p</td>
 				</tr>
