@@ -86,18 +86,20 @@ if(isset($cmd) && $cmd == 'passwd') {
 						<td>Efternamn</td>
 						<td colspan="2"><input type="text" style="width:200px;" name="familyName" value="<?=isset($dbuser['familyName']) ? $dbuser['familyName'] : '';?>"</td>
 					</tr>
-					<tr>
+<!--					<tr>
 						<td>F&oumlretag</td>
 						<td colspan="2"><input type="text" style="width:200px;" name="Company" value="<?=isset($dbuser['Company']) ? $dbuser['Company'] : '';?>"></td>
 					</tr>
+-->
 					<tr>
 						<td>Telefon</td>
 						<td colspan="2"><input type="text" style="width:200px;" name="phoneNumber" value="<?=isset($dbuser['phoneNumber']) ? $dbuser['phoneNumber'] : '';?>"></td>
 					</tr>
-					<tr>
+<!--					<tr>
 						<td>Ort</td>
 						<td colspan="2"><input type="text" style="width:200px;" name="city" value="<?=isset($dbuser['city']) ? $dbuser['city'] : '';?>"></td>
 					</tr>
+-->
 					<tr>
 						<td>Email</td>
 						<td colspan="2"><input type="text" style="width:200px;" name="emailAddress" value="<?=isset($dbuser['emailAddress']) ? $dbuser['emailAddress'] : '';?>"></td>

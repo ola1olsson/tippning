@@ -53,7 +53,7 @@ if($current_date > $last_bet_day) {
 		<tr> 
 		<td height="100%">
 
-		<table width="850" height="600" background="pic\uefa_euro2008_logo.jpg" border="0" bordercolor="black" align="center">
+		<table width="850" height="600" background="pic\logo2.jpg" border="0" bordercolor="black" align="center">
 		<tr> 
 		<td height="325" colspan=4 valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&aumlnk p&aring att inte anv&aumlnda n&aringgra anv&aumlndarnamn & l&oumlsenord<br>
 												   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;som du anv&aumlnder t.ex. p&aring jobbet, till din mail m.m.<br>&nbsp;
@@ -68,13 +68,13 @@ if($current_date > $last_bet_day) {
 		</tr>
 
 		<tr>
-		<td width="150" height="20"></td><td width="25">Ort</td><td width="150"><input type="text" name="ort" value="<?=isset($_POST['ort']) ? $_POST['ort'] : '';?>" style="width:145px;"></td><td></td>
+<!--		<td width="150" height="20"></td><td width="25">Ort</td><td width="150"><input type="text" name="ort" value="<?=isset($_POST['ort']) ? $_POST['ort'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
 
 		<tr>
 		<td width="150" height="20"></td><td width="25">F&oumlretag</td><td width="150"><input type="text" name="foretag" value="<?=isset($_POST['foretag']) ? $_POST['foretag'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
-
+-->
 		<tr>
 		<td width="150" height="20"></td><td width="25">Mobiltel.</td><td width="150"><input type="text" name="telefon" value="<?=isset($_POST['telefon']) ? $_POST['telefon'] : '';?>" style="width:145px;"></td><td></td>
 		</tr>
@@ -149,8 +149,8 @@ if($current_date > $last_bet_day) {
 		<table width="850"  border="5" bordercolor="981a25" align="center">
 		<tr> 
 			<td height="100%">
-			<table width="850" height="600" background="pic\uefa_euro2008_logo.jpg" border="0" bordercolor="black" align="center">
-			<tr height="300" colspan=""2>
+			<table width="850" height="600" background="pic\logo2.jpg" border="0" bordercolor="black" align="center">
+			<tr height="300" colspan="2">
 			<td></td>
 			</tr>
 			<tr>

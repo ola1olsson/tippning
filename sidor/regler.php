@@ -24,7 +24,6 @@ if(activeSession()) {
 			<br/>
 			<b>Resultat<br/></b>
 			I gruppspelet och slutspelet g&aumlller resultaten 1 X 2<br/>
-			Finalen och match om brons tippar du också 1 2.<br/>
 			Skulle lagen vara skiftade, dvs hemma och bortalag, f&aringr du inget po&aumlng.<br/>
 			<br/>
 			<b>Tvist</b><br/>
@@ -36,10 +35,6 @@ if(activeSession()) {
 				<tr>
 					<td width="150">1 X 2</td>
 					<td>1p</td>
-				</tr>
-				<tr>
-					<td>R&aumltt tredjeplatsfinallag</td>
-					<td>5p</td>
 				</tr>
 				<tr>
 					<td>R&aumltt finallag</td>
@@ -56,7 +51,7 @@ if(activeSession()) {
 			</table>
 			<br/>
 			<b>Betalning</b><BR/>
-			F&oumlr att vara med i tippningen m&aringste man betala in <?= $price ?>kr till bankkonto <b><?= $contactBankAccount ?></b> (<?= $contactBankName ?>). Betalning m&aringste vara gjord <font color="red">SENAST <?= $last_pay_day ?></font>, annars tas anv&aumlndaren bort. <br/>
+			F&oumlr att vara med i tippningen m&aringste man betala in <?= $price ?>kr till <?= $contactBankName ?>. Betalning m&aringste vara gjord <font color="red">SENAST <?= $last_pay_day ?></font>, annars tas anv&aumlndaren bort. <br/>
 
 			<p><b>Var noga med att skriva ert anv&aumlndarnamn i meddelandef&aumlltet vid betalning s&aring att vi kan koppla r&aumltt pengar till r&aumltt konto!</b></p>
 

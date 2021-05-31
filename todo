@@ -1,17 +1,10 @@
-test all without admin, before and after cupstarted
-logos som motsvarar 2018
+CREATE USER 'ola'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON tippning.* TO 'ola'@'localhost';
 
-
-
-Se hur snabbt det går att porta till EM
-
-Bra saker att veta
-
-Följande i index.html ger bra errors:
-ini_set('display_errors', 'On');
+ola:/var/www/html/tippning/pic[master]$ sudo chmod 777 users/
 
 mysql -u root -p < tippning_2018.sql
-// mysql> update users set admin=1 where username='ola';
+// mysql> update tippning.users set admin=1 where username='ola';
 
 use tippning;
 show databases;
@@ -27,6 +20,7 @@ update tippning set topscorer='ZLATAN' where id=-1;
 drop database tippning;
 inside mysql, type "source tippning_2018.sql".
 
+update users set admin=1 where id=57;
 
 %s/ä/\&auml/g
 %s/Ä/\&Auml/g
@@ -34,3 +28,7 @@ inside mysql, type "source tippning_2018.sql".
 %s/Å/\&Aring/g
 %s/ö/\&ouml/g
 %s/Ö/\&Ouml/g
+
+todo:
+delete from hmmm where betalt=0
+sudo mysqldump -u ola -p tippning > ~/ola.sql

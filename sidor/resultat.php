@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 if((isset($_SESSION['betalt']) && $_SESSION['betalt'] == 1 && $cupStarted) || $_SESSION['admin']) {
 ?>
 

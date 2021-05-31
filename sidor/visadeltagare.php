@@ -2,6 +2,7 @@
 
 
 <?php
+error_reporting(0);
 
 
 if($_REQUEST['id'] != '')

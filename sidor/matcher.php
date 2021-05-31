@@ -1,5 +1,7 @@
 <?php 
 
+error_reporting(0);
+
 function getGameId($gameId) {
 	if ($_SESSION['admin']) {
 		return '<a href="index.php?sida=putresult&gameId='.$gameId.'">'.$gameId.'</a>';
@@ -76,10 +78,10 @@ foreach($grundspel AS $grupp) {
 	$matcher = mysqli_query($opendb, "SELECT * FROM matcher WHERE hemma LIKE '".$grupp."%' AND borta LIKE '".$grupp."%' ORDER BY ID ASC;") or die(mysqli_error($opendb));
 	printGroupTitle($grupp);
 	while($match = mysqli_fetch_array($matcher)) {
-		$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
-		$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
-		$arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQLI_ASSOC);
-		printGame($match, $hemma, $borta, $arena);	
+		$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['hemma']."';"), MYSQLI_ASSOC) or die(mysqli_error($opendb));
+		$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['borta']."';"), MYSQLI_ASSOC) or die(mysqli_error($opendb));
+		$arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQLI_ASSOC) or die(mysqli_error($opendb));
+		printGame($match, $hemma, $borta, $arena);
 	}
 	printDivider();
 }
@@ -88,8 +90,8 @@ foreach($grundspel AS $grupp) {
 printTitle('&Aringttondelsfinaler');
 printHeaders();
 while($match = mysqli_fetch_array($eights, MYSQLI_ASSOC)) {
-	$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
-	$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
+	$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
+	$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['borta']."';"), MYSQLI_ASSOC);
 	$arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQLI_ASSOC);
 	printGame($match, $hemma, $borta, $arena);
 }
@@ -99,8 +101,8 @@ printDivider();
 printTitle('Kvartsfinaler');
 printHeaders();
 while($match = mysqli_fetch_array($kvarts, MYSQLI_ASSOC)) {
-	$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
-	$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
+	$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
+	$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['borta']."';"), MYSQLI_ASSOC);
 	$arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQLI_ASSOC);
 	printGame($match, $hemma, $borta, $arena);
 }
@@ -110,8 +112,8 @@ printDivider();
 printTitle('Semifinaler');
 printHeaders();
 while($match = mysqli_fetch_array($semis, MYSQLI_ASSOC)) {
-	$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
-	$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
+	$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
+	$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['borta']."';"), MYSQLI_ASSOC);
 	$arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQLI_ASSOC);
 	printGame($match, $hemma, $borta, $arena);
 }
@@ -121,8 +123,8 @@ printDivider();
 printTitle('Match om tredjeplats');
 printHeaders();
 $match = $thirdPlaceFinal;
-$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
-$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
+$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
+$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['borta']."';"), MYSQLI_ASSOC);
 $arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQLI_ASSOC);
 printGame($match, $hemma, $borta, $arena);
 printDivider();
@@ -131,8 +133,8 @@ printDivider();
 printTitle('Final');
 printHeaders();
 $match = $final;
-$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
-$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
+$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
+$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['borta']."';"), MYSQLI_ASSOC);
 $arena = mysqli_fetch_array(mysqli_query($opendb, "SELECT arena.* FROM arena,matcher WHERE matcher.plats = arena.id && matcher.plats = '".$match['plats']."';"), MYSQLI_ASSOC);
 printGame($match, $hemma, $borta, $arena);
 

@@ -5,16 +5,16 @@
 // Database host URL
 $dbhost = "localhost";
 // Database username
-$dbuser = "root";
+$dbuser = "ola1_setippning";
 // Database password
-$dbpass = "";
+$dbpass = "passwd";
 // Database name
-$dbname = "tippning";
+$dbname = "ola1_setippning";
 
 // Date of first game
-$firstGameDate = '2018-06-14';
+$firstGameDate = '2021-06-11';
 // Last day to place bet
-$last_bet_day = "2018-06-13";
+$last_bet_day = "2021-06-10";
 
 // Last day to pay
 $last_pay_day = $last_bet_day;
@@ -22,32 +22,39 @@ $last_pay_day = $last_bet_day;
 // Price in SEK
 $price = 100;
 
+
+$championship_string = "EM 2021";
+
 // Boolean - Has cup started?
 $cupStarted = date('Y-m-d') >= $firstGameDate;
 
 $contactName = "Ola";
-$contactBankAccount = "Swish";
-$contactBankName = "";
-$contactPhone = "0727095780";
-$contactEmail = "ola.olsson@acconeer.com";
+$contactBankAccount = "Swish xxxx";
+$contactBankName = $contactBankAccount;
+$contactPhone = "0727xxxxx";
+$contactEmail = "ola1olsson@gmail.com";
 
-$grundspel_max = 48;
-$grundspel = Array('A','B','C','D','E','F','G','H');
+// World cup
+//$grundspel_max = 48;
+//$grundspel = Array('A','B','C','D','E','F','G','H');
 
-//EM
-//$grundspel_max = 36;
-//$grundspel = Array('A','B','C','D','E','F');
+// European Championship
+$grundspel_max = 36;
+$grundspel = Array('A','B','C','D','E','F');
 
 $eights_max = $grundspel_max + 8;
 $quarter_max = $eights_max + 4;
 $semi_max = $quarter_max + 2;
 $bronze = $semi_max + 1;
-$finalId = $bronze + 1;
+
+# Om det spelas match om tredjepris
+#$finalId = $bronze + 1;
+$finalId = $semi_max + 1;
 $slutspel_max = $finalId;
 
 function daysLeft() {
 	$now = mktime();
-	$cupStart = mktime(0, 0, 0, 6, 14, 2018);
+	$cupStart = mktime(0, 0, 0, 6, 11, 2021);
 	return floor(($cupStart - $now) / (60 * 60 * 24)) + 1;
 }
 
@@ -57,9 +64,12 @@ $procent_tva=20;
 $procent_tre=10;
 
 # Hur många personer ska ha oddsat innan vi visar procentuell fördelning på förstasidan
-$usersbeforeshowingodds=1;
+$usersbeforeshowingodds=3;
+
 # Ska föregående VM/EM-tipp-vinnare visas?
 $showprevwinner=1;
+$tif=0;
+$acconeer=1;
 
 $useforum=1;
 ?>

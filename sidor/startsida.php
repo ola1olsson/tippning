@@ -14,8 +14,8 @@ if(!$cupStarted) {
 
 <div class="container">
 	<p>
-		<span class="header">Det &aumlr nu <span class="megaHeader"><?= daysLeft() ?></span> dagar kvar tills VM 2018 b&oumlrjar!<br/></span>
-		Sista datum f&oumlr tippning &aumlr <?= $last_bet_day ?>, sedan st&aumlnger vi slussen - inga konstigheter! :)<br/> 
+		<span class="header">Det &aumlr nu <span class="megaHeader"><?= daysLeft() ?></span> dagar kvar tills  <?= $championship_string ?> b&oumlrjar!<br/></span>
+		Sista datum f&oumlr tippning &aumlr <?= $last_bet_day ?>, sedan st&aumlnger vi! :)<br/> 
 	</p>
 </div>
 
@@ -50,8 +50,8 @@ $game = mysqli_fetch_array($nextGames, MYSQLI_ASSOC);
 while($game['tid'] < $time && $game['datum'] == $date) {
 	$game = mysqli_fetch_array($nextGames, MYSQLI_ASSOC);
 }
-$hemma = mysqli_fetch_array(mysqli_query($opendb,"SELECT * FROM lag WHERE lag = '".$game['hemma']."';"), MYSQLI_ASSOC);
-$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$game['borta']."';"), MYSQLI_ASSOC);
+$hemma = mysqli_fetch_array(mysqli_query($opendb,"SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$game['hemma']."';"), MYSQLI_ASSOC);
+$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$game['borta']."';"), MYSQLI_ASSOC);
 $ods['1'] = 0;
 $ods['X'] = 0;
 $ods['2'] = 0;
@@ -120,32 +120,72 @@ if ($nbrUsrs >= $usersbeforeshowingodds) {
 </div>
 <?php
 }
-if ($showprevwinner==1) {
+if ($showprevwinner==1 && $acconeer==1) {
 ?>
 <div class="container">
-	<span class="header2">Tidigare &aringrs vinnare av Tippningen EM & VM<br/></span>
+	<span class="header2">Tidigare Acconeer champions<br/></span>
 	<center>
 		<table>
 			<tr class="header">
 				<td>Cup</td>
-				<td>Vinnare</td>
+				<td>Medalj</td>
+				<td>Namn</td>
 			</tr>
 			<tr>
-				<td>VM 2010</td>
-				<td>Martin Sundstr&oumlm</td>
+				<td>2018</td>
+				<td>Guld</td>
+				<td>Daniel Herlestam (alumni)</td>
 			</tr>
 			<tr>
-				<td>EM 2012</td>
-				<td>Martin Sundstr&oumlm</td>
+				<td>2018</td>
+				<td>Silver</td>
+				<td>Toni</td>
 			</tr>
 			<tr>
-				<td>VM 2014</td>
-				<td>Johan Thufvesson</td>
+				<td>2018</td>
+				<td>Silver</td>
+				<td>Josefin S</td>
+			</tr>
+			<tr>
+				<td>2018</td>
+				<td>Fjärdeplats</td>
+				<td>David Håkansson Hagman</td>
 			</tr>
 
 		</table>
 	</center>
 </div>
+<?php
+} else if ($showprevwinner==1 && $tif==1) {
+?>
+<div class="container">
+	<span class="header2">Tidigare TIF champions<br/></span>
+	<center>
+		<table>
+			<tr class="header">
+				<td>Cup</td>
+				<td>Medalj</td>
+				<td>Namn</td>
+			</tr>
+			<tr>
+				<td>2018</td>
+				<td>Guld</td>
+				<td>Johan T</td>
+			</tr>
+			<tr>
+				<td>2016</td>
+				<td>Guld</td>
+				<td>Martin S</td>
+			</tr>
+			<tr>
+				<td>2014</td>
+				<td>Guld</td>
+				<td>Martin S</td>
+			</tr>
+		</table>
+	</center>
+</div>
+
 <?php
 }
 ?>

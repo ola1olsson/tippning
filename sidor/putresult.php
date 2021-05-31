@@ -8,9 +8,9 @@ if($_SESSION['admin']) {
 		$game = mysqli_query($opendb,"SELECT * FROM matcher WHERE ID = ".$gameId.";") or die(mysqli_error($opendb));
 		$game = mysqli_fetch_array($game);
 		
-		$home = mysqli_query($opendb,"SELECT * FROM lag WHERE lag = '".$game['hemma']."';") or die(mysqli_error($opendb));
+		$home = mysqli_query($opendb,"SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$game['hemma']."';") or die(mysqli_error($opendb));
 		$home = mysqli_fetch_array($home);
-		$gone = mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$game['borta']."';") or die(mysqli_error($opendb));
+		$gone = mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$game['borta']."';") or die(mysqli_error($opendb));
 		$gone = mysqli_fetch_array($gone);
 ?>
 		Update game <?=$gameId?> (<?=$home['countryName_sv'] ?> - <?=$gone['countryName_sv']?>)<br>
@@ -33,7 +33,7 @@ if($_SESSION['admin']) {
 						<select name="home">
 							<option value="">-- Not set --</option>
 <?php
-						$allTeams = mysqli_query($opendb, "SELECT * FROM lag ORDER BY lag ASC;") or die(mysqli_error($opendb));
+						$allTeams = mysqli_query($opendb, "SELECT * FROM $dbname.lag ORDER BY $dbname.lag.lag ASC;") or die(mysqli_error($opendb));
 						while ($team = mysqli_fetch_array($allTeams)) {
 							echo '<option value="'.$team['lag'].'"';
 							if ($team['lag'] == $home['lag']) {
@@ -49,7 +49,7 @@ if($_SESSION['admin']) {
 						<select name="gone">
 							<option value="">-- Not set --</option>
 <?php
-						$allTeams = mysqli_query($opendb, "SELECT * FROM lag ORDER BY lag ASC;") or die(mysqli_error($opendb));
+						$allTeams = mysqli_query($opendb, "SELECT * FROM $dbname.lag ORDER BY $dbname.lag.lag ASC;") or die(mysqli_error($opendb));
 						while ($team = mysqli_fetch_array($allTeams)) {
 							echo '<option value="'.$team['lag'].'"';
 							if ($team['lag'] == $gone['lag']) {

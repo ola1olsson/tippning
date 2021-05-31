@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 
 //include "../config.php";
 //include "../connect_database.php";
@@ -149,8 +150,8 @@ if ((activeSession() && !$cupStarted && $current_date < $last_bet_day) || isset(
 			while($match = mysqli_fetch_array($matcher, MYSQLI_ASSOC)) {
 				// Kolumn 'lag' &aumlr sk&oumlnt - 2014 fixa sig!
 				if (isset($match) && isset($match['ID'])) {
-					$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
-					$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM lag WHERE lag = '".$match['borta']."';"), MYSQLI_ASSOC);
+					$hemma = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['hemma']."';"), MYSQLI_ASSOC);
+					$borta = mysqli_fetch_array(mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag = '".$match['borta']."';"), MYSQLI_ASSOC);
 					if (isset($_POST['match']) && (!isset($_SESSION['match'][$match['ID']]) || $_SESSION['match'][$match['ID']] == '')) { 
 						echo '<tr style="background-color: #FF0000;">';
 						$err = true;
@@ -218,29 +219,29 @@ if ((activeSession() && !$cupStarted && $current_date < $last_bet_day) || isset(
 		groups[i][k] -> k(0) = hemma, k(1) = borta
 */
 
-		$groups[1][0] = '1:a i grupp A';
+		$groups[1][0] = '2:a i grupp A';
 		$groups[1][1] = '2:a i grupp B';
-		$groups[2][0] = '1:a i grupp C';
-		$groups[2][1] = '2:a i grupp D';
-		$groups[3][0] = '1B';
-		$groups[3][1] = '2A';
-		$groups[4][0] = '1D';
-		$groups[4][1] = '2C';
-		$groups[5][0] = '1E';
-		$groups[5][1] = '2F';
-		$groups[6][0] = '1G';
-		$groups[6][1] = '2H';
-		$groups[7][0] = '1F';
-		$groups[7][1] = '2E';
-		$groups[8][0] = '1H';
-		$groups[8][1] = '2G';
+		$groups[2][0] = '1:a i grupp A';
+		$groups[2][1] = '2:a i grupp C';
+		$groups[3][0] = '1C';
+		$groups[3][1] = '3:a D/E/F';
+		$groups[4][0] = '1B';
+		$groups[4][1] = '3:a A/D/E/F';
+		$groups[5][0] = '2D';
+		$groups[5][1] = '2E';
+		$groups[6][0] = '1F';
+		$groups[6][1] = '3:a A/B/C';
+		$groups[7][0] = '1D';
+		$groups[7][1] = '2F';
+		$groups[8][0] = '1E';
+		$groups[8][1] = '3:a A/B/C/D';
 
 		$match_offset = $grundspel_max; // sista matchnumret i gruppspelet
 		$err = false;
 		for($match = 1; $match <= 8; $match++) {
 			if (isset($groups[$match])) {
-			$hamtahemma = mysqli_query($opendb, "SELECT * FROM lag WHERE lag LIKE '".$groups[$match][0]."%';");
-			$hamtaborta = mysqli_query($opendb, "SELECT * FROM lag WHERE lag LIKE '".$groups[$match][1]."%';");
+			$hamtahemma = mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag LIKE '".$groups[$match][0]."%';");
+			$hamtaborta = mysqli_query($opendb, "SELECT * FROM $dbname.lag WHERE $dbname.lag.lag LIKE '".$groups[$match][1]."%';");
 
 			$matchnumber = $match + $match_offset;
 ?>
@@ -335,14 +336,14 @@ if ((activeSession() && !$cupStarted && $current_date < $last_bet_day) || isset(
 			$winner[4][1] = 8;
 			$match_offset = $eights_max; // Sista matchen av &aringttondelsfinalerna + 1 = f&oumlrsta kvartsfinalen
 
-			$groups[1][0] = 'Vinnare match 49';
-			$groups[1][1] = 'Vinnare match 50';
-			$groups[2][0] = 'Vinnare match 53';
-			$groups[2][1] = 'Vinnare match 54';
-			$groups[3][0] = 'Vinnare match 55';
-			$groups[3][1] = 'Vinnare match 56';
-			$groups[4][0] = 'Vinnare match 51';
-			$groups[4][1] = 'Vinnare match 52';
+			$groups[1][0] = 'Vinnare match 37';
+			$groups[1][1] = 'Vinnare match 38';
+			$groups[2][0] = 'Vinnare match 39';
+			$groups[2][1] = 'Vinnare match 40';
+			$groups[3][0] = 'Vinnare match 41';
+			$groups[3][1] = 'Vinnare match 42';
+			$groups[4][0] = 'Vinnare match 43';
+			$groups[4][1] = 'Vinnare match 44';
 			$match_offset = $eights_max;
 			}
 
@@ -364,8 +365,8 @@ if ((activeSession() && !$cupStarted && $current_date < $last_bet_day) || isset(
 
 <?php
 			echo '<tr';
-			// Anv&aumlnds f&oumlr att kolla om man "gl&oumlmt" tippa p&aring n&aringn match, i s&aring fall skall hela den TR'n bli r&oumld. 
-			//(err=true s&aumlger &aringt dig att n&aringgot inte har tippats, anv&aumlnds s&aumlkert senare..... 2014? Nu t&aumlnker du - "Ja!"
+			// Används för att kolla om man "glömt" tippa på någon match, i så fall skall hela den TR'n bli röd. 
+			//(err=true säger åt dig att något inte har tippats, används säkert senare..... 2014? Nu tänker du - "Ja!"
 			if(isset($_POST['match']) && (!isset($_SESSION['match'][$matchnumber][0]) || ($_SESSION['match'][$matchnumber][0] == ''))) 
 			{
 				echo ' style="background-color: #FF0000;"';
@@ -431,10 +432,10 @@ if ((activeSession() && !$cupStarted && $current_date < $last_bet_day) || isset(
 			$groups[2][1][1] = 'D';
 		}
 		// Kommentar om vilka lag som kommer från vilken kvartsfinal
-		$winner[1][0] = 57;
-		$winner[1][1] = 58;
-		$winner[2][0] = 59;
-		$winner[2][1] = 60;
+		$winner[1][0] = 45;
+		$winner[1][1] = 46;
+		$winner[2][0] = 47;
+		$winner[2][1] = 48;
 
 		$match_offset = $quarter_max; // sista matchen i kvartarna (+ 1 = f&oumlrsta semin)
 
@@ -481,7 +482,7 @@ if ((activeSession() && !$cupStarted && $current_date < $last_bet_day) || isset(
 // -------------------------------------------------------- SEMI SLUT ----------------------------
 
 // ------------------------ SECOND FINAL -----------------------------------
-		if (1)	{
+		if (0)	{
 			echo '<h3>Match om tredjeplats</h3>';
 
 			echo '<table border=0 cellspacing=0 cellpadding=2>';
@@ -566,7 +567,7 @@ if ((activeSession() && !$cupStarted && $current_date < $last_bet_day) || isset(
 		echo '><td align="center">'.$matchfinal.'</td>'.
 		'<td><select style="width:100%;" name="match['.$matchfinal.'][1]">'.
 		'<option value="">-- V&aumllj lag --';
-		$allTeams = mysqli_query($opendb, "SELECT * FROM lag ORDER BY lag;");
+		$allTeams = mysqli_query($opendb, "SELECT * FROM $dbname.lag ORDER BY $dbname.lag.lag;");
 		while($alag = mysqli_fetch_array($allTeams,MYSQLI_ASSOC)) {
 			echo '<option value="'.$alag['lag'].'"';
 			if(isset($_SESSION['match'][$matchfinal][1]) && $_SESSION['match'][$matchfinal][1] == $alag['lag'])
@@ -578,7 +579,7 @@ if ((activeSession() && !$cupStarted && $current_date < $last_bet_day) || isset(
 		'<td align="center"> - </td>'.
 		'<td><select style="width:100%;" name="match['.$matchfinal.'][2]">'.
 		'<option value="">-- V&aumllj lag --';
-		$allTeams = mysqli_query($opendb, "SELECT * FROM lag ORDER BY lag;");
+		$allTeams = mysqli_query($opendb, "SELECT * FROM $dbname.lag ORDER BY $dbname.lag.lag;");
 		while($blag = mysqli_fetch_array($allTeams,MYSQLI_ASSOC)) {
 			echo '<option value="'.$blag['lag'].'"';
 			if(isset($_SESSION['match'][$matchfinal][2]) && $_SESSION['match'][$matchfinal][2] == $blag['lag'])
